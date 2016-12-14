@@ -1,0 +1,80 @@
+hash: d37426604292cc38856ba142621eadee65533f737123f275cf3899b43fa13906
+updated: 2016-12-13T19:15:04.428956098-05:00
+imports:
+- name: github.com/enaml-ops/enaml
+  version: daa906ffdfea29e28f26a5965100f645736de450
+- name: github.com/enaml-ops/omg-product-bundle
+  version: ad22bb51c9ff0c2c3bf13d32c141fe6e2a03c2df
+  subpackages:
+  - products/cf-mysql/enaml-gen/bootstrap
+  - products/cf-mysql/enaml-gen/mysql
+  - products/cf-mysql/enaml-gen/proxy
+  - products/cloudfoundry/enaml-gen/gorouter
+- name: github.com/enaml-ops/pluginlib
+  version: 399f71c718525e0b9481a633bbfde9c888638961
+  subpackages:
+  - cred
+  - pcli
+  - pluginutil
+  - productv1
+- name: github.com/hashicorp/go-plugin
+  version: 8cf118f7a2f0c7ef1c82f66d4f6ac77c7e27dc12
+- name: github.com/hashicorp/yamux
+  version: d1caa6c97c9fc1cc9e83bbe34d0603f9ff0ce8bd
+- name: github.com/op/go-logging
+  version: 970db520ece77730c7e4724c61121037378659d9
+- name: github.com/square/certstrap
+  version: b6aef507a0840bf78bac99e7ffa6e6eb5c2c3c9f
+  subpackages:
+  - pkix
+- name: github.com/xchapter7x/lo
+  version: e33b245fc7a8186582208abc2458c2691bff681c
+  subpackages:
+  - lofakes
+- name: gopkg.in/urfave/cli.v2
+  version: c72728f42438425ffcd487986936357e17ebba3f
+- name: gopkg.in/yaml.v2
+  version: a5b47d31c556af34a302ce5d659e6fea44d90de0
+testImports:
+- name: github.com/golang/protobuf
+  version: 8ee79997227bf9b34611aee7946ae64735e6fd93
+  subpackages:
+  - proto
+- name: github.com/onsi/ginkgo
+  version: 00054c0bb96fc880d4e0be1b90937fad438c5290
+  subpackages:
+  - config
+  - internal/codelocation
+  - internal/containernode
+  - internal/failer
+  - internal/leafnodes
+  - internal/remote
+  - internal/spec
+  - internal/specrunner
+  - internal/suite
+  - internal/testingtproxy
+  - internal/writer
+  - reporters
+  - reporters/stenographer
+  - reporters/stenographer/support/go-colorable
+  - reporters/stenographer/support/go-isatty
+  - types
+- name: github.com/onsi/gomega
+  version: f1f0f388b31eca4e2cbe7a6dd8a3a1dfddda5b1c
+  subpackages:
+  - format
+  - ghttp
+  - internal/assertion
+  - internal/asyncassertion
+  - internal/oraclematcher
+  - internal/testingtsupport
+  - matchers
+  - matchers/support/goraph/bipartitegraph
+  - matchers/support/goraph/edge
+  - matchers/support/goraph/node
+  - matchers/support/goraph/util
+  - types
+- name: golang.org/x/sys
+  version: 478fcf54317e52ab69f40bb4c7a1520288d7f7ea
+  subpackages:
+  - unix

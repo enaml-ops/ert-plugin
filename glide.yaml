@@ -1,0 +1,21 @@
+package: github.com/enaml-ops/ert-plugin
+import:
+- package: github.com/enaml-ops/enaml
+  version: ~0.0.17
+- package: github.com/enaml-ops/omg-product-bundle
+  version: ~1.0.5
+  subpackages:
+  - products/cf-mysql/enaml-gen/bootstrap
+  - products/cf-mysql/enaml-gen/mysql
+  - products/cf-mysql/enaml-gen/proxy
+- package: github.com/enaml-ops/pluginlib
+  version: v1.0.0 
+- package: github.com/xchapter7x/lo
+- package: gopkg.in/urfave/cli.v2
+  version: c72728f42438425ffcd487986936357e17ebba3f
+- package: gopkg.in/yaml.v2
+testImport:
+- package: github.com/onsi/ginkgo
+  version: master
+- package: github.com/onsi/gomega
+  version: master
