@@ -3,7 +3,7 @@ package cloudfoundry
 import (
 	"github.com/enaml-ops/enaml"
 	ccworkerlib "github.com/enaml-ops/ert-plugin/enaml-gen/cloud_controller_worker"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 //CloudControllerWorkerPartition - Cloud Controller Worker Partition
@@ -53,12 +53,9 @@ func newCloudControllerWorkerJob(c *CloudControllerWorkerPartition) enaml.Instan
 		Name:    "cloud_controller_worker",
 		Release: CFReleaseName,
 		Properties: &ccworkerlib.CloudControllerWorkerJob{
-			Domain:       c.Config.SystemDomain,
-			SystemDomain: c.Config.SystemDomain,
-			AppDomains:   c.Config.AppDomains,
-			LoggerEndpoint: &ccworkerlib.LoggerEndpoint{
-				Port: c.Config.LoggregatorPort,
-			},
+			Domain:                   c.Config.SystemDomain,
+			SystemDomain:             c.Config.SystemDomain,
+			AppDomains:               c.Config.AppDomains,
 			SystemDomainOrganization: "system",
 			Ssl: &ccworkerlib.Ssl{
 				SkipCertVerify: c.Config.SkipSSLCertVerify,
@@ -67,30 +64,30 @@ func newCloudControllerWorkerJob(c *CloudControllerWorkerPartition) enaml.Instan
 				AllowAppSshAccess: c.Config.AllowSSHAccess,
 				Buildpacks: &ccworkerlib.Buildpacks{
 					BlobstoreType: "fog",
-					FogConnection: &ccworkerlib.DefaultFogConnection{
-						Provider:  "Local",
-						LocalRoot: "/var/vcap/nfs/shared",
+					FogConnection: map[string]string{
+						"provider":   "Local",
+						"local_root": "/var/vcap/nfs/shared",
 					},
 				},
 				Droplets: &ccworkerlib.Droplets{
 					BlobstoreType: "fog",
-					FogConnection: &ccworkerlib.DefaultFogConnection{
-						Provider:  "Local",
-						LocalRoot: "/var/vcap/nfs/shared",
+					FogConnection: map[string]string{
+						"provider":   "Local",
+						"local_root": "/var/vcap/nfs/shared",
 					},
 				},
 				Packages: &ccworkerlib.Packages{
 					BlobstoreType: "fog",
-					FogConnection: &ccworkerlib.DefaultFogConnection{
-						Provider:  "Local",
-						LocalRoot: "/var/vcap/nfs/shared",
+					FogConnection: map[string]string{
+						"provider":   "Local",
+						"local_root": "/var/vcap/nfs/shared",
 					},
 				},
 				ResourcePool: &ccworkerlib.ResourcePool{
 					BlobstoreType: "fog",
-					FogConnection: &ccworkerlib.DefaultFogConnection{
-						Provider:  "Local",
-						LocalRoot: "/var/vcap/nfs/shared",
+					FogConnection: map[string]string{
+						"provider":   "Local",
+						"local_root": "/var/vcap/nfs/shared",
 					},
 				},
 				QuotaDefinitions: map[string]interface{}{

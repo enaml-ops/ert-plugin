@@ -5,7 +5,6 @@ import (
 	"github.com/enaml-ops/ert-plugin/enaml-gen/auctioneer"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/cc_uploader"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/consul_agent"
-	"github.com/enaml-ops/ert-plugin/enaml-gen/converger"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/file_server"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/metron_agent"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/nsync"
@@ -13,8 +12,8 @@ import (
 	"github.com/enaml-ops/ert-plugin/enaml-gen/ssh_proxy"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/stager"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/tps"
-	. "github.com/enaml-ops/ert-plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -113,12 +112,12 @@ var _ = Describe("given a Diego Brain Partition", func() {
 
 			By("configuring the CC uploader")
 			job = ig.GetJobByName("cc_uploader")
-			Ω(job.Release).Should(Equal(DiegoReleaseName))
+			Ω(job.Release).Should(Equal(CFReleaseName))
 			cc := job.Properties.(*cc_uploader.CcUploaderJob)
 			Ω(cc.Diego.Ssl.SkipCertVerify).Should(BeFalse())
-			Ω(cc.Diego.CcUploader.Cc.JobPollingIntervalInSeconds).Should(Equal(25))
+			Ω(cc.Capi.CcUploader.Cc.JobPollingIntervalInSeconds).Should(Equal(25))
 
-			By("configuring the converger")
+			/*By("configuring the converger")
 			job = ig.GetJobByName("converger")
 			Ω(job.Release).Should(Equal(DiegoReleaseName))
 			c := job.Properties.(*converger.ConvergerJob)
@@ -126,26 +125,27 @@ var _ = Describe("given a Diego Brain Partition", func() {
 			Ω(c.Diego.Converger.Bbs.CaCert).Should(Equal("cacert"))
 			Ω(c.Diego.Converger.Bbs.ClientCert).Should(Equal("clientcert"))
 			Ω(c.Diego.Converger.Bbs.ClientKey).Should(Equal("clientkey"))
+			*/
 
 			By("configuring the file server")
 			job = ig.GetJobByName("file_server")
 			Ω(job.Release).Should(Equal(DiegoReleaseName))
 			fs := job.Properties.(*file_server.FileServerJob)
-			Ω(fs.Diego.Ssl.SkipCertVerify).Should(BeFalse())
+			Ω(fs.Diego.FileServer).ShouldNot(BeNil())
 
 			By("configuring nsync")
 			job = ig.GetJobByName("nsync")
-			Ω(job.Release).Should(Equal(DiegoReleaseName))
+			Ω(job.Release).Should(Equal(CFReleaseName))
 			n := job.Properties.(*nsync.NsyncJob)
 			Ω(n.Diego.Ssl.SkipCertVerify).Should(BeFalse())
-			Ω(n.Diego.Nsync.Bbs.ApiLocation).Should(Equal("bbs.service.cf.internal:8889"))
-			Ω(n.Diego.Nsync.Bbs.CaCert).Should(Equal("cacert"))
-			Ω(n.Diego.Nsync.Bbs.ClientCert).Should(Equal("clientcert"))
-			Ω(n.Diego.Nsync.Bbs.ClientKey).Should(Equal("clientkey"))
-			Ω(n.Diego.Nsync.Cc.BaseUrl).Should(Equal("https://api.sys.test.com"))
-			Ω(n.Diego.Nsync.Cc.BasicAuthUsername).Should(Equal("internaluser"))
-			Ω(n.Diego.Nsync.Cc.BasicAuthPassword).Should(Equal("internalpassword"))
-			Ω(n.Diego.Nsync.Cc.PollingIntervalInSeconds).Should(Equal(25))
+			Ω(n.Capi.Nsync.Bbs.ApiLocation).Should(Equal("bbs.service.cf.internal:8889"))
+			Ω(n.Capi.Nsync.Bbs.CaCert).Should(Equal("cacert"))
+			Ω(n.Capi.Nsync.Bbs.ClientCert).Should(Equal("clientcert"))
+			Ω(n.Capi.Nsync.Bbs.ClientKey).Should(Equal("clientkey"))
+			Ω(n.Capi.Nsync.Cc.BaseUrl).Should(Equal("https://api.sys.test.com"))
+			Ω(n.Capi.Nsync.Cc.BasicAuthUsername).Should(Equal("internaluser"))
+			Ω(n.Capi.Nsync.Cc.BasicAuthPassword).Should(Equal("internalpassword"))
+			Ω(n.Capi.Nsync.Cc.PollingIntervalInSeconds).Should(Equal(25))
 
 			By("configuring the route emitter")
 			job = ig.GetJobByName("route_emitter")
@@ -180,32 +180,32 @@ var _ = Describe("given a Diego Brain Partition", func() {
 
 			By("configuring the stager")
 			job = ig.GetJobByName("stager")
-			Ω(job.Release).Should(Equal(DiegoReleaseName))
+			Ω(job.Release).Should(Equal(CFReleaseName))
 			stager := job.Properties.(*stager.StagerJob)
 			Ω(s.Diego.Ssl.SkipCertVerify).Should(BeFalse())
-			Ω(stager.Diego.Stager.Bbs.ApiLocation).Should(Equal("bbs.service.cf.internal:8889"))
-			Ω(stager.Diego.Stager.Bbs.CaCert).Should(Equal("cacert"))
-			Ω(stager.Diego.Stager.Bbs.ClientCert).Should(Equal("clientcert"))
-			Ω(stager.Diego.Stager.Bbs.ClientKey).Should(Equal("clientkey"))
-			Ω(stager.Diego.Stager.Bbs.RequireSsl).Should(BeFalse())
-			Ω(stager.Diego.Stager.Cc.ExternalPort).Should(Equal(9023))
-			Ω(stager.Diego.Stager.Cc.BasicAuthUsername).Should(Equal("internaluser"))
-			Ω(stager.Diego.Stager.Cc.BasicAuthPassword).Should(Equal("internalpassword"))
+			Ω(stager.Capi.Stager.Bbs.ApiLocation).Should(Equal("bbs.service.cf.internal:8889"))
+			Ω(stager.Capi.Stager.Bbs.CaCert).Should(Equal("cacert"))
+			Ω(stager.Capi.Stager.Bbs.ClientCert).Should(Equal("clientcert"))
+			Ω(stager.Capi.Stager.Bbs.ClientKey).Should(Equal("clientkey"))
+			Ω(stager.Capi.Stager.Bbs.RequireSsl).Should(BeFalse())
+			Ω(stager.Capi.Stager.Cc.ExternalPort).Should(Equal(9023))
+			Ω(stager.Capi.Stager.Cc.BasicAuthUsername).Should(Equal("internaluser"))
+			Ω(stager.Capi.Stager.Cc.BasicAuthPassword).Should(Equal("internalpassword"))
 
 			By("configuring the tps")
 			job = ig.GetJobByName("tps")
-			Ω(job.Release).Should(Equal(DiegoReleaseName))
+			Ω(job.Release).Should(Equal(CFReleaseName))
 			t := job.Properties.(*tps.TpsJob)
 			Ω(t.Diego.Ssl.SkipCertVerify).Should(BeFalse())
-			Ω(t.Diego.Tps.TrafficControllerUrl).Should(Equal("wss://doppler.sys.test.com:443"))
-			Ω(t.Diego.Tps.Bbs.ApiLocation).Should(Equal("bbs.service.cf.internal:8889"))
-			Ω(t.Diego.Tps.Bbs.CaCert).Should(Equal("cacert"))
-			Ω(t.Diego.Tps.Bbs.ClientCert).Should(Equal("clientcert"))
-			Ω(t.Diego.Tps.Bbs.ClientKey).Should(Equal("clientkey"))
-			Ω(t.Diego.Tps.Bbs.RequireSsl).Should(BeFalse())
-			Ω(t.Diego.Tps.Cc.ExternalPort).Should(Equal(9023))
-			Ω(t.Diego.Tps.Cc.BasicAuthUsername).Should(Equal("internaluser"))
-			Ω(t.Diego.Tps.Cc.BasicAuthPassword).Should(Equal("internalpassword"))
+			Ω(t.Capi.Tps.TrafficControllerUrl).Should(Equal("wss://doppler.sys.test.com:443"))
+			Ω(t.Capi.Tps.Bbs.ApiLocation).Should(Equal("bbs.service.cf.internal:8889"))
+			Ω(t.Capi.Tps.Bbs.CaCert).Should(Equal("cacert"))
+			Ω(t.Capi.Tps.Bbs.ClientCert).Should(Equal("clientcert"))
+			Ω(t.Capi.Tps.Bbs.ClientKey).Should(Equal("clientkey"))
+			Ω(t.Capi.Tps.Bbs.RequireSsl).Should(BeFalse())
+			Ω(t.Capi.Tps.Cc.ExternalPort).Should(Equal(9023))
+			Ω(t.Capi.Tps.Cc.BasicAuthUsername).Should(Equal("internaluser"))
+			Ω(t.Capi.Tps.Cc.BasicAuthPassword).Should(Equal("internalpassword"))
 
 			By("configuring the consul agent")
 			job = ig.GetJobByName("consul_agent")

@@ -9,9 +9,9 @@ import (
 	"github.com/onsi/gomega/ghttp"
 	"gopkg.in/urfave/cli.v2"
 
-	. "github.com/enaml-ops/ert-plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
-	"github.com/enaml-ops/ert-plugin/plugin/pluginfakes"
+	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/pluginfakes"
 	"github.com/enaml-ops/pluginlib/pluginutil"
 )
 

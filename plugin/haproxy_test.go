@@ -2,8 +2,8 @@ package cloudfoundry_test
 
 import (
 	"github.com/enaml-ops/ert-plugin/enaml-gen/haproxy"
-	. "github.com/enaml-ops/ert-plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -92,7 +92,7 @@ var _ = Describe("HaProxy Partition", func() {
 			Ω(props.Cc.AllowAppSshAccess).Should(BeTrue())
 			Ω(props.Router).ShouldNot(BeNil())
 			Ω(props.Router.Servers).ShouldNot(BeNil())
-			Ω(props.Router.Servers.Z1).Should(ConsistOf("1.0.0.1", "1.0.0.2"))
+			Ω(props.Router.Servers).Should(ConsistOf("1.0.0.1", "1.0.0.2"))
 		})
 	})
 })

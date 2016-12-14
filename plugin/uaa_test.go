@@ -3,8 +3,8 @@ package cloudfoundry_test
 import (
 	"github.com/enaml-ops/ert-plugin/enaml-gen/route_registrar"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/uaa"
-	. "github.com/enaml-ops/ert-plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -193,15 +193,13 @@ var _ = Describe("UAA Partition", func() {
 			Ω(props.Uaa.Scim.User.Override).Should(BeTrue())
 			Ω(props.Uaa.Scim.UseridsEnabled).Should(BeTrue())
 			Ω(props.Uaa.Scim.Users).ShouldNot(BeNil())
-			users := props.Uaa.Scim.Users.([]string)
+			users := props.Uaa.Scim.Users.([]UAAScimUser)
 			Ω(len(users)).Should(Equal(5))
 		})
 		It("then it should then have uaa job with valid login information", func() {
 			ig := uaaPartition.ToInstanceGroup()
 			job := ig.GetJobByName("uaa")
 			Ω(job).ShouldNot(BeNil())
-			props, _ := job.Properties.(*uaa.UaaJob)
-			Ω(props.Domain).Should(Equal("sys.test.com"))
 		})
 		It("then it should then have uaa job with valid uaa information", func() {
 			ig := uaaPartition.ToInstanceGroup()
@@ -255,21 +253,20 @@ var _ = Describe("UAA Partition", func() {
 			props, _ := job.Properties.(*uaa.UaaJob)
 			Ω(props.Login).ShouldNot(BeNil())
 			Ω(props.Login.SelfServiceLinksEnabled).Should(BeTrue())
-			Ω(props.Login.SignupsEnabled).Should(BeTrue())
 			Ω(props.Login.Protocol).Should(Equal("https"))
-			Ω(props.Login.UaaBase).Should(Equal("https://uaa.sys.test.com"))
+			Ω(props.Login.Url).Should(Equal("https://uaa.sys.test.com"))
 			Ω(props.Login.Branding).ShouldNot(BeNil())
 
 			Ω(props.Login.Links).ShouldNot(BeNil())
-			links := props.Login.Links
-			Ω(links.Passwd).Should(Equal("https://login.sys.test.com/forgot_password"))
-			Ω(links.Signup).Should(Equal("https://login.sys.test.com/create_account"))
+			links := props.Login.Links.(*uaa.Links)
+			Ω(links.Passwd).Should(Equal("https://uaa.sys.test.com/forgot_password"))
+			Ω(links.Signup).Should(Equal("https://uaa.sys.test.com/create_account"))
 
 			Ω(props.Login.Notifications).ShouldNot(BeNil())
 			Ω(props.Login.Notifications.Url).Should(Equal("https://notifications.sys.test.com"))
 
 			Ω(props.Login.Saml).ShouldNot(BeNil())
-			Ω(props.Login.Saml.Entityid).Should(Equal("https://login.sys.test.com"))
+			Ω(props.Login.Saml.Entityid).Should(Equal("https://uaa.sys.test.com"))
 			Ω(props.Login.Saml.SignRequest).Should(BeTrue())
 			Ω(props.Login.Saml.WantAssertionSigned).Should(BeFalse())
 			Ω(props.Login.Saml.ServiceProviderKey).Should(Equal("saml-key"))
@@ -299,7 +296,7 @@ var _ = Describe("UAA Partition", func() {
 			Ω(route["name"]).Should(Equal("uaa"))
 			Ω(route["port"]).Should(Equal(8080))
 			Ω(route["registration_interval"]).Should(Equal("40s"))
-			Ω(route["uris"]).Should(ConsistOf("uaa.sys.test.com", "*.uaa.sys.test.com", "login.sys.test.com", "*.login.sys.test.com"))
+			Ω(route["uris"]).Should(ConsistOf("uaa.sys.test.com", "*.uaa.sys.test.com", "uaa.sys.test.com", "*.uaa.sys.test.com"))
 		})
 	})
 })

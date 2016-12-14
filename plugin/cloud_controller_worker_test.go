@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/enaml-ops/ert-plugin/enaml-gen/cloud_controller_worker"
-	. "github.com/enaml-ops/ert-plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"gopkg.in/yaml.v2"
@@ -53,7 +53,6 @@ var _ = Describe("Cloud Controller Worker Partition", func() {
 			config.DopplerSharedSecret = "metronsecret"
 			config.CCDBUsername = "ccdbuser"
 			config.CCDBPassword = "ccdbpass"
-			config.LoggregatorPort = 4443
 
 			cloudControllerWorker = NewCloudControllerWorkerPartition(config)
 		})
@@ -98,9 +97,6 @@ var _ = Describe("Cloud Controller Worker Partition", func() {
 			Ω(props.SystemDomain).Should(Equal("sys.yourdomain.com"))
 			Ω(props.AppDomains).Should(ConsistOf("apps.yourdomain.com"))
 			Ω(props.SystemDomainOrganization).Should(Equal("system"))
-
-			Ω(props.LoggerEndpoint).ShouldNot(BeNil())
-			Ω(props.LoggerEndpoint.Port).Should(Equal(4443))
 
 			ssl := props.Ssl
 			Ω(ssl).ShouldNot(BeNil())

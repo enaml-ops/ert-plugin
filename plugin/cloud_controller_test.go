@@ -5,8 +5,8 @@ import (
 
 	"io/ioutil"
 
-	. "github.com/enaml-ops/ert-plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"gopkg.in/yaml.v2"
@@ -147,10 +147,10 @@ var _ = Describe("Cloud Controller Partition", func() {
 			Ω(props.Domain).Should(Equal("sys.yourdomain.com"))
 			Ω(props.SystemDomain).Should(Equal("sys.yourdomain.com"))
 			Ω(props.SystemDomainOrganization).Should(Equal("system"))
-			Ω(props.Login.Url).Should(Equal("https://login.sys.yourdomain.com"))
+			Ω(props.Login.Url).Should(Equal("https://uaa.sys.yourdomain.com"))
 
 			By("configuring CC")
-			Ω(props.Cc.AllowedCorsDomains).Should(ConsistOf("https://login.sys.yourdomain.com"))
+			Ω(props.Cc.AllowedCorsDomains).Should(ConsistOf("https://uaa.sys.yourdomain.com"))
 			Ω(props.Cc.AllowAppSshAccess).Should(BeTrue())
 			Ω(props.Cc.DefaultToDiegoBackend).Should(BeTrue())
 			Ω(props.Cc.ClientMaxBodySize).Should(Equal("1024M"))
@@ -184,9 +184,9 @@ var _ = Describe("Cloud Controller Partition", func() {
 			Ω(stacks[1]).Should(HaveKeyWithValue("name", "windows2012R2"))
 			Ω(props.Cc.UaaResourceId).Should(Equal("cloud_controller,cloud_controller_service_permissions"))
 
-			expectedFog := &ccnglib.DefaultFogConnection{
-				Provider:  "Local",
-				LocalRoot: "/var/vcap/nfs/shared",
+			expectedFog := map[string]string{
+				"provider":   "Local",
+				"local_root": "/var/vcap/nfs/shared",
 			}
 			Ω(props.Cc.Buildpacks.BlobstoreType).Should(Equal("fog"))
 			Ω(props.Cc.Droplets.BlobstoreType).Should(Equal("fog"))
@@ -281,7 +281,7 @@ var _ = Describe("Cloud Controller Partition", func() {
 			igf := cloudController.ToInstanceGroup()
 
 			b, _ := yaml.Marshal(igf)
-			Ω(string(b)).Should(ContainSubstring("https://login.sys.yourdomain.com"))
+			Ω(string(b)).Should(ContainSubstring("https://uaa.sys.yourdomain.com"))
 		})
 
 		XIt("should account for QuotaDefinitions structure", func() {

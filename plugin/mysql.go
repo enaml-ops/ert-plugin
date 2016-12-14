@@ -2,8 +2,8 @@ package cloudfoundry
 
 import (
 	"github.com/enaml-ops/enaml"
-	mysqllib "github.com/enaml-ops/omg-product-bundle/products/cf-mysql/enaml-gen/mysql"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	mysqllib "github.com/enaml-ops/ert-plugin/enaml-gen/mysql"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 //MySQL -
@@ -107,16 +107,25 @@ func (s *MySQL) newMySQLJob() enaml.InstanceJob {
 		Name:    "mysql",
 		Release: "cf-mysql",
 		Properties: &mysqllib.MysqlJob{
-			AdminPassword:          s.Config.MySQLAdminPassword,
-			ClusterIps:             s.Config.MySQLIPs,
-			DatabaseStartupTimeout: s.DatabaseStartupTimeout,
-			InnodbBufferPoolSize:   s.InnodbBufferPoolSize,
-			MaxConnections:         s.MaxConnections,
-			BootstrapEndpoint: &mysqllib.BootstrapEndpoint{
-				Username: s.Config.MySQLBootstrapUser,
-				Password: s.Config.MySQLBootstrapPassword,
+			CfMysql: &mysqllib.CfMysql{
+				Mysql: &mysqllib.Mysql{
+					AdminUsername: s.Config.MySQLBootstrapUser,
+					AdminPassword: s.Config.MySQLBootstrapPassword,
+					ClusterHealth: &mysqllib.ClusterHealth{
+						Password: s.Config.MySQLAdminPassword,
+					},
+					GaleraHealthcheck: &mysqllib.GaleraHealthcheck{
+						EndpointUsername: s.Config.MySQLBootstrapUser,
+						EndpointPassword: s.Config.MySQLBootstrapPassword,
+						DbPassword:       s.Config.MySQLBootstrapPassword,
+					},
+					ClusterIps:             s.Config.MySQLIPs,
+					DatabaseStartupTimeout: s.DatabaseStartupTimeout,
+					InnodbBufferPoolSize:   s.InnodbBufferPoolSize,
+					MaxConnections:         s.MaxConnections,
+					SeededDatabases:        s.MySQLSeededDatabases,
+				},
 			},
-			SeededDatabases: s.MySQLSeededDatabases,
 			SyslogAggregator: &mysqllib.SyslogAggregator{
 				Address:   s.Config.SyslogAddress,
 				Port:      s.Config.SyslogPort,

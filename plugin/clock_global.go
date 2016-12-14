@@ -6,7 +6,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/cloud_controller_clock"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/cloud_controller_ng"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 type clockGlobal struct {
@@ -86,7 +86,7 @@ func (c *clockGlobal) newCloudControllerClockJob(ccng *cloud_controller_ng.Cloud
 			},
 		},
 		LoggerEndpoint: &cloud_controller_clock.LoggerEndpoint{
-			Port: c.Config.LoggregatorPort,
+			Port: 443,
 		},
 		Ssl: &cloud_controller_clock.Ssl{
 			SkipCertVerify: c.Config.SkipSSLCertVerify,

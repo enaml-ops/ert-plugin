@@ -3,7 +3,7 @@ package cloudfoundry
 import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/haproxy"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 // HAProxy -
@@ -61,9 +61,7 @@ func (s *HAProxy) createHAProxyJob() enaml.InstanceJob {
 				SslPem:      s.Config.HAProxySSLPem,
 			},
 			Router: &haproxy.Router{
-				Servers: &haproxy.Servers{
-					Z1: s.Config.RouterMachines,
-				},
+				Servers: s.Config.RouterMachines,
 			},
 			Cc: &haproxy.Cc{
 				AllowAppSshAccess: true,

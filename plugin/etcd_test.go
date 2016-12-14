@@ -3,8 +3,8 @@ package cloudfoundry_test
 import (
 	"github.com/enaml-ops/ert-plugin/enaml-gen/etcd"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/etcd_metrics_server"
-	. "github.com/enaml-ops/ert-plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -18,7 +18,7 @@ var _ = Describe("Etcd Partition", func() {
 				AZs:             []string{"eastprod-1"},
 				NetworkName:     "foundry-net",
 				NATSPort:        4222,
-				DopplerZone:      "DopplerZoneguid",
+				DopplerZone:     "DopplerZoneguid",
 				SyslogAddress:   "syslog-server",
 				SyslogPort:      10601,
 				SyslogTransport: "tcp",
@@ -105,9 +105,7 @@ var _ = Describe("Etcd Partition", func() {
 			job := ig.GetJobByName("etcd_metrics_server")
 			Ω(job).ShouldNot(BeNil())
 			props, _ := job.Properties.(*etcd_metrics_server.EtcdMetricsServerJob)
-			Ω(props.EtcdMetricsServer.Nats.Machines).Should(ConsistOf("1.0.0.5", "1.0.0.6"))
-			Ω(props.EtcdMetricsServer.Nats.Username).Should(Equal("nats"))
-			Ω(props.EtcdMetricsServer.Nats.Password).Should(Equal("pass"))
+			Ω(props.EtcdMetricsServer).ShouldNot(BeNil())
 		})
 	})
 })

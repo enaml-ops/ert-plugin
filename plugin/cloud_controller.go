@@ -6,7 +6,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	ccnglib "github.com/enaml-ops/ert-plugin/enaml-gen/cloud_controller_ng"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/route_registrar"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 //CloudControllerPartition - Cloud Controller Partition
@@ -84,38 +84,38 @@ func newCloudControllerNgJob(c *CloudControllerPartition) enaml.InstanceJob {
 			SystemDomainOrganization: "system",
 			SupportAddress:           c.Config.SupportAddress,
 			Login: &ccnglib.Login{
-				Url: fmt.Sprintf("https://login.%s", c.Config.SystemDomain),
+				Url: fmt.Sprintf("https://uaa.%s", c.Config.SystemDomain),
 			},
 			Cc: &ccnglib.Cc{
-				AllowedCorsDomains:    []string{fmt.Sprintf("https://login.%s", c.Config.SystemDomain)},
+				AllowedCorsDomains:    []string{fmt.Sprintf("https://uaa.%s", c.Config.SystemDomain)},
 				AllowAppSshAccess:     c.Config.AllowSSHAccess,
 				DefaultToDiegoBackend: true,
 				Buildpacks: &ccnglib.Buildpacks{
 					BlobstoreType: "fog",
-					FogConnection: &ccnglib.DefaultFogConnection{
-						Provider:  "Local",
-						LocalRoot: "/var/vcap/nfs/shared",
+					FogConnection: map[string]string{
+						"provider":   "Local",
+						"local_root": "/var/vcap/nfs/shared",
 					},
 				},
 				Droplets: &ccnglib.Droplets{
 					BlobstoreType: "fog",
-					FogConnection: &ccnglib.DefaultFogConnection{
-						Provider:  "Local",
-						LocalRoot: "/var/vcap/nfs/shared",
+					FogConnection: map[string]string{
+						"provider":   "Local",
+						"local_root": "/var/vcap/nfs/shared",
 					},
 				},
 				Packages: &ccnglib.Packages{
 					BlobstoreType: "fog",
-					FogConnection: &ccnglib.DefaultFogConnection{
-						Provider:  "Local",
-						LocalRoot: "/var/vcap/nfs/shared",
+					FogConnection: map[string]string{
+						"provider":   "Local",
+						"local_root": "/var/vcap/nfs/shared",
 					},
 				},
 				ResourcePool: &ccnglib.ResourcePool{
 					BlobstoreType: "fog",
-					FogConnection: &ccnglib.DefaultFogConnection{
-						Provider:  "Local",
-						LocalRoot: "/var/vcap/nfs/shared",
+					FogConnection: map[string]string{
+						"provider":   "Local",
+						"local_root": "/var/vcap/nfs/shared",
 					},
 				},
 				ClientMaxBodySize:            "1024M",

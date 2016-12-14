@@ -3,7 +3,7 @@ package cloudfoundry
 import (
 	"github.com/enaml-ops/enaml"
 	consullib "github.com/enaml-ops/ert-plugin/enaml-gen/consul_agent"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 //ConsulAgent -

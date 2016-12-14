@@ -4,7 +4,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	grtrlib "github.com/enaml-ops/ert-plugin/enaml-gen/gorouter"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/metron_agent"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 type gorouter struct {
@@ -106,7 +106,7 @@ func (s *gorouter) newMetronJob() enaml.InstanceJob {
 				SharedSecret: s.Config.DopplerSharedSecret,
 			},
 			Loggregator: &metron_agent.Loggregator{
-				Etcd: &metron_agent.Etcd{
+				Etcd: &metron_agent.LoggregatorEtcd{
 					Machines: s.Config.EtcdMachines,
 				},
 			},

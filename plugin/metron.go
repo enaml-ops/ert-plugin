@@ -3,7 +3,7 @@ package cloudfoundry
 import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/metron_agent"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 //Metron -
@@ -38,7 +38,7 @@ func (s *Metron) CreateJob() enaml.InstanceJob {
 				SharedSecret: s.Config.DopplerSharedSecret,
 			},
 			Loggregator: &metron_agent.Loggregator{
-				Etcd: &metron_agent.Etcd{
+				Etcd: &metron_agent.LoggregatorEtcd{
 					Machines: s.Config.EtcdMachines,
 				},
 			},

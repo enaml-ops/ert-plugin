@@ -4,7 +4,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	etcdlib "github.com/enaml-ops/ert-plugin/enaml-gen/etcd"
 	etcdmetricslib "github.com/enaml-ops/ert-plugin/enaml-gen/etcd_metrics_server"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 //Etcd -
@@ -69,14 +69,7 @@ func (s *Etcd) newEtcdMetricsServerJob() enaml.InstanceJob {
 		Name:    "etcd_metrics_server",
 		Release: "cf",
 		Properties: &etcdmetricslib.EtcdMetricsServerJob{
-			EtcdMetricsServer: &etcdmetricslib.EtcdMetricsServer{
-				Nats: &etcdmetricslib.Nats{
-					Username: s.Config.NATSUser,
-					Password: s.Config.NATSPassword,
-					Machines: s.Config.NATSMachines,
-					Port:     s.Config.NATSPort,
-				},
-			},
+			EtcdMetricsServer: &etcdmetricslib.EtcdMetricsServer{},
 		},
 	}
 }

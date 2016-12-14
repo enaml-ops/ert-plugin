@@ -3,8 +3,8 @@ package cloudfoundry_test
 import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/cloud_controller_clock"
-	. "github.com/enaml-ops/ert-plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"gopkg.in/yaml.v2"
@@ -27,7 +27,6 @@ var _ = Describe("given a clock_global partition", func() {
 				NATSPort:          4333,
 				DopplerZone:       "DopplerZoneguid",
 				SharePath:         "/var/vcap/nfs",
-				LoggregatorPort:   4443,
 				Secret:            config.Secret{},
 				User:              config.User{},
 				Certs:             &config.Certs{},
@@ -178,7 +177,7 @@ runaway:
 			Ω(props.Uaa.Clients).ShouldNot(BeNil())
 			Ω(props.Uaa.Clients.CcServiceDashboards.Secret).Should(Equal("ccsecret"))
 
-			Ω(props.LoggerEndpoint.Port).Should(Equal(4443))
+			Ω(props.LoggerEndpoint.Port).Should(Equal(443))
 			Ω(props.Ssl.SkipCertVerify).Should(BeFalse())
 
 			Ω(props.Nats.User).Should(Equal("nats"))

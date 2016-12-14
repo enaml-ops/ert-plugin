@@ -14,7 +14,7 @@ import (
 	"github.com/enaml-ops/ert-plugin/enaml-gen/ssh_proxy"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/stager"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/tps"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 	"github.com/enaml-ops/pluginlib/pluginutil"
 	"github.com/xchapter7x/lo"
 )
@@ -58,7 +58,7 @@ func (d *diegoBrain) ToInstanceGroup() *enaml.InstanceGroup {
 
 	ig.AddJob(d.newAuctioneer())
 	ig.AddJob(d.newCCUploader())
-	ig.AddJob(d.newConverger())
+	//ig.AddJob(d.newConverger())
 	ig.AddJob(d.newFileServer())
 	ig.AddJob(d.newNsync())
 	ig.AddJob(d.newRouteEmitter())
@@ -93,15 +93,17 @@ func (d *diegoBrain) newAuctioneer() *enaml.InstanceJob {
 func (d *diegoBrain) newCCUploader() *enaml.InstanceJob {
 	return &enaml.InstanceJob{
 		Name:    "cc_uploader",
-		Release: DiegoReleaseName,
+		Release: CFReleaseName,
 		Properties: &cc_uploader.CcUploaderJob{
-			Diego: &cc_uploader.Diego{
-				Ssl: &cc_uploader.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
+			Capi: &cc_uploader.Capi{
 				CcUploader: &cc_uploader.CcUploader{
 					Cc: &cc_uploader.Cc{
 						JobPollingIntervalInSeconds: d.Config.CCUploaderJobPollInterval,
 					},
 				},
+			},
+			Diego: &cc_uploader.Diego{
+				Ssl: &cc_uploader.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
 			},
 		},
 	}
@@ -132,7 +134,7 @@ func (d *diegoBrain) newFileServer() *enaml.InstanceJob {
 		Release: DiegoReleaseName,
 		Properties: &file_server.FileServerJob{
 			Diego: &file_server.Diego{
-				Ssl: &file_server.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
+				FileServer: &file_server.FileServer{},
 			},
 		},
 	}
@@ -141,10 +143,9 @@ func (d *diegoBrain) newFileServer() *enaml.InstanceJob {
 func (d *diegoBrain) newNsync() *enaml.InstanceJob {
 	return &enaml.InstanceJob{
 		Name:    "nsync",
-		Release: DiegoReleaseName,
+		Release: CFReleaseName,
 		Properties: &nsync.NsyncJob{
-			Diego: &nsync.Diego{
-				Ssl: &nsync.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
+			Capi: &nsync.Capi{
 				Nsync: &nsync.Nsync{
 					Cc: &nsync.Cc{
 						BaseUrl:                  prefixSystemDomain(d.Config.SystemDomain, "api"),
@@ -159,6 +160,9 @@ func (d *diegoBrain) newNsync() *enaml.InstanceJob {
 						ClientKey:   d.Config.BBSClientKey,
 					},
 				},
+			},
+			Diego: &nsync.Diego{
+				Ssl: &nsync.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
 			},
 		},
 	}
@@ -228,10 +232,9 @@ func (d *diegoBrain) newSSHProxy() *enaml.InstanceJob {
 func (d *diegoBrain) newStager() *enaml.InstanceJob {
 	return &enaml.InstanceJob{
 		Name:    "stager",
-		Release: DiegoReleaseName,
+		Release: CFReleaseName,
 		Properties: &stager.StagerJob{
-			Diego: &stager.Diego{
-				Ssl: &stager.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
+			Capi: &stager.Capi{
 				Stager: &stager.Stager{
 					Bbs: &stager.Bbs{
 						ApiLocation: defaultBBSAPILocation,
@@ -247,6 +250,9 @@ func (d *diegoBrain) newStager() *enaml.InstanceJob {
 					},
 				},
 			},
+			Diego: &stager.Diego{
+				Ssl: &stager.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
+			},
 		},
 	}
 }
@@ -254,11 +260,9 @@ func (d *diegoBrain) newStager() *enaml.InstanceJob {
 func (d *diegoBrain) newTPS() *enaml.InstanceJob {
 	return &enaml.InstanceJob{
 		Name:    "tps",
-		Release: DiegoReleaseName,
+		Release: CFReleaseName,
 		Properties: &tps.TpsJob{
-
-			Diego: &tps.Diego{
-				Ssl: &tps.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
+			Capi: &tps.Capi{
 				Tps: &tps.Tps{
 					TrafficControllerUrl: fmt.Sprintf("wss://doppler.%s:%d", d.Config.SystemDomain, d.Config.LoggregatorPort),
 					Bbs: &tps.Bbs{
@@ -274,6 +278,9 @@ func (d *diegoBrain) newTPS() *enaml.InstanceJob {
 						ExternalPort:      d.Config.CCExternalPort,
 					},
 				},
+			},
+			Diego: &tps.Diego{
+				Ssl: &tps.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
 			},
 		},
 	}

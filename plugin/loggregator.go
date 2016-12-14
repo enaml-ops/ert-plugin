@@ -4,7 +4,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	ltc "github.com/enaml-ops/ert-plugin/enaml-gen/loggregator_trafficcontroller"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/route_registrar"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 type loggregatorTrafficController struct {
@@ -57,18 +57,15 @@ func (l *loggregatorTrafficController) createLoggregatorTrafficControllerJob() e
 			Ssl: &ltc.Ssl{
 				SkipCertVerify: l.Config.SkipSSLCertVerify,
 			},
-			TrafficController: &ltc.TrafficController{
-				Zone: l.Config.DopplerZone,
-			},
-			Doppler: &ltc.Doppler{
-				UaaClientId: "doppler",
-			},
+			TrafficController: &ltc.TrafficController{},
+			Doppler:           &ltc.Doppler{},
 			Loggregator: &ltc.Loggregator{
-				Etcd: &ltc.Etcd{
+				Etcd: &ltc.LoggregatorEtcd{
 					Machines: l.Config.EtcdMachines,
 				},
 			},
 			Uaa: &ltc.Uaa{
+				Url: "https://uaa." + l.Config.SystemDomain,
 				Clients: &ltc.Clients{
 					Doppler: &ltc.ClientsDoppler{
 						Secret: l.Config.DopplerSecret,

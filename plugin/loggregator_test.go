@@ -5,8 +5,8 @@ import (
 	ltc "github.com/enaml-ops/ert-plugin/enaml-gen/loggregator_trafficcontroller"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/metron_agent"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/route_registrar"
-	. "github.com/enaml-ops/ert-plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -25,7 +25,7 @@ var _ = Describe("given the loggregator traffic controller partition", func() {
 				SystemDomain:      "sys.yourdomain.com",
 				SkipSSLCertVerify: false,
 				NATSPort:          4222,
-				DopplerZone:        "DopplerZoneguid",
+				DopplerZone:       "DopplerZoneguid",
 				Secret:            config.Secret{},
 				User:              config.User{},
 				Certs:             &config.Certs{},
@@ -93,8 +93,6 @@ var _ = Describe("given the loggregator traffic controller partition", func() {
 			Ω(props.SystemDomain).Should(Equal("sys.yourdomain.com"))
 			Ω(props.Cc.SrvApiUri).Should(Equal("https://api.sys.yourdomain.com"))
 			Ω(props.Ssl.SkipCertVerify).Should(BeFalse())
-			Ω(props.TrafficController.Zone).Should(Equal("DopplerZoneguid"))
-			Ω(props.Doppler.UaaClientId).Should(Equal("doppler"))
 			Ω(props.Uaa.Clients.Doppler.Secret).Should(Equal("dopplersecret"))
 			Ω(props.Loggregator.Etcd.Machines).Should(ConsistOf("10.0.1.2", "10.0.1.3", "10.0.1.4"))
 		})

@@ -2,8 +2,8 @@ package cloudfoundry
 
 import (
 	"github.com/enaml-ops/enaml"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
 	bstraplib "github.com/enaml-ops/omg-product-bundle/products/cf-mysql/enaml-gen/bootstrap"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 type bootstrap struct {

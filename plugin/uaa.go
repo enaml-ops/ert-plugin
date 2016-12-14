@@ -6,7 +6,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/route_registrar"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/uaa"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 //UAA -
@@ -216,7 +216,7 @@ func (s *UAA) CreateUAA() (login *uaa.Uaa) {
 			},
 		},
 
-		Ldap: &uaa.UaaLdap{
+		Ldap: &uaa.Ldap{
 			ProfileType:         "search-and-bind",
 			Url:                 s.Config.LDAPUrl,
 			UserDN:              s.Config.LDAPUserDN,
@@ -248,15 +248,67 @@ func (s *UAA) CreateUAA() (login *uaa.Uaa) {
 				Override: true,
 			},
 			UseridsEnabled: true,
-			Users: []string{
-				fmt.Sprintf("admin|%s|scim.write,scim.read,openid,cloud_controller.admin,dashboard.user,console.admin,console.support,doppler.firehose,notification_preferences.read,notification_preferences.write,notifications.manage,notification_templates.read,notification_templates.write,emails.write,notifications.write,zones.read,zones.write", s.Config.AdminPassword),
-				fmt.Sprintf("push_apps_manager|%s|cloud_controller.admin", s.Config.PushAppsManagerPassword),
-				fmt.Sprintf("smoke_tests|%s|cloud_controller.admin", s.Config.SmokeTestsPassword),
-				fmt.Sprintf("system_services|%s|cloud_controller.admin", s.Config.SystemServicesPassword),
-				fmt.Sprintf("system_verification|%s|scim.write,scim.read,openid,cloud_controller.admin,dashboard.user,console.admin,console.support", s.Config.SystemVerificationPassword),
+			Users: []UAAScimUser{
+				UAAScimUser{
+					Name:     "admin",
+					Password: s.Config.AdminPassword,
+					Groups: []string{
+						"scim.write",
+						"scim.read",
+						"openid",
+						"cloud_controller.admin",
+						"dashboard.user",
+						"console.admin",
+						"console.support",
+						"doppler.firehose",
+						"notification_preferences.read",
+						"notification_preferences.write",
+						"notifications.manage",
+						"notification_templates.read",
+						"notification_templates.write",
+						"emails.write",
+						"notifications.write",
+						"zones.read",
+						"zones.write",
+					},
+				},
+				UAAScimUser{
+					Name:     "push_apps_manager",
+					Password: s.Config.PushAppsManagerPassword,
+					Groups:   []string{"cloud_controller.admin"},
+				},
+				UAAScimUser{
+					Name:     "smoke_tests",
+					Password: s.Config.SmokeTestsPassword,
+					Groups:   []string{"cloud_controller.admin"},
+				},
+				UAAScimUser{
+					Name:     "system_services",
+					Password: s.Config.SystemServicesPassword,
+					Groups:   []string{"cloud_controller.admin"},
+				},
+				UAAScimUser{
+					Name:     "system_verification",
+					Password: s.Config.SystemVerificationPassword,
+					Groups: []string{
+						"scim.write",
+						"scim.read",
+						"openid",
+						"cloud_controller.admin",
+						"dashboard.user",
+						"console.admin",
+						"console.support",
+					},
+				},
 			},
 		},
 	}
+}
+
+type UAAScimUser struct {
+	Name     string   `yaml:"name,omitempty"`
+	Password string   `yaml:"password,omitempty"`
+	Groups   []string `yaml:"groups,omitempty"`
 }
 
 //CreateLogin - Helper method to create login structure
@@ -264,18 +316,17 @@ func (s *UAA) CreateLogin() (login *uaa.Login) {
 	return &uaa.Login{
 		Branding:                s.CreateBranding(),
 		SelfServiceLinksEnabled: s.Config.SelfServiceLinksEnabled,
-		SignupsEnabled:          s.Config.SignupsEnabled,
 		Protocol:                s.Config.UAALoginProtocol,
 		Links: &uaa.Links{
-			Signup: fmt.Sprintf("%s://login.%s/create_account", s.Config.UAALoginProtocol, s.Config.SystemDomain),
-			Passwd: fmt.Sprintf("%s://login.%s/forgot_password", s.Config.UAALoginProtocol, s.Config.SystemDomain),
+			Signup: fmt.Sprintf("%s://uaa.%s/create_account", s.Config.UAALoginProtocol, s.Config.SystemDomain),
+			Passwd: fmt.Sprintf("%s://uaa.%s/forgot_password", s.Config.UAALoginProtocol, s.Config.SystemDomain),
 		},
-		UaaBase: fmt.Sprintf("%s://uaa.%s", s.Config.UAALoginProtocol, s.Config.SystemDomain),
+		Url: fmt.Sprintf("%s://uaa.%s", s.Config.UAALoginProtocol, s.Config.SystemDomain),
 		Notifications: &uaa.Notifications{
 			Url: fmt.Sprintf("%s://notifications.%s", s.Config.UAALoginProtocol, s.Config.SystemDomain),
 		},
 		Saml: &uaa.Saml{
-			Entityid:                   fmt.Sprintf("%s://login.%s", s.Config.UAALoginProtocol, s.Config.SystemDomain),
+			Entityid:                   fmt.Sprintf("%s://uaa.%s", s.Config.UAALoginProtocol, s.Config.SystemDomain),
 			ServiceProviderKey:         s.Config.SAMLServiceProviderKey,
 			ServiceProviderCertificate: s.Config.SAMLServiceProviderCertificate,
 			SignRequest:                true,
@@ -340,7 +391,7 @@ func (s *UAA) createRouteRegistrarJob() enaml.InstanceJob {
 						"name":                  "uaa",
 						"port":                  8080,
 						"registration_interval": "40s",
-						"uris":                  []string{fmt.Sprintf("uaa.%s", s.Config.SystemDomain), fmt.Sprintf("*.uaa.%s", s.Config.SystemDomain), fmt.Sprintf("login.%s", s.Config.SystemDomain), fmt.Sprintf("*.login.%s", s.Config.SystemDomain)},
+						"uris":                  []string{fmt.Sprintf("uaa.%s", s.Config.SystemDomain), fmt.Sprintf("*.uaa.%s", s.Config.SystemDomain), fmt.Sprintf("uaa.%s", s.Config.SystemDomain), fmt.Sprintf("*.uaa.%s", s.Config.SystemDomain)},
 					},
 				},
 			},
@@ -359,10 +410,9 @@ func (s *UAA) createUAAJob() enaml.InstanceJob {
 		Name:    "uaa",
 		Release: "cf",
 		Properties: &uaa.UaaJob{
-			Login:  s.Login,
-			Uaa:    s.UAA,
-			Domain: s.Config.SystemDomain,
-			Uaadb:  s.createUAADB(),
+			Login: s.Login,
+			Uaa:   s.UAA,
+			Uaadb: s.createUAADB(),
 		},
 	}
 }

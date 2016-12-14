@@ -6,7 +6,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/doppler"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/syslog_drain_binder"
-	"github.com/enaml-ops/ert-plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
 )
 
 //Doppler -
@@ -39,6 +39,7 @@ func (s *Doppler) ToInstanceGroup() (ig *enaml.InstanceGroup) {
 			s.createSyslogDrainBinderJob(),
 			s.StatsdInjector.CreateJob(),
 		},
+
 		Networks: []enaml.Network{
 			enaml.Network{Name: s.Config.NetworkName, StaticIPs: s.Config.DopplerIPs},
 		},
@@ -62,7 +63,7 @@ func (s *Doppler) createDopplerJob() enaml.InstanceJob {
 				SharedSecret: s.Config.DopplerSharedSecret,
 			},
 			Loggregator: &doppler.Loggregator{
-				Etcd: &doppler.Etcd{
+				Etcd: &doppler.LoggregatorEtcd{
 					Machines: s.Config.EtcdMachines,
 				},
 			},
@@ -84,7 +85,7 @@ func (s *Doppler) createSyslogDrainBinderJob() enaml.InstanceJob {
 				SrvApiUri:       fmt.Sprintf("https://api.%s", s.Config.SystemDomain),
 			},
 			Loggregator: &syslog_drain_binder.Loggregator{
-				Etcd: &syslog_drain_binder.Etcd{
+				Etcd: &syslog_drain_binder.LoggregatorEtcd{
 					Machines: s.Config.EtcdMachines,
 				},
 			},
