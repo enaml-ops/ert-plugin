@@ -2,45 +2,45 @@ package cloudfoundry
 
 const (
 	CFReleaseName    = "cf"
-	CFReleaseVersion = "235.5.62"
+	CFReleaseVersion = "239.0.40"
 
-	PivotalERTVersion = "1.7.15"
+	PivotalERTVersion = "1.8.21"
 
 	StemcellName    = "ubuntu-trusty"
 	StemcellAlias   = "trusty"
-	StemcellVersion = "3232.17"
+	StemcellVersion = "3263.12"
 
 	CFLinuxReleaseName    = "cflinuxfs2-rootfs"
-	CFLinuxReleaseVersion = "1.26.0"
+	CFLinuxReleaseVersion = "1.40.0"
 
-	GardenReleaseName    = "garden-linux"
-	GardenReleaseVersion = "0.338.0"
+	GardenReleaseName    = "garden-runc"
+	GardenReleaseVersion = "1.0.2"
 
 	DiegoReleaseName    = "diego"
-	DiegoReleaseVersion = "0.1467.29"
+	DiegoReleaseVersion = "0.1485.8"
 
 	CFMysqlReleaseName    = "cf-mysql"
-	CFMysqlReleaseVersion = "25.2"
+	CFMysqlReleaseVersion = "26.8.0"
 
 	EtcdReleaseName    = "etcd"
-	EtcdReleaseVersion = "48"
+	EtcdReleaseVersion = "60.0.1"
 
 	PushAppsReleaseName    = "push-apps-manager-release"
-	PushAppsReleaseVersion = "629.7"
+	PushAppsReleaseVersion = "652.0.0"
 
 	NotificationsReleaseName    = "notifications"
-	NotificationsReleaseVersion = "24"
+	NotificationsReleaseVersion = "24.0.0"
 
 	NotificationsUIReleaseName    = "notifications-ui"
-	NotificationsUIReleaseVersion = "17"
+	NotificationsUIReleaseVersion = "22.0.0"
 
 	CFAutoscalingReleaseName    = "cf-autoscaling"
-	CFAutoscalingReleaseVersion = "36"
+	CFAutoscalingReleaseVersion = "36.0.0"
 
 	MySQLBackupReleaseName    = "mysql-backup"
-	MySQLBackupReleaseVersion = "1"
+	MySQLBackupReleaseVersion = "11.25.0"
 
-	ServiceBackupReleaseVersion = "1"
+	ServiceBackupReleaseVersion = "14.0.0"
 )
 
 const (
