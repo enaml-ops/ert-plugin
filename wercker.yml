@@ -57,8 +57,8 @@ crosscompile:
         code: |
           COMMIT=`git rev-parse HEAD | cut -c1-6`
           VERSION=${WERCKER_GITHUB_CREATE_RELEASE_ID}-${COMMIT}
-          GOOS=darwin go build -o cloudfoundry-plugin-osx -ldflags "-s -w -X main.Version=${VERSION}" ./cmd/cloudfoundry/main.go
-          GOOS=linux go build -o cloudfoundry-plugin-linux -ldflags "-s -w -X main.Version=${VERSION}" ./cmd/cloudfoundry/main.go
+          GOOS=darwin go build -o ert-1-8-osx -ldflags "-s -w -X main.Version=${VERSION}" ./cmd/cloudfoundry/main.go
+          GOOS=linux go build -o ert-1-8-linux -ldflags "-s -w -X main.Version=${VERSION}" ./cmd/cloudfoundry/main.go
 
     - script:
         name: add repo to artifact
@@ -99,13 +99,13 @@ deploy-pre-release:
 
     - github-upload-asset:
         token: $GITHUB_TOKEN
-        file: cloudfoundry-plugin-linux
+        file: ert-1-8-linux
         release_id: $WERCKER_GITHUB_CREATE_RELEASE_ID
         content-type: application/x-gzip
 
     - github-upload-asset:
         token: $GITHUB_TOKEN
-        file: cloudfoundry-plugin-osx
+        file: ert-1-8-osx
         release_id: $WERCKER_GITHUB_CREATE_RELEASE_ID
         content-type: application/x-gzip
 
