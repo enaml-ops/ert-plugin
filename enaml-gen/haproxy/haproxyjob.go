@@ -5,8 +5,24 @@ package haproxy
 */
 type HaproxyJob struct {
 
-	/*Haproxy - Descr: Load balancer in front of TCP Routers should be configured to check the health of TCP Router instances by establishing a TCP connection on this port Default: 80
+	/*HaProxy - Descr: List of SSL Ciphers that are passed to HAProxy Default: ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA:ECDHE-RSA-AES256-CBC-SHA:AES128-SHA256:AES128-SHA
 */
-	Haproxy *Haproxy `yaml:"haproxy,omitempty"`
+	HaProxy *HaProxy `yaml:"ha_proxy,omitempty"`
+
+	/*RequestTimeoutInSeconds - Descr: Server and client timeouts in seconds Default: 900
+*/
+	RequestTimeoutInSeconds interface{} `yaml:"request_timeout_in_seconds,omitempty"`
+
+	/*Cc - Descr: Allow users to change the value of the app-level allow_ssh attribute Default: true
+*/
+	Cc *Cc `yaml:"cc,omitempty"`
+
+	/*Router - Descr: Listening port for Router Default: 80
+*/
+	Router *Router `yaml:"router,omitempty"`
+
+	/*AppSsh - Descr: External port for SSH access to application instances Default: 2222
+*/
+	AppSsh *AppSsh `yaml:"app_ssh,omitempty"`
 
 }
