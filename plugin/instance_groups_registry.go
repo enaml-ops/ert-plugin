@@ -2,7 +2,7 @@ package cloudfoundry
 
 import (
 	"github.com/enaml-ops/enaml"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 var (

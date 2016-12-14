@@ -5,8 +5,8 @@ import (
 	ltc "github.com/enaml-ops/ert-plugin/enaml-gen/loggregator_trafficcontroller"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/metron_agent"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/route_registrar"
-	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

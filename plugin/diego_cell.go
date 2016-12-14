@@ -4,7 +4,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/garden"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/rep"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 type diegoCell struct {

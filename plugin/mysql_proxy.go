@@ -3,7 +3,7 @@ package cloudfoundry
 import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/proxy"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 //MySQLProxy -

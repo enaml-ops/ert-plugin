@@ -4,7 +4,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	ltc "github.com/enaml-ops/ert-plugin/enaml-gen/loggregator_trafficcontroller"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/route_registrar"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 type loggregatorTrafficController struct {

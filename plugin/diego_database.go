@@ -4,7 +4,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/bbs"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/etcd"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 const diegoDatabaseIGName = "diego_database-partition"

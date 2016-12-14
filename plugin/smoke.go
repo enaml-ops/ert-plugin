@@ -5,7 +5,7 @@ import (
 
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/smoke-tests"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 type smokeErrand struct {
@@ -46,26 +46,14 @@ func (s *smokeErrand) createSmokeJob() enaml.InstanceJob {
 		Name:    "smoke-tests",
 		Release: "cf",
 		Properties: &smoke_tests.SmokeTestsJob{
-			Cf: &smoke_tests.Cf{
-				AdminUsername:     "smoke_tests",
-				AdminPassword:     s.Config.SmokeTestsPassword,
-				ApiUrl:            fmt.Sprintf("%s://api.%s", s.Config.UAALoginProtocol, s.Config.SystemDomain),
-				AppDomains:        s.Config.AppDomains[0],
+			SmokeTests: &smoke_tests.SmokeTests{
+				User:              "smoke_tests",
+				Password:          s.Config.SmokeTestsPassword,
+				Api:               fmt.Sprintf("%s://api.%s", s.Config.UAALoginProtocol, s.Config.SystemDomain),
+				AppsDomain:        s.Config.AppDomains[0],
 				SkipSslValidation: s.Config.SkipSSLCertVerify,
-				SmokeTests: &smoke_tests.CfSmokeTests{
-					UseExistingOrg: false,
-					Org:            "CF_SMOKE_TEST_ORG",
-				},
-			},
-			CfMysql: &smoke_tests.CfMysql{
-				SmokeTests: &smoke_tests.CfMysqlSmokeTests{
-					Password: s.Config.SmokeTestsPassword,
-				},
-				Mysql: &smoke_tests.Mysql{
-					AdminPassword: s.Config.SmokeTestsPassword,
-					AdminUsername: "smoke_tests",
-				},
-				ExternalHost: s.Config.AppDomains[0],
+				UseExistingOrg:    false,
+				Org:               "CF_SMOKE_TEST_ORG",
 			},
 		},
 	}

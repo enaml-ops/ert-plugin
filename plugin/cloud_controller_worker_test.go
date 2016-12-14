@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/enaml-ops/ert-plugin/enaml-gen/cloud_controller_worker"
-	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"gopkg.in/yaml.v2"

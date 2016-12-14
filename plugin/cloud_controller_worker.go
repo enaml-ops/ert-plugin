@@ -3,7 +3,7 @@ package cloudfoundry
 import (
 	"github.com/enaml-ops/enaml"
 	ccworkerlib "github.com/enaml-ops/ert-plugin/enaml-gen/cloud_controller_worker"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 //CloudControllerWorkerPartition - Cloud Controller Worker Partition

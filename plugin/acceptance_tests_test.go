@@ -2,7 +2,7 @@ package cloudfoundry_test
 
 import (
 	"github.com/enaml-ops/enaml"
-	"github.com/enaml-ops/ert-plugin/enaml-gen/acceptance-tests"
+	"github.com/enaml-ops/ert-plugin/enaml-gen/acceptance_tests"
 	. "github.com/enaml-ops/ert-plugin/plugin"
 	"github.com/enaml-ops/ert-plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
@@ -95,19 +95,12 @@ var _ = Describe("given the acceptance-tests partition", func() {
 			Ω(job.Release).Should(Equal(CFReleaseName))
 
 			props := job.Properties.(*acceptance_tests.AcceptanceTestsJob)
-			Ω(props.AcceptanceTests.Api).Should(Equal("https://api.sys.yourdomain.com"))
-			Ω(props.AcceptanceTests.AppsDomain).Should(Equal("apps.yourdomain.com"))
-			Ω(props.AcceptanceTests.AdminUser).Should(Equal("admin"))
-			Ω(props.AcceptanceTests.AdminPassword).Should(Equal("adminpass"))
-			Ω(props.AcceptanceTests.IncludeLogging).Should(BeTrue())
-			Ω(props.AcceptanceTests.IncludeOperator).Should(BeTrue())
-			Ω(props.AcceptanceTests.IncludeServices).Should(BeTrue())
-			Ω(props.AcceptanceTests.IncludeSecurityGroups).Should(BeTrue())
+			Ω(props.AcceptanceTests.CloudController.Api).Should(Equal("https://api.sys.yourdomain.com"))
+			Ω(props.AcceptanceTests.CloudController.AppsDomain).Should(Equal("apps.yourdomain.com"))
+			Ω(props.AcceptanceTests.CloudController.AdminUser).Should(Equal("admin"))
+			Ω(props.AcceptanceTests.CloudController.AdminPassword).Should(Equal("adminpass"))
 			Ω(props.AcceptanceTests.SkipSslValidation).Should(BeTrue())
-			Ω(props.AcceptanceTests.SkipRegex).Should(Equal("lucid64"))
-			Ω(props.AcceptanceTests.JavaBuildpackName).Should(Equal("java-offline-buildpack"))
-
-			Ω(props.AcceptanceTests.IncludeInternetDependent).Should(BeTrue())
+			Ω(props.AcceptanceTests.SystemDomain).Should(Equal("sys.yourdomain.com"))
 		})
 	})
 
@@ -135,19 +128,12 @@ var _ = Describe("given the acceptance-tests partition", func() {
 			job := group.GetJobByName("acceptance-tests")
 			Ω(job.Release).Should(Equal(CFReleaseName))
 			props := job.Properties.(*acceptance_tests.AcceptanceTestsJob)
-			Ω(props.AcceptanceTests.Api).Should(Equal("https://api.sys.yourdomain.com"))
-			Ω(props.AcceptanceTests.AppsDomain).Should(Equal("apps.yourdomain.com"))
-			Ω(props.AcceptanceTests.AdminUser).Should(Equal("admin"))
-			Ω(props.AcceptanceTests.AdminPassword).Should(Equal("adminpass"))
-			Ω(props.AcceptanceTests.IncludeLogging).Should(BeTrue())
-			Ω(props.AcceptanceTests.IncludeOperator).Should(BeTrue())
-			Ω(props.AcceptanceTests.IncludeServices).Should(BeTrue())
-			Ω(props.AcceptanceTests.IncludeSecurityGroups).Should(BeTrue())
+			Ω(props.AcceptanceTests.CloudController.Api).Should(Equal("https://api.sys.yourdomain.com"))
+			Ω(props.AcceptanceTests.CloudController.AppsDomain).Should(Equal("apps.yourdomain.com"))
+			Ω(props.AcceptanceTests.CloudController.AdminUser).Should(Equal("admin"))
+			Ω(props.AcceptanceTests.CloudController.AdminPassword).Should(Equal("adminpass"))
 			Ω(props.AcceptanceTests.SkipSslValidation).Should(BeTrue())
-			Ω(props.AcceptanceTests.SkipRegex).Should(Equal("lucid64"))
-			Ω(props.AcceptanceTests.JavaBuildpackName).Should(Equal("java-offline-buildpack"))
-
-			Ω(props.AcceptanceTests.IncludeInternetDependent).Should(BeFalse())
+			Ω(props.AcceptanceTests.SystemDomain).Should(Equal("sys.yourdomain.com"))
 		})
 	})
 })

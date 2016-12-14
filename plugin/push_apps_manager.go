@@ -50,15 +50,11 @@ func (p *pushAppsManager) ToInstanceGroup() *enaml.InstanceGroup {
 						},
 					},
 					Env: &pam.Env{
-						SecretToken:                  p.Config.AppsManagerSecretToken,
-						CfCcApiUrl:                   fmt.Sprintf("https://api.%s", p.Config.SystemDomain),
-						CfLoggregatorHttpUrl:         fmt.Sprintf("http://loggregator.%s", p.Config.SystemDomain),
-						CfConsoleUrl:                 fmt.Sprintf("https://apps.%s", p.Config.SystemDomain),
-						CfNotificationsServiceUrl:    fmt.Sprintf("https://notifications.%s", p.Config.SystemDomain),
-						UsageServiceHost:             fmt.Sprintf("https://app-usage.%s", p.Config.SystemDomain),
-						BundleWithout:                "test development hosted_only",
-						EnableInternalUserStore:      false,
-						EnableNonAdminRoleManagement: false,
+						SecretToken:               p.Config.AppsManagerSecretToken,
+						CfCcApiUrl:                fmt.Sprintf("https://api.%s", p.Config.SystemDomain),
+						CfLoggregatorHttpUrl:      fmt.Sprintf("http://loggregator.%s", p.Config.SystemDomain),
+						CfNotificationsServiceUrl: fmt.Sprintf("https://notifications.%s", p.Config.SystemDomain),
+						UsageServiceHost:          fmt.Sprintf("https://app-usage.%s", p.Config.SystemDomain),
 						GenericWhiteLabelConfigJson: &pam.GenericWhiteLabelConfigJson{
 							CompanyName: "Pivotal",
 							FooterText:  "©2016 Pivotal Software, Inc. All Rights Reserved.",
@@ -68,13 +64,6 @@ func (p *pushAppsManager) ToInstanceGroup() *enaml.InstanceGroup {
 						},
 					},
 					Databases: &pam.Databases{
-						Console: &pam.Console{
-							Ip:       p.Config.MySQLProxyHost(),
-							Username: "root",
-							Password: p.Config.MySQLAdminPassword,
-							Adapter:  "mysql",
-							Port:     3306,
-						},
 						AppUsageService: &pam.DatabasesAppUsageService{
 							Name:     "app_usage_service",
 							Ip:       p.Config.MySQLProxyHost(),
@@ -85,7 +74,6 @@ func (p *pushAppsManager) ToInstanceGroup() *enaml.InstanceGroup {
 					},
 					Ssl: &pam.Ssl{
 						SkipCertVerify: p.Config.SkipSSLCertVerify,
-						HttpsOnlyMode:  true,
 					},
 				},
 			},

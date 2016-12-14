@@ -3,7 +3,7 @@ package cloudfoundry
 import (
 	"github.com/enaml-ops/enaml"
 	nfsmounterlib "github.com/enaml-ops/ert-plugin/enaml-gen/nfs_mounter"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 //CreateNFSMounterJob - Create the yaml job structure for NFSMounter

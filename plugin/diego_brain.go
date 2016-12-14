@@ -7,14 +7,13 @@ import (
 	"github.com/enaml-ops/enaml"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/auctioneer"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/cc_uploader"
-	"github.com/enaml-ops/ert-plugin/enaml-gen/converger"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/file_server"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/nsync"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/route_emitter"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/ssh_proxy"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/stager"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/tps"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 	"github.com/enaml-ops/pluginlib/pluginutil"
 	"github.com/xchapter7x/lo"
 )
@@ -58,7 +57,6 @@ func (d *diegoBrain) ToInstanceGroup() *enaml.InstanceGroup {
 
 	ig.AddJob(d.newAuctioneer())
 	ig.AddJob(d.newCCUploader())
-	//ig.AddJob(d.newConverger())
 	ig.AddJob(d.newFileServer())
 	ig.AddJob(d.newNsync())
 	ig.AddJob(d.newRouteEmitter())
@@ -104,25 +102,6 @@ func (d *diegoBrain) newCCUploader() *enaml.InstanceJob {
 			},
 			Diego: &cc_uploader.Diego{
 				Ssl: &cc_uploader.Ssl{SkipCertVerify: d.Config.SkipSSLCertVerify},
-			},
-		},
-	}
-}
-
-func (d *diegoBrain) newConverger() *enaml.InstanceJob {
-	return &enaml.InstanceJob{
-		Name:    "converger",
-		Release: DiegoReleaseName,
-		Properties: &converger.ConvergerJob{
-			Diego: &converger.Diego{
-				Converger: &converger.Converger{
-					Bbs: &converger.Bbs{
-						ApiLocation: defaultBBSAPILocation,
-						CaCert:      d.Config.BBSCACert,
-						ClientCert:  d.Config.BBSClientCert,
-						ClientKey:   d.Config.BBSClientKey,
-					},
-				},
 			},
 		},
 	}

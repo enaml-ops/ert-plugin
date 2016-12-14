@@ -4,7 +4,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	etcdlib "github.com/enaml-ops/ert-plugin/enaml-gen/etcd"
 	etcdmetricslib "github.com/enaml-ops/ert-plugin/enaml-gen/etcd_metrics_server"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 //Etcd -

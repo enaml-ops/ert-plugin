@@ -6,7 +6,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	ccnglib "github.com/enaml-ops/ert-plugin/enaml-gen/cloud_controller_ng"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/route_registrar"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 //CloudControllerPartition - Cloud Controller Partition

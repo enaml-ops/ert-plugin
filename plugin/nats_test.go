@@ -1,8 +1,8 @@
 package cloudfoundry_test
 
 import (
-	. "github.com/enaml-ops/ert-plugin/plugin/plugin"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	. "github.com/enaml-ops/ert-plugin/plugin"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	//"gopkg.in/yaml.v2"

@@ -4,7 +4,7 @@ import (
 	"github.com/enaml-ops/enaml"
 	grtrlib "github.com/enaml-ops/ert-plugin/enaml-gen/gorouter"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/metron_agent"
-	"github.com/enaml-ops/ert-plugin/plugin/plugin/config"
+	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
 type gorouter struct {
