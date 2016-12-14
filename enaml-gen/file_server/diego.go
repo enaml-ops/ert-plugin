@@ -5,11 +5,7 @@ package file_server
 */
 type Diego struct {
 
-	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
-*/
-	Ssl *Ssl `yaml:"ssl,omitempty"`
-
-	/*FileServer - Descr: Address of interface on which to serve files Default: 0.0.0.0:8080
+	/*FileServer - Descr: Log level Default: info
 */
 	FileServer *FileServer `yaml:"file_server,omitempty"`
 

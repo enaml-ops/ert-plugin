@@ -5,20 +5,20 @@ package deploy_notifications
 */
 type Uaa struct {
 
+	/*ClientSecret - Descr: Client secret of the UAA Default: <nil>
+*/
+	ClientSecret interface{} `yaml:"client_secret,omitempty"`
+
 	/*AdminClientSecret - Descr: Admin client secret of the UAA Default: <nil>
 */
 	AdminClientSecret interface{} `yaml:"admin_client_secret,omitempty"`
-
-	/*ClientId - Descr: Client id of the UAA Default: <nil>
-*/
-	ClientId interface{} `yaml:"client_id,omitempty"`
 
 	/*AdminClientId - Descr: Admin client id of the UAA Default: <nil>
 */
 	AdminClientId interface{} `yaml:"admin_client_id,omitempty"`
 
-	/*ClientSecret - Descr: Client secret of the UAA Default: <nil>
+	/*ClientId - Descr: Client id of the UAA Default: <nil>
 */
-	ClientSecret interface{} `yaml:"client_secret,omitempty"`
+	ClientId interface{} `yaml:"client_id,omitempty"`
 
 }

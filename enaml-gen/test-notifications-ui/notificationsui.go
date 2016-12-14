@@ -5,7 +5,11 @@ package test_notifications_ui
 */
 type NotificationsUi struct {
 
-	/*Cf - Descr: Username of the CF admin user Default: <nil>
+	/*Space - Descr: Notifications space Default: <nil>
+*/
+	Space interface{} `yaml:"space,omitempty"`
+
+	/*Cf - Descr: Password of the CF admin user Default: <nil>
 */
 	Cf *Cf `yaml:"cf,omitempty"`
 
@@ -13,16 +17,12 @@ type NotificationsUi struct {
 */
 	AppDomain interface{} `yaml:"app_domain,omitempty"`
 
-	/*Uaa - Descr: UAA Admin client ID Default: <nil>
+	/*Uaa - Descr: UAA Admin client secret Default: <nil>
 */
 	Uaa *Uaa `yaml:"uaa,omitempty"`
 
 	/*Organization - Descr: Notifications organization Default: <nil>
 */
 	Organization interface{} `yaml:"organization,omitempty"`
-
-	/*Space - Descr: Notifications space Default: <nil>
-*/
-	Space interface{} `yaml:"space,omitempty"`
 
 }

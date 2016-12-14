@@ -5,20 +5,8 @@ package bootstrap
 */
 type BootstrapJob struct {
 
-	/*HealthcheckPort - Descr: Port used by healthcheck process to listen on Default: 9200
+	/*CfMysql - Descr: Port used by sidecar process to listen on Default: 9200
 */
-	HealthcheckPort interface{} `yaml:"healthcheck_port,omitempty"`
-
-	/*ClusterIps - Descr: IP addresses of all MySQL nodes Default: <nil>
-*/
-	ClusterIps interface{} `yaml:"cluster_ips,omitempty"`
-
-	/*DatabaseStartupTimeout - Descr: Maximum time to transition to or from a stopped or started state before we timeout. Default: <nil>
-*/
-	DatabaseStartupTimeout interface{} `yaml:"database_startup_timeout,omitempty"`
-
-	/*BootstrapEndpoint - Descr: Username used to contact the bootstrap endpoints via Basic Auth Default: <nil>
-*/
-	BootstrapEndpoint *BootstrapEndpoint `yaml:"bootstrap_endpoint,omitempty"`
+	CfMysql *CfMysql `yaml:"cf_mysql,omitempty"`
 
 }

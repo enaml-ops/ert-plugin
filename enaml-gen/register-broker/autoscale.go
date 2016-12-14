@@ -5,20 +5,20 @@ package register_broker
 */
 type Autoscale struct {
 
-	/*Space - Descr: Space where app is deployed Default: <nil>
+	/*Broker - Descr: Broker basic auth password Default: <nil>
 */
-	Space interface{} `yaml:"space,omitempty"`
+	Broker *Broker `yaml:"broker,omitempty"`
 
 	/*Cf - Descr: Password of the CF admin user Default: <nil>
 */
 	Cf *Cf `yaml:"cf,omitempty"`
 
-	/*Broker - Descr: Broker basic auth user Default: <nil>
-*/
-	Broker *Broker `yaml:"broker,omitempty"`
-
 	/*Organization - Descr: Organization where app is deployed Default: <nil>
 */
 	Organization interface{} `yaml:"organization,omitempty"`
+
+	/*Space - Descr: Space where app is deployed Default: <nil>
+*/
+	Space interface{} `yaml:"space,omitempty"`
 
 }

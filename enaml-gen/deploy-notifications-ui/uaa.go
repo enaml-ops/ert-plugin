@@ -5,12 +5,12 @@ package deploy_notifications_ui
 */
 type Uaa struct {
 
-	/*ClientSecret - Descr: Secret of the notifications-ui UAA client Default: <nil>
-*/
-	ClientSecret interface{} `yaml:"client_secret,omitempty"`
-
 	/*ClientId - Descr: ID of the notifications-ui UAA client Default: <nil>
 */
 	ClientId interface{} `yaml:"client_id,omitempty"`
+
+	/*ClientSecret - Descr: Secret of the notifications-ui UAA client Default: <nil>
+*/
+	ClientSecret interface{} `yaml:"client_secret,omitempty"`
 
 }

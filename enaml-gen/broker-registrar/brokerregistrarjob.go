@@ -5,12 +5,12 @@ package broker_registrar
 */
 type BrokerRegistrarJob struct {
 
-	/*Broker - Descr: Protocol (http/https) provided to the Cloud Controller when registering/deregistering the broker Default: https
-*/
-	Broker *Broker `yaml:"broker,omitempty"`
-
-	/*Cf - Descr: Skip SSL validation when connecting to Cloud Foundry API Default: false
+	/*Cf - Descr: Password of the admin user Default: <nil>
 */
 	Cf *Cf `yaml:"cf,omitempty"`
+
+	/*CfMysql - Descr: Basic Auth username for the service broker Default: <nil>
+*/
+	CfMysql *CfMysql `yaml:"cf_mysql,omitempty"`
 
 }

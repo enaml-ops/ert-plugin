@@ -5,36 +5,36 @@ package uaa
 */
 type PasswordPolicy struct {
 
-	/*MaxLength - Descr: Maximum number of characters required for password to be considered valid Default: 255
+	/*RequireUpperCaseCharacter - Descr: Minimum number of uppercase characters required for password to be considered valid Default: 0
 */
-	MaxLength interface{} `yaml:"maxLength,omitempty"`
-
-	/*ExpirePasswordInMonths - Descr: Number of months after which current password expires Default: 0
-*/
-	ExpirePasswordInMonths interface{} `yaml:"expirePasswordInMonths,omitempty"`
-
-	/*RequireSpecialCharacter - Descr: Minimum number of special characters required for password to be considered valid Default: 0
-*/
-	RequireSpecialCharacter interface{} `yaml:"requireSpecialCharacter,omitempty"`
-
-	/*Global - Descr: Minimum number of digits required for password to be considered valid Default: 0
-*/
-	Global *Global `yaml:"global,omitempty"`
+	RequireUpperCaseCharacter interface{} `yaml:"requireUpperCaseCharacter,omitempty"`
 
 	/*MinLength - Descr: Minimum number of characters required for password to be considered valid Default: 0
 */
 	MinLength interface{} `yaml:"minLength,omitempty"`
 
-	/*RequireLowerCaseCharacter - Descr: Minimum number of lowercase characters required for password to be considered valid Default: 0
+	/*MaxLength - Descr: Maximum number of characters required for password to be considered valid Default: 255
 */
-	RequireLowerCaseCharacter interface{} `yaml:"requireLowerCaseCharacter,omitempty"`
-
-	/*RequireUpperCaseCharacter - Descr: Minimum number of uppercase characters required for password to be considered valid Default: 0
-*/
-	RequireUpperCaseCharacter interface{} `yaml:"requireUpperCaseCharacter,omitempty"`
+	MaxLength interface{} `yaml:"maxLength,omitempty"`
 
 	/*RequireDigit - Descr: Minimum number of digits required for password to be considered valid Default: 0
 */
 	RequireDigit interface{} `yaml:"requireDigit,omitempty"`
+
+	/*ExpirePasswordInMonths - Descr: Number of months after which current password expires Default: 0
+*/
+	ExpirePasswordInMonths interface{} `yaml:"expirePasswordInMonths,omitempty"`
+
+	/*RequireLowerCaseCharacter - Descr: Minimum number of lowercase characters required for password to be considered valid Default: 0
+*/
+	RequireLowerCaseCharacter interface{} `yaml:"requireLowerCaseCharacter,omitempty"`
+
+	/*Global - Descr: Maximum number of characters required for password to be considered valid Default: 255
+*/
+	Global *Global `yaml:"global,omitempty"`
+
+	/*RequireSpecialCharacter - Descr: Minimum number of special characters required for password to be considered valid Default: 0
+*/
+	RequireSpecialCharacter interface{} `yaml:"requireSpecialCharacter,omitempty"`
 
 }

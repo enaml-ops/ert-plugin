@@ -5,11 +5,7 @@ package cloud_controller_worker
 */
 type Uaa struct {
 
-	/*Url - Descr: URL of the UAA server Default: <nil>
-*/
-	Url interface{} `yaml:"url,omitempty"`
-
-	/*Clients - Descr: (DEPRECATED) - Used to grant scope for SSO clients for service brokers Default: openid,cloud_controller_service_permissions.read
+	/*Clients - Descr: Used to grant scope for SSO clients for service brokers Default: openid,cloud_controller_service_permissions.read
 */
 	Clients *Clients `yaml:"clients,omitempty"`
 
@@ -20,5 +16,9 @@ type Uaa struct {
 	/*Cc - Descr: Symmetric secret used to decode uaa tokens. Used for testing. Default: <nil>
 */
 	Cc *UaaCc `yaml:"cc,omitempty"`
+
+	/*Url - Descr: URL of the UAA server Default: <nil>
+*/
+	Url interface{} `yaml:"url,omitempty"`
 
 }

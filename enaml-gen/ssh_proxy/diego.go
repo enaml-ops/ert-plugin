@@ -5,12 +5,12 @@ package ssh_proxy
 */
 type Diego struct {
 
-	/*SshProxy - Descr: Comma separated list of allowed cipher algorithms Default: <nil>
-*/
-	SshProxy *SshProxy `yaml:"ssh_proxy,omitempty"`
-
 	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
 */
 	Ssl *Ssl `yaml:"ssl,omitempty"`
+
+	/*SshProxy - Descr: Comma separated list of allowed MAC algorithms Default: <nil>
+*/
+	SshProxy *SshProxy `yaml:"ssh_proxy,omitempty"`
 
 }

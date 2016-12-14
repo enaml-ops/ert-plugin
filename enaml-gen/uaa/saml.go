@@ -5,59 +5,31 @@ package uaa
 */
 type Saml struct {
 
-	/*MetadataTrustCheck - Descr: Deprecated. Use login.saml.providers list objects Default: true
-*/
-	MetadataTrustCheck interface{} `yaml:"metadataTrustCheck,omitempty"`
-
-	/*ServiceProviderKeyPassword - Descr: Password to protect the service provider private key. Default: <nil>
-*/
-	ServiceProviderKeyPassword interface{} `yaml:"serviceProviderKeyPassword,omitempty"`
-
-	/*AssertionConsumerIndex - Descr: Deprecated. Use login.saml.providers list objects Default: 1
-*/
-	AssertionConsumerIndex interface{} `yaml:"assertionConsumerIndex,omitempty"`
-
-	/*SignRequest - Descr: Global property to sign Local/SP requests Default: true
-*/
-	SignRequest interface{} `yaml:"signRequest,omitempty"`
-
-	/*SignMetaData - Descr: Global property to sign Local/SP metadata Default: true
-*/
-	SignMetaData interface{} `yaml:"signMetaData,omitempty"`
-
-	/*IdpMetadataURL - Descr: Deprecated. Use login.saml.providers list objects Default: <nil>
-*/
-	IdpMetadataURL interface{} `yaml:"idpMetadataURL,omitempty"`
-
-	/*IdpEntityAlias - Descr: Deprecated. Use login.saml.providers list objects Default: <nil>
-*/
-	IdpEntityAlias interface{} `yaml:"idpEntityAlias,omitempty"`
-
-	/*ServiceProviderCertificate - Descr: Service provider certificate. Default: <nil>
-*/
-	ServiceProviderCertificate interface{} `yaml:"serviceProviderCertificate,omitempty"`
-
 	/*Entityid - Descr: This is used as the SAML Service Provider Entity ID. Each zone has a unique entity ID. Zones other than
 the default zone will derive their entity ID from this setting by prefexing it with the subdomain.
  Default: <nil>
 */
 	Entityid interface{} `yaml:"entityid,omitempty"`
 
-	/*NameidFormat - Descr: Deprecated. Use login.saml.providers list objects Default: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+	/*SignRequest - Descr: Global property to sign Local/SP requests Default: true
 */
-	NameidFormat interface{} `yaml:"nameidFormat,omitempty"`
+	SignRequest interface{} `yaml:"signRequest,omitempty"`
 
-	/*Socket - Descr: Read timeout in milliseconds for SAML metadata HTTP requests Default: 10000
+	/*Socket - Descr: Timeout in milliseconds for connection pooling for SAML metadata HTTP requests Default: 10000
 */
 	Socket *Socket `yaml:"socket,omitempty"`
 
-	/*IdpMetadataFile - Descr: Deprecated. Use login.saml.providers list objects Default: <nil>
+	/*ServiceProviderKeyPassword - Descr: Password to protect the service provider private key. Default: <nil>
 */
-	IdpMetadataFile interface{} `yaml:"idp_metadata_file,omitempty"`
+	ServiceProviderKeyPassword interface{} `yaml:"serviceProviderKeyPassword,omitempty"`
 
-	/*Providers - Descr: Contains a hash of SAML Identity Providers, the key is the IDP Alias, followed by key/value pairs. To learn more about how to setup a saml identity provider go to https://simplesamlphp.org Default: <nil>
+	/*ServiceProviderCertificate - Descr: Service provider certificate. Default: <nil>
 */
-	Providers interface{} `yaml:"providers,omitempty"`
+	ServiceProviderCertificate interface{} `yaml:"serviceProviderCertificate,omitempty"`
+
+	/*SignatureAlgorithm - Descr: Signature hashing algorithm for SAML. Can be SHA1, SHA256, or SHA512. Default: <nil>
+*/
+	SignatureAlgorithm interface{} `yaml:"signatureAlgorithm,omitempty"`
 
 	/*WantAssertionSigned - Descr: Global property to request that external IDPs sign their SAML assertion before sending them to the UAA Default: false
 */
@@ -72,6 +44,14 @@ The UAA will display this link in the cf --sso call if there is a SAML provider 
  Default: <nil>
 */
 	EntityBaseUrl interface{} `yaml:"entity_base_url,omitempty"`
+
+	/*SignMetaData - Descr: Global property to sign Local/SP metadata Default: true
+*/
+	SignMetaData interface{} `yaml:"signMetaData,omitempty"`
+
+	/*Providers - Descr: Contains a hash of SAML Identity Providers, the key is the IDP Alias, followed by key/value pairs. To learn more about how to setup a saml identity provider go to https://simplesamlphp.org Default: <nil>
+*/
+	Providers interface{} `yaml:"providers,omitempty"`
 
 	/*ServiceProviderKey - Descr: Private key for the service provider certificate. Default: <nil>
 */

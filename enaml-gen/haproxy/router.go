@@ -5,9 +5,9 @@ package haproxy
 */
 type Router struct {
 
-	/*Servers - Descr: Array of the router IPs acting as the second group of HTTP/TCP backends Default: []
+	/*Servers - Descr: Array of router IPs Default: []
 */
-	Servers *Servers `yaml:"servers,omitempty"`
+	Servers interface{} `yaml:"servers,omitempty"`
 
 	/*Port - Descr: Listening port for Router Default: 80
 */

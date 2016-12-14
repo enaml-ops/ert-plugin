@@ -5,36 +5,40 @@ package dea_next
 */
 type DeaNextJob struct {
 
-	/*DiskQuotaEnabled - Descr: disk quota must be disabled to use warden-inside-warden with the warden cpi Default: true
+	/*Nats - Descr: IP of each NATS cluster member. Default: <nil>
 */
-	DiskQuotaEnabled interface{} `yaml:"disk_quota_enabled,omitempty"`
+	Nats *Nats `yaml:"nats,omitempty"`
 
 	/*Router - Descr: Interval at which the router requests routes to be registered. Default: 20
 */
 	Router *Router `yaml:"router,omitempty"`
 
-	/*MetronEndpoint - Descr: The port used to emit messages to the Metron agent Default: 3457
+	/*MetronAgent - Descr: The port used to emit messages to the Metron agent Default: 3457
+*/
+	MetronAgent *MetronAgent `yaml:"metron_agent,omitempty"`
+
+	/*DiskQuotaEnabled - Descr: disk quota must be disabled to use warden-inside-warden with the warden cpi Default: true
+*/
+	DiskQuotaEnabled interface{} `yaml:"disk_quota_enabled,omitempty"`
+
+	/*MetronEndpoint - Descr: The host used to emit messages to the Metron agent Default: 127.0.0.1
 */
 	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
 
-	/*DeaNext - Descr: The maximum number of CPU shares that can be given to an app Default: 256
+	/*SystemDomain - Descr: DNS domain name for this Cloud Foundry deployment Default: <nil>
+*/
+	SystemDomain interface{} `yaml:"system_domain,omitempty"`
+
+	/*DeaNext - Descr: An array of stacks, specifying the name and package path. Default: [map[name:cflinuxfs2 package_path:/var/vcap/packages/rootfs_cflinuxfs2/rootfs]]
 */
 	DeaNext *DeaNext `yaml:"dea_next,omitempty"`
+
+	/*Cc - Descr: External Cloud Controller port Default: 9022
+*/
+	Cc *Cc `yaml:"cc,omitempty"`
 
 	/*Hm9000 - Descr: PEM-encoded CA certificate Default: <nil>
 */
 	Hm9000 *Hm9000 `yaml:"hm9000,omitempty"`
-
-	/*Nats - Descr: password for NATS login Default: <nil>
-*/
-	Nats *Nats `yaml:"nats,omitempty"`
-
-	/*Domain - Descr: DNS domain name for this Cloud Foundry deployment Default: <nil>
-*/
-	Domain interface{} `yaml:"domain,omitempty"`
-
-	/*Cc - Descr: Password to access internal endpoints Default: <nil>
-*/
-	Cc *Cc `yaml:"cc,omitempty"`
 
 }

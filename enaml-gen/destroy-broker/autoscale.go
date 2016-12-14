@@ -9,7 +9,7 @@ type Autoscale struct {
 */
 	Cf *Cf `yaml:"cf,omitempty"`
 
-	/*Broker - Descr: Broker basic auth user Default: <nil>
+	/*Broker - Descr: Broker basic auth password Default: <nil>
 */
 	Broker *Broker `yaml:"broker,omitempty"`
 

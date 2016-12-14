@@ -5,10 +5,6 @@ package dea_next
 */
 type Nats struct {
 
-	/*Password - Descr: password for NATS login Default: <nil>
-*/
-	Password interface{} `yaml:"password,omitempty"`
-
 	/*User - Descr: user name for NATS login Default: <nil>
 */
 	User interface{} `yaml:"user,omitempty"`
@@ -20,5 +16,9 @@ type Nats struct {
 	/*Machines - Descr: IP of each NATS cluster member. Default: <nil>
 */
 	Machines interface{} `yaml:"machines,omitempty"`
+
+	/*Password - Descr: password for NATS login Default: <nil>
+*/
+	Password interface{} `yaml:"password,omitempty"`
 
 }

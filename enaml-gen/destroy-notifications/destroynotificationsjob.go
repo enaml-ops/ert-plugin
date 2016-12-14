@@ -5,7 +5,7 @@ package destroy_notifications
 */
 type DestroyNotificationsJob struct {
 
-	/*Notifications - Descr: Domain used to host application Default: <nil>
+	/*Notifications - Descr: Username of the CF admin user Default: <nil>
 */
 	Notifications *Notifications `yaml:"notifications,omitempty"`
 

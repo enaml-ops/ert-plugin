@@ -5,10 +5,6 @@ package register_broker
 */
 type RegisterBrokerJob struct {
 
-	/*AppDomains - Descr: CloudFoundry application domains Default: <nil>
-*/
-	AppDomains interface{} `yaml:"app_domains,omitempty"`
-
 	/*Autoscale - Descr: Password of the CF admin user Default: <nil>
 */
 	Autoscale *Autoscale `yaml:"autoscale,omitempty"`
@@ -20,5 +16,9 @@ type RegisterBrokerJob struct {
 	/*Domain - Descr: The CF top-level domain Default: <nil>
 */
 	Domain interface{} `yaml:"domain,omitempty"`
+
+	/*AppDomains - Descr: CloudFoundry application domains Default: <nil>
+*/
+	AppDomains interface{} `yaml:"app_domains,omitempty"`
 
 }

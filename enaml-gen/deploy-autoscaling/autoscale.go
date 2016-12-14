@@ -5,9 +5,33 @@ package deploy_autoscaling
 */
 type Autoscale struct {
 
-	/*NotificationsHost - Descr: Host name of the notifications service Default: <nil>
+	/*Cf - Descr: Password of the CF admin user Default: <nil>
 */
-	NotificationsHost interface{} `yaml:"notifications_host,omitempty"`
+	Cf *Cf `yaml:"cf,omitempty"`
+
+	/*MarketplaceCompanyName - Descr: Name of the company providing the autoscaling service Default: <nil>
+*/
+	MarketplaceCompanyName interface{} `yaml:"marketplace_company_name,omitempty"`
+
+	/*MarketplaceImageUrl - Descr: Base64 encoded image for marketplace registration Default: <nil>
+*/
+	MarketplaceImageUrl interface{} `yaml:"marketplace_image_url,omitempty"`
+
+	/*Database - Descr: URL for the database Default: <nil>
+*/
+	Database *Database `yaml:"database,omitempty"`
+
+	/*Broker - Descr: Broker basic auth user Default: <nil>
+*/
+	Broker *Broker `yaml:"broker,omitempty"`
+
+	/*Organization - Descr: Organization where app is deployed Default: <nil>
+*/
+	Organization interface{} `yaml:"organization,omitempty"`
+
+	/*Space - Descr: Space where app is deployed Default: <nil>
+*/
+	Space interface{} `yaml:"space,omitempty"`
 
 	/*MarketplaceDocumentationUrl - Descr: Documentation url used for marketplace registration Default: <nil>
 */
@@ -17,40 +41,16 @@ type Autoscale struct {
 */
 	EncryptionKey interface{} `yaml:"encryption_key,omitempty"`
 
-	/*EnableDiego - Descr: Enable diego deployment of autoscaling Default: <nil>
-*/
-	EnableDiego interface{} `yaml:"enable_diego,omitempty"`
-
-	/*Organization - Descr: Organization where app is deployed Default: <nil>
-*/
-	Organization interface{} `yaml:"organization,omitempty"`
-
 	/*InstanceCount - Descr: Number of instance to run Default: <nil>
 */
 	InstanceCount interface{} `yaml:"instance_count,omitempty"`
 
-	/*Database - Descr: URL for the database Default: <nil>
+	/*EnableDiego - Descr: Enable diego deployment of autoscaling Default: <nil>
 */
-	Database *Database `yaml:"database,omitempty"`
+	EnableDiego interface{} `yaml:"enable_diego,omitempty"`
 
-	/*MarketplaceImageUrl - Descr: Base64 encoded image for marketplace registration Default: <nil>
+	/*NotificationsHost - Descr: Host name of the notifications service Default: <nil>
 */
-	MarketplaceImageUrl interface{} `yaml:"marketplace_image_url,omitempty"`
-
-	/*Cf - Descr: Username of the CF admin user Default: <nil>
-*/
-	Cf *Cf `yaml:"cf,omitempty"`
-
-	/*MarketplaceCompanyName - Descr: Name of the company providing the autoscaling service Default: <nil>
-*/
-	MarketplaceCompanyName interface{} `yaml:"marketplace_company_name,omitempty"`
-
-	/*Space - Descr: Space where app is deployed Default: <nil>
-*/
-	Space interface{} `yaml:"space,omitempty"`
-
-	/*Broker - Descr: Broker basic auth user Default: <nil>
-*/
-	Broker *Broker `yaml:"broker,omitempty"`
+	NotificationsHost interface{} `yaml:"notifications_host,omitempty"`
 
 }

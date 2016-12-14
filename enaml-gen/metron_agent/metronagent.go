@@ -5,44 +5,60 @@ package metron_agent
 */
 type MetronAgent struct {
 
-	/*Deployment - Descr: Name of deployment (added as tag on all outgoing metrics) Default: <nil>
+	/*EnableBuffer - Descr: DEPRECATED Default: false
 */
-	Deployment interface{} `yaml:"deployment,omitempty"`
-
-	/*Tls - Descr: TLS client key Default: 
-*/
-	Tls *MetronAgentTls `yaml:"tls,omitempty"`
+	EnableBuffer interface{} `yaml:"enable_buffer,omitempty"`
 
 	/*Debug - Descr: boolean value to turn on verbose mode Default: false
 */
 	Debug interface{} `yaml:"debug,omitempty"`
 
-	/*Logrotate - Descr: The number of files that logrotate will keep around on the VM Default: 7
+	/*Deployment - Descr: Name of deployment (added as tag on all outgoing metrics) Default: <nil>
+*/
+	Deployment interface{} `yaml:"deployment,omitempty"`
+
+	/*Etcd - Descr: PEM-encoded client key Default: 
+*/
+	Etcd *MetronAgentEtcd `yaml:"etcd,omitempty"`
+
+	/*PreferredProtocol - Descr: DEPRECATED - replaced with metron_agent.protocols Default: udp
+*/
+	PreferredProtocol interface{} `yaml:"preferred_protocol,omitempty"`
+
+	/*DropsondeIncomingPort - Descr: DEPRECATED - replaced by metron_agent.listening_port Default: 3457
+*/
+	DropsondeIncomingPort interface{} `yaml:"dropsonde_incoming_port,omitempty"`
+
+	/*Tls - Descr: TLS client key Default: 
+*/
+	Tls *MetronAgentTls `yaml:"tls,omitempty"`
+
+	/*Logrotate - Descr: The size at which logrotate will decide to rotate the log file Default: 50M
 */
 	Logrotate *Logrotate `yaml:"logrotate,omitempty"`
+
+	/*Protocols - Descr: A priority list of protocols for metron to connect to doppler over.  Metron will refuse to connect to doppler over any protocol not in this list. Default: [udp]
+*/
+	Protocols interface{} `yaml:"protocols,omitempty"`
 
 	/*BufferSize - Descr: DEPRECATED Default: 10000
 */
 	BufferSize interface{} `yaml:"buffer_size,omitempty"`
 
-	/*EnableBuffer - Descr: DEPRECATED Default: false
+	/*ListeningPort - Descr: Port the metron agent is listening on to receive dropsonde log messages Default: 3457
 */
-	EnableBuffer interface{} `yaml:"enable_buffer,omitempty"`
+	ListeningPort interface{} `yaml:"listening_port,omitempty"`
+
+	/*Tcp - Descr: The maximum time that a message can stay in the batching buffer before being flushed Default: 100
+*/
+	Tcp *Tcp `yaml:"tcp,omitempty"`
 
 	/*Zone - Descr: Availability zone where this agent is running Default: <nil>
 */
 	Zone interface{} `yaml:"zone,omitempty"`
 
-	/*Tcp - Descr: The number of bytes which can be buffered prior to TCP writes (applies to TLS over TCP) Default: 10240
+	/*ListeningAddress - Descr: Address the metron agent is listening on to receive dropsonde log messages provided for BOSH links and should not be overwritten Default: 127.0.0.1
 */
-	Tcp *Tcp `yaml:"tcp,omitempty"`
-
-	/*DropsondeIncomingPort - Descr: Incoming port for dropsonde log messages Default: 3457
-*/
-	DropsondeIncomingPort interface{} `yaml:"dropsonde_incoming_port,omitempty"`
-
-	/*PreferredProtocol - Descr: Preferred protocol to droppler (udp|tls) Default: udp
-*/
-	PreferredProtocol interface{} `yaml:"preferred_protocol,omitempty"`
+	ListeningAddress interface{} `yaml:"listening_address,omitempty"`
 
 }

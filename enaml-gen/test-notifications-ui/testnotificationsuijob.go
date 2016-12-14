@@ -5,7 +5,7 @@ package test_notifications_ui
 */
 type TestNotificationsUiJob struct {
 
-	/*NotificationsUi - Descr: Username of the CF admin user Default: <nil>
+	/*NotificationsUi - Descr: Notifications organization Default: <nil>
 */
 	NotificationsUi *NotificationsUi `yaml:"notifications_ui,omitempty"`
 

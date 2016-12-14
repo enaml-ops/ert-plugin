@@ -5,10 +5,6 @@ package etcd_metrics_server
 */
 type Nats struct {
 
-	/*Password - Descr: NATS server password Default: <nil>
-*/
-	Password interface{} `yaml:"password,omitempty"`
-
 	/*Machines - Descr: array of NATS addresses Default: <nil>
 */
 	Machines interface{} `yaml:"machines,omitempty"`
@@ -20,5 +16,9 @@ type Nats struct {
 	/*Username - Descr: NATS server username Default: <nil>
 */
 	Username interface{} `yaml:"username,omitempty"`
+
+	/*Password - Descr: NATS server password Default: <nil>
+*/
+	Password interface{} `yaml:"password,omitempty"`
 
 }

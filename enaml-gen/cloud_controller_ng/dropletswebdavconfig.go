@@ -5,13 +5,17 @@ package cloud_controller_ng
 */
 type DropletsWebdavConfig struct {
 
-	/*Username - Descr: The basic auth user that CC uses to connect to the admin endpoint on webdav Default: 
+	/*PrivateEndpoint - Descr: The location of the webdav server eg: https://blobstore.internal Default: https://blobstore.service.cf.internal:4443
 */
-	Username interface{} `yaml:"username,omitempty"`
+	PrivateEndpoint interface{} `yaml:"private_endpoint,omitempty"`
 
 	/*Password - Descr: The basic auth password that CC uses to connect to the admin endpoint on webdav Default: 
 */
 	Password interface{} `yaml:"password,omitempty"`
+
+	/*BlobstoreTimeout - Descr: The timeout in seconds for requests to the blobstore Default: 5
+*/
+	BlobstoreTimeout interface{} `yaml:"blobstore_timeout,omitempty"`
 
 	/*PublicEndpoint - Descr: The location of the webdav server eg: https://blobstore.com Default: 
 */
@@ -21,8 +25,8 @@ type DropletsWebdavConfig struct {
 */
 	CaCert interface{} `yaml:"ca_cert,omitempty"`
 
-	/*PrivateEndpoint - Descr: The location of the webdav server eg: https://blobstore.internal Default: https://blobstore.service.cf.internal
+	/*Username - Descr: The basic auth user that CC uses to connect to the admin endpoint on webdav Default: 
 */
-	PrivateEndpoint interface{} `yaml:"private_endpoint,omitempty"`
+	Username interface{} `yaml:"username,omitempty"`
 
 }

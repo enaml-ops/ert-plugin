@@ -5,12 +5,12 @@ package destroy_notifications
 */
 type Cf struct {
 
-	/*AdminUser - Descr: Username of the CF admin user Default: <nil>
-*/
-	AdminUser interface{} `yaml:"admin_user,omitempty"`
-
 	/*AdminPassword - Descr: Password of the CF admin user Default: <nil>
 */
 	AdminPassword interface{} `yaml:"admin_password,omitempty"`
+
+	/*AdminUser - Descr: Username of the CF admin user Default: <nil>
+*/
+	AdminUser interface{} `yaml:"admin_user,omitempty"`
 
 }

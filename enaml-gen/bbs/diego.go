@@ -5,7 +5,7 @@ package bbs
 */
 type Diego struct {
 
-	/*Bbs - Descr: EXPERIMENTAL: connection string to use for SQL backend [username:password@tcp(1.1.1.1:1234)/database] Default: <nil>
+	/*Bbs - Descr: Whether to require SSL for BBS communication to the SQL backend Default: false
 */
 	Bbs *Bbs `yaml:"bbs,omitempty"`
 

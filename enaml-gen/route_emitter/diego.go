@@ -5,7 +5,7 @@ package route_emitter
 */
 type Diego struct {
 
-	/*RouteEmitter - Descr: PEM-encoded client certificate Default: <nil>
+	/*RouteEmitter - Descr: Interval to sync routes to the router in seconds. Default: 60
 */
 	RouteEmitter *RouteEmitter `yaml:"route_emitter,omitempty"`
 

@@ -5,12 +5,12 @@ package deploy_notifications
 */
 type Database struct {
 
-	/*Url - Descr: URL pointing to database Default: <nil>
-*/
-	Url interface{} `yaml:"url,omitempty"`
-
 	/*MaxOpenConnections - Descr: Maximum number of open connections to the database Default: <nil>
 */
 	MaxOpenConnections interface{} `yaml:"max_open_connections,omitempty"`
+
+	/*Url - Descr: URL pointing to database Default: <nil>
+*/
+	Url interface{} `yaml:"url,omitempty"`
 
 }

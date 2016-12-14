@@ -5,24 +5,26 @@ package uaa
 */
 type UaaJob struct {
 
-	/*Login - Descr: Global property to sign Local/SP requests Default: true
-*/
-	Login *Login `yaml:"login,omitempty"`
-
-	/*Uaa - Descr: The file to be used for configuring the LDAP authentication. Options are: 'simple-bind', 'search-and-bind', 'search-and-compare' Default: search-and-bind
-*/
-	Uaa *Uaa `yaml:"uaa,omitempty"`
-
-	/*Uaadb - Descr: The UAA database IP address Default: <nil>
-*/
-	Uaadb *Uaadb `yaml:"uaadb,omitempty"`
-
-	/*Env - Descr: Set No_Proxy across the VMs Default: <nil>
+	/*Env - Descr: The http_proxy across the VMs used for all requests over https Default: <nil>
 */
 	Env *Env `yaml:"env,omitempty"`
 
-	/*Domain - Descr: Deprecated. Use uaa.url for setting the location of UAA Default: <nil>
+	/*Uaa - Descr: A list of hostnames that are routed to the UAA, specifically the default zone in the UAA. The UAA will reject any Host headers that it doesn't recognize.
+By default the UAA recognizes:
+  The hostname from the property uaa.url
+  The hostname from the property login.url
+  localhost (in order to accept health checks)
+Any hostnames added as a list are additive to the default hostnames allowed.
+ Default: <nil>
 */
-	Domain interface{} `yaml:"domain,omitempty"`
+	Uaa *Uaa `yaml:"uaa,omitempty"`
+
+	/*Login - Descr: When set to false, this allows an operator to leverage an open redirect on the UAA (/logout.do?redirect=google.com). No open redirect enabled Default: true
+*/
+	Login *Login `yaml:"login,omitempty"`
+
+	/*Uaadb - Descr: Database scheme for UAA DB Default: <nil>
+*/
+	Uaadb *Uaadb `yaml:"uaadb,omitempty"`
 
 }

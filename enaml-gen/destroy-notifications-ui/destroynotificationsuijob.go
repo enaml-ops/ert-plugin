@@ -5,16 +5,16 @@ package destroy_notifications_ui
 */
 type DestroyNotificationsUiJob struct {
 
-	/*NotificationsUi - Descr: Domain used to host application Default: <nil>
+	/*Domain - Descr: Cloud Foundry System Domain Default: <nil>
+*/
+	Domain interface{} `yaml:"domain,omitempty"`
+
+	/*NotificationsUi - Descr: Space where the app is deployed Default: <nil>
 */
 	NotificationsUi *NotificationsUi `yaml:"notifications_ui,omitempty"`
 
 	/*Ssl - Descr: Whether to verify SSL certs when making web requests Default: <nil>
 */
 	Ssl *Ssl `yaml:"ssl,omitempty"`
-
-	/*Domain - Descr: Cloud Foundry System Domain Default: <nil>
-*/
-	Domain interface{} `yaml:"domain,omitempty"`
 
 }

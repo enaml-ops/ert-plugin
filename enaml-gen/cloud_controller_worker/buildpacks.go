@@ -5,28 +5,28 @@ package cloud_controller_worker
 */
 type Buildpacks struct {
 
-	/*FogAwsStorageOptions - Descr: Storage options passed to fog for aws blobstores. Valid keys: ['encryption']. Default: <nil>
+	/*WebdavConfig - Descr: The basic auth password that CC uses to connect to the admin endpoint on webdav Default: 
 */
-	FogAwsStorageOptions interface{} `yaml:"fog_aws_storage_options,omitempty"`
-
-	/*FogConnection - Descr: Fog connection hash Default: <nil>
-*/
-	FogConnection interface{} `yaml:"fog_connection,omitempty"`
+	WebdavConfig *BuildpacksWebdavConfig `yaml:"webdav_config,omitempty"`
 
 	/*BuildpackDirectoryKey - Descr: Directory (bucket) used store buildpacks.  It does not have be pre-created. Default: cc-buildpacks
 */
 	BuildpackDirectoryKey interface{} `yaml:"buildpack_directory_key,omitempty"`
 
-	/*WebdavConfig - Descr: The basic auth password that CC uses to connect to the admin endpoint on webdav Default: 
+	/*Cdn - Descr: Private key for signing download URIs Default: 
 */
-	WebdavConfig *BuildpacksWebdavConfig `yaml:"webdav_config,omitempty"`
+	Cdn *BuildpacksCdn `yaml:"cdn,omitempty"`
+
+	/*FogConnection - Descr: Fog connection hash Default: <nil>
+*/
+	FogConnection interface{} `yaml:"fog_connection,omitempty"`
 
 	/*BlobstoreType - Descr: The type of blobstore backing to use. Valid values: ['fog', 'webdav'] Default: fog
 */
 	BlobstoreType interface{} `yaml:"blobstore_type,omitempty"`
 
-	/*Cdn - Descr: Key pair name for signed download URIs Default: 
+	/*FogAwsStorageOptions - Descr: Storage options passed to fog for aws blobstores. Valid keys: ['encryption']. Default: <nil>
 */
-	Cdn *BuildpacksCdn `yaml:"cdn,omitempty"`
+	FogAwsStorageOptions interface{} `yaml:"fog_aws_storage_options,omitempty"`
 
 }

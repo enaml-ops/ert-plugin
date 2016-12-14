@@ -5,13 +5,17 @@ package cloud_controller_clock
 */
 type Droplets struct {
 
-	/*Cdn - Descr: Key pair name for signed download URIs Default: 
+	/*FogConnection - Descr: Fog connection hash Default: <nil>
 */
-	Cdn *DropletsCdn `yaml:"cdn,omitempty"`
+	FogConnection interface{} `yaml:"fog_connection,omitempty"`
 
-	/*WebdavConfig - Descr: The location of the webdav server eg: https://blobstore.com Default: 
+	/*WebdavConfig - Descr: The timeout in seconds for requests to the blobstore Default: 5
 */
 	WebdavConfig *DropletsWebdavConfig `yaml:"webdav_config,omitempty"`
+
+	/*Cdn - Descr: Private key for signing download URIs Default: 
+*/
+	Cdn *DropletsCdn `yaml:"cdn,omitempty"`
 
 	/*DropletDirectoryKey - Descr: Directory (bucket) used store droplets.  It does not have be pre-created. Default: cc-droplets
 */
@@ -20,10 +24,6 @@ type Droplets struct {
 	/*BlobstoreType - Descr: The type of blobstore backing to use. Valid values: ['fog', 'webdav'] Default: fog
 */
 	BlobstoreType interface{} `yaml:"blobstore_type,omitempty"`
-
-	/*FogConnection - Descr: Fog connection hash Default: <nil>
-*/
-	FogConnection interface{} `yaml:"fog_connection,omitempty"`
 
 	/*FogAwsStorageOptions - Descr: Storage options passed to fog for aws blobstores. Valid keys: ['encryption']. Default: <nil>
 */

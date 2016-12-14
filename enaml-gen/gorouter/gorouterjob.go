@@ -5,32 +5,28 @@ package gorouter
 */
 type GorouterJob struct {
 
-	/*Dropsonde - Descr: Enable the dropsonde emitter library Default: false
+	/*RoutingApi - Descr: When false, Routing API requires OAuth tokens for authentication. Default: false
 */
-	Dropsonde *Dropsonde `yaml:"dropsonde,omitempty"`
+	RoutingApi *RoutingApi `yaml:"routing_api,omitempty"`
 
-	/*RoutingApi - Descr: Enable the GoRouter to receive routes from the Routing API Default: false
+	/*Nats - Descr: IP of each NATS cluster member. Default: <nil>
 */
-	RoutingApi *RoutingApi `yaml:"-"`
+	Nats *Nats `yaml:"nats,omitempty"`
 
 	/*RequestTimeoutInSeconds - Descr: Timeout in seconds for Router -> Endpoint roundtrip. Default: 900
 */
 	RequestTimeoutInSeconds interface{} `yaml:"request_timeout_in_seconds,omitempty"`
 
-	/*Uaa - Descr: Port on which UAA is running. Default: 8080
-*/
-	Uaa *Uaa `yaml:"uaa,omitempty"`
-
-	/*Router - Descr: Enables streaming of access log to syslog. Warning: this comes with a performance cost; due to higher I/O, max request rate is reduced. Default: false
+	/*Router - Descr: To rotate keys, add your new key here and deploy. Then swap this key with the value of route_services_secret and deploy again. Default: 
 */
 	Router *Router `yaml:"router,omitempty"`
 
-	/*Nats - Descr:  Default: <nil>
+	/*Metron - Descr: The port used to emit dropsonde messages to the Metron agent. Default: 3457
 */
-	Nats *Nats `yaml:"nats,omitempty"`
+	Metron *Metron `yaml:"metron,omitempty"`
 
-	/*MetronEndpoint - Descr: The port used to emit legacy messages to the Metron agent. Default: 3456
+	/*Uaa - Descr: Certificate authority for communication between clients and uaa. Default: 
 */
-	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
+	Uaa *Uaa `yaml:"uaa,omitempty"`
 
 }

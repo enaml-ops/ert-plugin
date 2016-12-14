@@ -5,28 +5,28 @@ package cloud_controller_worker
 */
 type Droplets struct {
 
+	/*Cdn - Descr: Key pair name for signed download URIs Default: 
+*/
+	Cdn *DropletsCdn `yaml:"cdn,omitempty"`
+
 	/*FogConnection - Descr: Fog connection hash Default: <nil>
 */
 	FogConnection interface{} `yaml:"fog_connection,omitempty"`
 
-	/*FogAwsStorageOptions - Descr: Storage options passed to fog for aws blobstores. Valid keys: ['encryption']. Default: <nil>
+	/*DropletDirectoryKey - Descr: Directory (bucket) used store droplets.  It does not have be pre-created. Default: cc-droplets
 */
-	FogAwsStorageOptions interface{} `yaml:"fog_aws_storage_options,omitempty"`
-
-	/*WebdavConfig - Descr: The ca cert to use when communicating with webdav Default: 
-*/
-	WebdavConfig *DropletsWebdavConfig `yaml:"webdav_config,omitempty"`
+	DropletDirectoryKey interface{} `yaml:"droplet_directory_key,omitempty"`
 
 	/*BlobstoreType - Descr: The type of blobstore backing to use. Valid values: ['fog', 'webdav'] Default: fog
 */
 	BlobstoreType interface{} `yaml:"blobstore_type,omitempty"`
 
-	/*Cdn - Descr: Private key for signing download URIs Default: 
+	/*FogAwsStorageOptions - Descr: Storage options passed to fog for aws blobstores. Valid keys: ['encryption']. Default: <nil>
 */
-	Cdn *DropletsCdn `yaml:"cdn,omitempty"`
+	FogAwsStorageOptions interface{} `yaml:"fog_aws_storage_options,omitempty"`
 
-	/*DropletDirectoryKey - Descr: Directory (bucket) used store droplets.  It does not have be pre-created. Default: cc-droplets
+	/*WebdavConfig - Descr: The timeout in seconds for requests to the blobstore Default: 5
 */
-	DropletDirectoryKey interface{} `yaml:"droplet_directory_key,omitempty"`
+	WebdavConfig *DropletsWebdavConfig `yaml:"webdav_config,omitempty"`
 
 }

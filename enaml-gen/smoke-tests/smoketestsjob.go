@@ -5,7 +5,7 @@ package smoke_tests
 */
 type SmokeTestsJob struct {
 
-	/*SmokeTests - Descr: Toggles setup and cleanup of the Elastic Runtime organization Default: false
+	/*SmokeTests - Descr: The Elastic Runtime app name to use when running runtime tests Default: 
 */
 	SmokeTests *SmokeTests `yaml:"smoke_tests,omitempty"`
 

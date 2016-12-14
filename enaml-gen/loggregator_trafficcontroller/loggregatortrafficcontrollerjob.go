@@ -5,27 +5,11 @@ package loggregator_trafficcontroller
 */
 type LoggregatorTrafficcontrollerJob struct {
 
-	/*Uaa - Descr: Doppler's client secret to connect to UAA Default: <nil>
-*/
-	Uaa *Uaa `yaml:"uaa,omitempty"`
-
-	/*MetronEndpoint - Descr: The port used to emit dropsonde messages to the Metron agent Default: 3457
-*/
-	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
-
-	/*TrafficController - Descr: Enable logging of all requests made to the Traffic Controller in CEF format Default: false
-*/
-	TrafficController *TrafficController `yaml:"traffic_controller,omitempty"`
-
-	/*Doppler - Descr: Doppler's client id to connect to UAA Default: doppler
-*/
-	Doppler *Doppler `yaml:"doppler,omitempty"`
-
 	/*Login - Descr: Protocol to use to connect to UAA (used in case uaa.url is not set) Default: https
 */
 	Login *Login `yaml:"login,omitempty"`
 
-	/*Loggregator - Descr: Number of concurrent requests to ETCD Default: 10
+	/*Loggregator - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
 	Loggregator *Loggregator `yaml:"loggregator,omitempty"`
 
@@ -33,12 +17,28 @@ type LoggregatorTrafficcontrollerJob struct {
 */
 	SystemDomain interface{} `yaml:"system_domain,omitempty"`
 
-	/*Cc - Descr: API URI of cloud controller Default: <nil>
+	/*MetronEndpoint - Descr: The port used to emit dropsonde messages to the Metron agent Default: 3457
 */
-	Cc *Cc `yaml:"cc,omitempty"`
+	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
+
+	/*TrafficController - Descr: boolean value to turn on verbose logging for loggregator system (dea agent & loggregator server) Default: false
+*/
+	TrafficController *TrafficController `yaml:"traffic_controller,omitempty"`
 
 	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
 */
 	Ssl *Ssl `yaml:"ssl,omitempty"`
+
+	/*Doppler - Descr: Doppler's client id to connect to UAA Default: doppler
+*/
+	Doppler *Doppler `yaml:"doppler,omitempty"`
+
+	/*Uaa - Descr: URL of UAA Default: <nil>
+*/
+	Uaa *Uaa `yaml:"uaa,omitempty"`
+
+	/*Cc - Descr: API URI of cloud controller Default: <nil>
+*/
+	Cc *Cc `yaml:"cc,omitempty"`
 
 }

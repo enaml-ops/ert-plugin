@@ -5,18 +5,6 @@ package vizzini
 */
 type Vizzini struct {
 
-	/*Bbs - Descr: The address of the BBS Default: bbs.service.cf.internal:8889
-*/
-	Bbs *Bbs `yaml:"bbs,omitempty"`
-
-	/*Ssh - Descr: Host and port for the SSH proxy Default: ssh-proxy.service.cf.internal:2222
-*/
-	Ssh *Ssh `yaml:"ssh,omitempty"`
-
-	/*Verbose - Descr: Run tests in verbose mode Default: false
-*/
-	Verbose interface{} `yaml:"verbose,omitempty"`
-
 	/*EventuallyTimeout - Descr: default timeout for ginkgo assertions Default: <nil>
 */
 	EventuallyTimeout interface{} `yaml:"eventually_timeout,omitempty"`
@@ -25,8 +13,20 @@ type Vizzini struct {
 */
 	RoutableDomainSuffix interface{} `yaml:"routable_domain_suffix,omitempty"`
 
+	/*Verbose - Descr: Run tests in verbose mode Default: false
+*/
+	Verbose interface{} `yaml:"verbose,omitempty"`
+
+	/*Bbs - Descr: PEM-encoded client key Default: <nil>
+*/
+	Bbs *Bbs `yaml:"bbs,omitempty"`
+
 	/*Nodes - Descr: The number of nodes to run the tests with Default: 4
 */
 	Nodes interface{} `yaml:"nodes,omitempty"`
+
+	/*Ssh - Descr: Host and port for the SSH proxy Default: ssh-proxy.service.cf.internal:2222
+*/
+	Ssh *Ssh `yaml:"ssh,omitempty"`
 
 }

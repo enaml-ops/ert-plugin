@@ -5,16 +5,16 @@ package cloud_controller_ng
 */
 type Login struct {
 
-	/*Url - Descr: URL of the login server Default: <nil>
+	/*Enabled - Descr: whether use login as the authorization endpoint or not Default: true
 */
-	Url interface{} `yaml:"url,omitempty"`
+	Enabled interface{} `yaml:"enabled,omitempty"`
 
 	/*Protocol - Descr: http or https Default: https
 */
 	Protocol interface{} `yaml:"protocol,omitempty"`
 
-	/*Enabled - Descr: whether use login as the authorization endpoint or not Default: true
+	/*Url - Descr: URL of the login server Default: <nil>
 */
-	Enabled interface{} `yaml:"enabled,omitempty"`
+	Url interface{} `yaml:"url,omitempty"`
 
 }

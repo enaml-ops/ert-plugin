@@ -5,8 +5,8 @@ package broker_deregistrar
 */
 type Broker struct {
 
-	/*Name - Descr: Name of the service broker Default: <nil>
+	/*Services - Descr: List of services the broker provides Default: <nil>
 */
-	Name interface{} `yaml:"name,omitempty"`
+	Services interface{} `yaml:"services,omitempty"`
 
 }

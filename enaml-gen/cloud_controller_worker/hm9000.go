@@ -9,4 +9,8 @@ type Hm9000 struct {
 */
 	Url interface{} `yaml:"url,omitempty"`
 
+	/*Port - Descr: Port of the hm9000 Api Server Default: <nil>
+*/
+	Port interface{} `yaml:"port,omitempty"`
+
 }

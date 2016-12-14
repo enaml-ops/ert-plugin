@@ -5,16 +5,16 @@ package deploy_notifications
 */
 type DeployNotificationsJob struct {
 
-	/*Domain - Descr: Cloud Foundry System Domain Default: <nil>
+	/*Notifications - Descr: Password of the CF admin user Default: <nil>
 */
-	Domain interface{} `yaml:"domain,omitempty"`
+	Notifications *Notifications `yaml:"notifications,omitempty"`
 
 	/*Ssl - Descr: Whether to verify SSL certs when making HTTP and SMTP requests Default: <nil>
 */
 	Ssl *Ssl `yaml:"ssl,omitempty"`
 
-	/*Notifications - Descr: Admin client secret of the UAA Default: <nil>
+	/*Domain - Descr: Cloud Foundry System Domain Default: <nil>
 */
-	Notifications *Notifications `yaml:"notifications,omitempty"`
+	Domain interface{} `yaml:"domain,omitempty"`
 
 }

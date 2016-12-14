@@ -13,4 +13,8 @@ type Cf struct {
 */
 	AdminPassword interface{} `yaml:"admin_password,omitempty"`
 
+	/*DialTimeout - Descr: CF CLI connection dial timeout Default: 5
+*/
+	DialTimeout interface{} `yaml:"dial_timeout,omitempty"`
+
 }

@@ -5,17 +5,9 @@ package ssh_proxy
 */
 type SshProxy struct {
 
-	/*AllowedKeyexchanges - Descr: Comma separated list of allowed key exchange algorithms Default: <nil>
+	/*DebugAddr - Descr: address at which to serve debug info Default: 127.0.0.1:17016
 */
-	AllowedKeyexchanges interface{} `yaml:"allowed_keyexchanges,omitempty"`
-
-	/*Cc - Descr: Internal service hostname of Cloud Controller Api Default: cloud-controller-ng.service.cf.internal
-*/
-	Cc *Cc `yaml:"cc,omitempty"`
-
-	/*AllowedMacs - Descr: Comma separated list of allowed MAC algorithms Default: <nil>
-*/
-	AllowedMacs interface{} `yaml:"allowed_macs,omitempty"`
+	DebugAddr interface{} `yaml:"debug_addr,omitempty"`
 
 	/*EnableDiegoAuth - Descr: Allow ssh access for diego applications Default: false
 */
@@ -25,44 +17,52 @@ type SshProxy struct {
 */
 	EnableCfAuth interface{} `yaml:"enable_cf_auth,omitempty"`
 
-	/*UaaTokenUrl - Descr: URL of the UAA token endpoint Default: <nil>
+	/*AllowedKeyexchanges - Descr: Comma separated list of allowed key exchange algorithms Default: <nil>
 */
-	UaaTokenUrl interface{} `yaml:"uaa_token_url,omitempty"`
-
-	/*DropsondePort - Descr: local metron agent's port Default: 3457
-*/
-	DropsondePort interface{} `yaml:"dropsonde_port,omitempty"`
-
-	/*Bbs - Descr: capacity of the tls client cache Default: <nil>
-*/
-	Bbs *Bbs `yaml:"bbs,omitempty"`
-
-	/*DiegoCredentials - Descr: Diego Credentials to be used with the Diego authenitcation method Default: <nil>
-*/
-	DiegoCredentials interface{} `yaml:"diego_credentials,omitempty"`
-
-	/*DebugAddr - Descr: address at which to serve debug info Default: 0.0.0.0:17016
-*/
-	DebugAddr interface{} `yaml:"debug_addr,omitempty"`
-
-	/*ListenAddr - Descr: address for the proxy to listen on Default: 0.0.0.0:2222
-*/
-	ListenAddr interface{} `yaml:"listen_addr,omitempty"`
+	AllowedKeyexchanges interface{} `yaml:"allowed_keyexchanges,omitempty"`
 
 	/*AllowedCiphers - Descr: Comma separated list of allowed cipher algorithms Default: <nil>
 */
 	AllowedCiphers interface{} `yaml:"allowed_ciphers,omitempty"`
 
-	/*HostKey - Descr: PEM encoded RSA private key used to identify host Default: <nil>
+	/*ListenAddr - Descr: address for the proxy to listen on Default: 0.0.0.0:2222
 */
-	HostKey interface{} `yaml:"host_key,omitempty"`
+	ListenAddr interface{} `yaml:"listen_addr,omitempty"`
+
+	/*Cc - Descr: External port of the Cloud Controller API Default: 9022
+*/
+	Cc *Cc `yaml:"cc,omitempty"`
+
+	/*DropsondePort - Descr: local metron agent's port Default: 3457
+*/
+	DropsondePort interface{} `yaml:"dropsonde_port,omitempty"`
 
 	/*LogLevel - Descr: Log level Default: info
 */
 	LogLevel interface{} `yaml:"log_level,omitempty"`
 
+	/*DiegoCredentials - Descr: Diego Credentials to be used with the Diego authenitcation method Default: <nil>
+*/
+	DiegoCredentials interface{} `yaml:"diego_credentials,omitempty"`
+
+	/*UaaTokenUrl - Descr: URL of the UAA token endpoint Default: <nil>
+*/
+	UaaTokenUrl interface{} `yaml:"uaa_token_url,omitempty"`
+
 	/*UaaSecret - Descr: The oauth client secret used to authenticate the ssh-proxy with the uaa Default: <nil>
 */
 	UaaSecret interface{} `yaml:"uaa_secret,omitempty"`
+
+	/*Bbs - Descr: enable ssl for all communication with the bbs Default: true
+*/
+	Bbs *Bbs `yaml:"bbs,omitempty"`
+
+	/*HostKey - Descr: PEM encoded RSA private key used to identify host Default: <nil>
+*/
+	HostKey interface{} `yaml:"host_key,omitempty"`
+
+	/*AllowedMacs - Descr: Comma separated list of allowed MAC algorithms Default: <nil>
+*/
+	AllowedMacs interface{} `yaml:"allowed_macs,omitempty"`
 
 }

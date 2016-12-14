@@ -5,9 +5,13 @@ package rep
 */
 type Rep struct {
 
-	/*PreloadedRootfses - Descr: Array of name:absolute_path pairs representing root filesystems preloaded onto the underlying garden Default: [cflinuxfs2:/var/vcap/packages/rootfs_cflinuxfs2/rootfs]
+	/*PollingIntervalInSeconds - Descr: The interval to look for completed tasks and LRPs in seconds Default: 30
 */
-	PreloadedRootfses interface{} `yaml:"preloaded_rootfses,omitempty"`
+	PollingIntervalInSeconds interface{} `yaml:"polling_interval_in_seconds,omitempty"`
+
+	/*Bbs - Descr: PEM-encoded CA certificate Default: <nil>
+*/
+	Bbs *Bbs `yaml:"bbs,omitempty"`
 
 	/*RootfsProviders - Descr: Array of schemes for which the underlying garden can support arbitrary root filesystems Default: [docker]
 */
@@ -17,44 +21,48 @@ type Rep struct {
 */
 	DropsondePort interface{} `yaml:"dropsonde_port,omitempty"`
 
-	/*TrustedCerts - Descr: Concatenation of trusted CA certificates to be made available inside the rootfses Default: <nil>
+	/*Zone - Descr: The zone associated with the rep Default: <nil>
 */
-	TrustedCerts interface{} `yaml:"trusted_certs,omitempty"`
+	Zone interface{} `yaml:"zone,omitempty"`
 
-	/*LogLevel - Descr: Log level Default: info
+	/*UseAzureFaultDomains - Descr: Use Azure Fault-Domains to determine the value of the zone. The value of the zone will be z<FD-index>. e.g. z0, z1, etc. Default: false
 */
-	LogLevel interface{} `yaml:"log_level,omitempty"`
+	UseAzureFaultDomains interface{} `yaml:"use_azure_fault_domains,omitempty"`
 
-	/*DebugAddr - Descr: address at which to serve debug info Default: 0.0.0.0:17008
+	/*PreloadedRootfses - Descr: Array of name:absolute_path pairs representing root filesystems preloaded onto the underlying garden Default: <nil>
 */
-	DebugAddr interface{} `yaml:"debug_addr,omitempty"`
-
-	/*Stack - Descr: The stack for which to handle requests Default: cflinuxfs2
-*/
-	Stack interface{} `yaml:"stack,omitempty"`
-
-	/*ListenAddr - Descr: address to serve auction and LRP stop requests on Default: 0.0.0.0:1800
-*/
-	ListenAddr interface{} `yaml:"listen_addr,omitempty"`
-
-	/*EvacuationTimeoutInSeconds - Descr: The time to wait for evacuation to complete in seconds Default: 600
-*/
-	EvacuationTimeoutInSeconds interface{} `yaml:"evacuation_timeout_in_seconds,omitempty"`
-
-	/*PollingIntervalInSeconds - Descr: The interval to look for completed tasks and LRPs in seconds Default: 30
-*/
-	PollingIntervalInSeconds interface{} `yaml:"polling_interval_in_seconds,omitempty"`
+	PreloadedRootfses interface{} `yaml:"preloaded_rootfses,omitempty"`
 
 	/*EvacuationPollingIntervalInSeconds - Descr: The interval to look for completed tasks and LRPs during evacuation in seconds Default: 10
 */
 	EvacuationPollingIntervalInSeconds interface{} `yaml:"evacuation_polling_interval_in_seconds,omitempty"`
 
-	/*Bbs - Descr: maximum number of idle http connections Default: <nil>
+	/*LogLevel - Descr: Log level Default: info
 */
-	Bbs *Bbs `yaml:"bbs,omitempty"`
+	LogLevel interface{} `yaml:"log_level,omitempty"`
 
-	/*Zone - Descr: The zone associated with the rep Default: <nil>
+	/*EvacuationTimeoutInSeconds - Descr: The time to wait for evacuation to complete in seconds Default: 600
 */
-	Zone interface{} `yaml:"zone,omitempty"`
+	EvacuationTimeoutInSeconds interface{} `yaml:"evacuation_timeout_in_seconds,omitempty"`
+
+	/*OptionalPlacementTags - Descr: Array of optional tags used for scheduling Tasks and LRPs Default: []
+*/
+	OptionalPlacementTags interface{} `yaml:"optional_placement_tags,omitempty"`
+
+	/*PlacementTags - Descr: Array of tags used for scheduling Tasks and LRPs Default: []
+*/
+	PlacementTags interface{} `yaml:"placement_tags,omitempty"`
+
+	/*ListenAddr - Descr: address to serve auction and LRP stop requests on Default: 0.0.0.0:1800
+*/
+	ListenAddr interface{} `yaml:"listen_addr,omitempty"`
+
+	/*DebugAddr - Descr: address at which to serve debug info Default: 127.0.0.1:17008
+*/
+	DebugAddr interface{} `yaml:"debug_addr,omitempty"`
+
+	/*TrustedCerts - Descr: Concatenation of trusted CA certificates to be made available inside the rootfses Default: <nil>
+*/
+	TrustedCerts interface{} `yaml:"trusted_certs,omitempty"`
 
 }

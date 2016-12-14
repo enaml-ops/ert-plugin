@@ -5,10 +5,6 @@ package cc_uploader
 */
 type Diego struct {
 
-	/*CcUploader - Descr: External Cloud Controller port Default: 9022
-*/
-	CcUploader *CcUploader `yaml:"cc_uploader,omitempty"`
-
 	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
 */
 	Ssl *Ssl `yaml:"ssl,omitempty"`

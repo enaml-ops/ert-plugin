@@ -5,16 +5,16 @@ package cloud_controller_ng
 */
 type ResourcePoolCdn struct {
 
-	/*Uri - Descr: URI for a CDN to used for resource pool downloads Default: 
+	/*KeyPairId - Descr: Key pair name for signed download URIs Default: 
 */
-	Uri interface{} `yaml:"uri,omitempty"`
+	KeyPairId interface{} `yaml:"key_pair_id,omitempty"`
 
 	/*PrivateKey - Descr: Private key for signing download URIs Default: 
 */
 	PrivateKey interface{} `yaml:"private_key,omitempty"`
 
-	/*KeyPairId - Descr: Key pair name for signed download URIs Default: 
+	/*Uri - Descr: URI for a CDN to used for resource pool downloads Default: 
 */
-	KeyPairId interface{} `yaml:"key_pair_id,omitempty"`
+	Uri interface{} `yaml:"uri,omitempty"`
 
 }

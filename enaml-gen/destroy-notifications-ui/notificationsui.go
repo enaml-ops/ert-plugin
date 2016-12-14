@@ -5,10 +5,6 @@ package destroy_notifications_ui
 */
 type NotificationsUi struct {
 
-	/*AppDomain - Descr: Domain used to host application Default: <nil>
-*/
-	AppDomain interface{} `yaml:"app_domain,omitempty"`
-
 	/*Organization - Descr: Organization where the app is deployed Default: <nil>
 */
 	Organization interface{} `yaml:"organization,omitempty"`
@@ -17,8 +13,12 @@ type NotificationsUi struct {
 */
 	Space interface{} `yaml:"space,omitempty"`
 
-	/*Cf - Descr: Username of the CF admin user Default: <nil>
+	/*Cf - Descr: CF CLI connection dial timeout Default: 5
 */
 	Cf *Cf `yaml:"cf,omitempty"`
+
+	/*AppDomain - Descr: Domain used to host application Default: <nil>
+*/
+	AppDomain interface{} `yaml:"app_domain,omitempty"`
 
 }

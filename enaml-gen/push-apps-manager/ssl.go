@@ -5,9 +5,9 @@ package push_apps_manager
 */
 type Ssl struct {
 
-	/*HttpsOnlyMode - Descr: When rendering app route urls, prefix all of them with https Default: false
+	/*DisableHttpForLinks - Descr: When displaying external app route urls, prefix all of them with https Default: false
 */
-	HttpsOnlyMode interface{} `yaml:"https_only_mode,omitempty"`
+	DisableHttpForLinks interface{} `yaml:"disable_http_for_links,omitempty"`
 
 	/*SkipCertVerify - Descr: when connecting over TLS, don't verify certificates Default: false
 */

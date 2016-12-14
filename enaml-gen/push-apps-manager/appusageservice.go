@@ -5,13 +5,13 @@ package push_apps_manager
 */
 type AppUsageService struct {
 
-	/*AllowTestDataCreation - Descr: Whether or not to allow manual creation of AppEvents Default: false
-*/
-	AllowTestDataCreation interface{} `yaml:"allow_test_data_creation,omitempty"`
-
 	/*EventFetchingOffset - Descr: How recent is too recent to trust an event Default: 60
 */
 	EventFetchingOffset interface{} `yaml:"event_fetching_offset,omitempty"`
+
+	/*AllowTestDataCreation - Descr: Whether or not to allow manual creation of AppEvents Default: false
+*/
+	AllowTestDataCreation interface{} `yaml:"allow_test_data_creation,omitempty"`
 
 	/*AllowViewingLogs - Descr: Whether or not to allow viewing logs Default: false
 */

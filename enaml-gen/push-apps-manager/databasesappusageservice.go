@@ -5,9 +5,9 @@ package push_apps_manager
 */
 type DatabasesAppUsageService struct {
 
-	/*Ip - Descr: IP of database server for the app usage service Default: <nil>
+	/*Username - Descr: Username credential for the app usage service Default: <nil>
 */
-	Ip interface{} `yaml:"ip,omitempty"`
+	Username interface{} `yaml:"username,omitempty"`
 
 	/*Adapter - Descr: Adapter type (mysql2 or postgresql) for the app usage service database Default: mysql2
 */
@@ -21,12 +21,12 @@ type DatabasesAppUsageService struct {
 */
 	Name interface{} `yaml:"name,omitempty"`
 
-	/*Username - Descr: Username credential for the app usage service Default: <nil>
-*/
-	Username interface{} `yaml:"username,omitempty"`
-
 	/*Password - Descr: Password credential for the app usage service Default: <nil>
 */
 	Password interface{} `yaml:"password,omitempty"`
+
+	/*Ip - Descr: IP of database server for the app usage service Default: <nil>
+*/
+	Ip interface{} `yaml:"ip,omitempty"`
 
 }

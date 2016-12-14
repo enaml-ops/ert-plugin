@@ -5,10 +5,6 @@ package rep
 */
 type Process struct {
 
-	/*Env - Descr: Environment variables to use when running the garden health check Default: <nil>
-*/
-	Env interface{} `yaml:"env,omitempty"`
-
 	/*User - Descr: User to use while performing a container healthcheck Default: vcap
 */
 	User interface{} `yaml:"user,omitempty"`
@@ -17,12 +13,16 @@ type Process struct {
 */
 	Path interface{} `yaml:"path,omitempty"`
 
-	/*Args - Descr: List of command line args to pass to the garden health check process Default: -c, ls > /tmp/test
+	/*Env - Descr: Environment variables to use when running the garden health check Default: <nil>
 */
-	Args interface{} `yaml:"args,omitempty"`
+	Env interface{} `yaml:"env,omitempty"`
 
 	/*Dir - Descr: Directory to run the healthcheck process from Default: <nil>
 */
 	Dir interface{} `yaml:"dir,omitempty"`
+
+	/*Args - Descr: List of command line args to pass to the garden health check process Default: -c, ls > /tmp/test
+*/
+	Args interface{} `yaml:"args,omitempty"`
 
 }

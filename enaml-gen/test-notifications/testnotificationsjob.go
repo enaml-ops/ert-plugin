@@ -5,12 +5,12 @@ package test_notifications
 */
 type TestNotificationsJob struct {
 
+	/*Notifications - Descr: Password of the CF admin user Default: <nil>
+*/
+	Notifications *Notifications `yaml:"notifications,omitempty"`
+
 	/*Domain - Descr: Cloud Foundry System Domain Default: <nil>
 */
 	Domain interface{} `yaml:"domain,omitempty"`
-
-	/*Notifications - Descr: Username of the CF admin user Default: <nil>
-*/
-	Notifications *Notifications `yaml:"notifications,omitempty"`
 
 }

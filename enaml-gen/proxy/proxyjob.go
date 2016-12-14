@@ -5,32 +5,16 @@ package proxy
 */
 type ProxyJob struct {
 
-	/*SyslogAggregator - Descr: IP address for syslog aggregator Default: <nil>
+	/*CfMysql - Descr: Timeout (milliseconds) before assuming a backend is unhealthy Default: 5000
+*/
+	CfMysql *CfMysql `yaml:"cf_mysql,omitempty"`
+
+	/*SyslogAggregator - Descr: Transport to be used when forwarding logs (tcp|udp|relp). Default: tcp
 */
 	SyslogAggregator *SyslogAggregator `yaml:"syslog_aggregator,omitempty"`
 
-	/*ClusterIps - Descr: List of nodes.  Must have the same number of ips as there are nodes in the cluster Default: <nil>
-*/
-	ClusterIps interface{} `yaml:"cluster_ips,omitempty"`
-
-	/*Standalone - Descr: Standalone Mode: Are you deploying MySQL without a CloudFoundry deployment? Default: false
-*/
-	Standalone interface{} `yaml:"standalone,omitempty"`
-
-	/*ExternalHost - Descr: Domain of the route registered for the UI via NATS (with the router in cf-release) Default: <nil>
-*/
-	ExternalHost interface{} `yaml:"external_host,omitempty"`
-
-	/*Proxy - Descr: Password for Basic Auth used to secure API Default: <nil>
-*/
-	Proxy *Proxy `yaml:"proxy,omitempty"`
-
-	/*Nats - Descr: IP port of Cloud Foundry NATS server Default: <nil>
+	/*Nats - Descr: IP of each NATS cluster member. Default: <nil>
 */
 	Nats *Nats `yaml:"nats,omitempty"`
-
-	/*NetworkName - Descr: The name of the network (needed for the syslog aggregator) Default: <nil>
-*/
-	NetworkName interface{} `yaml:"network_name,omitempty"`
 
 }

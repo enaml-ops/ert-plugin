@@ -5,11 +5,11 @@ package broker_deregistrar
 */
 type BrokerDeregistrarJob struct {
 
-	/*Broker - Descr: Name of the service broker Default: <nil>
+	/*CfMysql - Descr: List of services the broker provides Default: <nil>
 */
-	Broker *Broker `yaml:"broker,omitempty"`
+	CfMysql *CfMysql `yaml:"cf_mysql,omitempty"`
 
-	/*Cf - Descr: Full URL of Cloud Foundry API Default: <nil>
+	/*Cf - Descr: Password of the admin user Default: <nil>
 */
 	Cf *Cf `yaml:"cf,omitempty"`
 

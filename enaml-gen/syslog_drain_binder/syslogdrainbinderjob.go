@@ -5,28 +5,28 @@ package syslog_drain_binder
 */
 type SyslogDrainBinderJob struct {
 
-	/*Cc - Descr: API URI of cloud controller Default: <nil>
-*/
-	Cc *Cc `yaml:"cc,omitempty"`
-
-	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
-*/
-	Ssl *Ssl `yaml:"ssl,omitempty"`
-
-	/*MetronEndpoint - Descr: The host used to emit messages to the Metron agent Default: 127.0.0.1
-*/
-	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
-
 	/*SystemDomain - Descr: Domain reserved for CF operator, base URL where the login, uaa, and other non-user apps listen Default: <nil>
 */
 	SystemDomain interface{} `yaml:"system_domain,omitempty"`
+
+	/*SyslogDrainBinder - Descr: PEM-encoded client key Default: 
+*/
+	SyslogDrainBinder *SyslogDrainBinder `yaml:"syslog_drain_binder,omitempty"`
 
 	/*Loggregator - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
 	Loggregator *Loggregator `yaml:"loggregator,omitempty"`
 
-	/*SyslogDrainBinder - Descr: Time to live for drain urls in seconds Default: 60
+	/*Cc - Descr: API URI of cloud controller Default: <nil>
 */
-	SyslogDrainBinder *SyslogDrainBinder `yaml:"syslog_drain_binder,omitempty"`
+	Cc *Cc `yaml:"cc,omitempty"`
+
+	/*Ssl - Descr: When connecting over https, ignore bad ssl certificates Default: false
+*/
+	Ssl *Ssl `yaml:"ssl,omitempty"`
+
+	/*MetronEndpoint - Descr: The port used to emit dropsonde messages to the Metron agent Default: 3457
+*/
+	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
 
 }

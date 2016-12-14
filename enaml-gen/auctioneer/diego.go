@@ -5,7 +5,7 @@ package auctioneer
 */
 type Diego struct {
 
-	/*Auctioneer - Descr: PEM-encoded client key Default: <nil>
+	/*Auctioneer - Descr: address where auctioneer listens for LRP and task start auction requests Default: 0.0.0.0:9016
 */
 	Auctioneer *Auctioneer `yaml:"auctioneer,omitempty"`
 

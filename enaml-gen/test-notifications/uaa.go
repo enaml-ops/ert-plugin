@@ -5,12 +5,12 @@ package test_notifications
 */
 type Uaa struct {
 
-	/*AdminClientSecret - Descr: UAA Admin client secret Default: <nil>
-*/
-	AdminClientSecret interface{} `yaml:"admin_client_secret,omitempty"`
-
 	/*AdminClientId - Descr: UAA Admin client ID Default: <nil>
 */
 	AdminClientId interface{} `yaml:"admin_client_id,omitempty"`
+
+	/*AdminClientSecret - Descr: UAA Admin client secret Default: <nil>
+*/
+	AdminClientSecret interface{} `yaml:"admin_client_secret,omitempty"`
 
 }

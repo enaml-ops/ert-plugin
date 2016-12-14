@@ -9,8 +9,4 @@ type Diego struct {
 */
 	Ssl *Ssl `yaml:"ssl,omitempty"`
 
-	/*Tps - Descr: Maximum number of requests to handle at once. Default: 200
-*/
-	Tps *Tps `yaml:"tps,omitempty"`
-
 }

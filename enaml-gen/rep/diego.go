@@ -5,13 +5,13 @@ package rep
 */
 type Diego struct {
 
-	/*Rep - Descr: maximum number of idle http connections Default: <nil>
-*/
-	Rep *Rep `yaml:"rep,omitempty"`
-
-	/*Executor - Descr: Concatenation of trusted CA certificates to be used when downloading assets. Default: <nil>
+	/*Executor - Descr: Maximum number of concurrent delete container operations. Default: 32
 */
 	Executor *Executor `yaml:"executor,omitempty"`
+
+	/*Rep - Descr: PEM-encoded CA certificate Default: <nil>
+*/
+	Rep *Rep `yaml:"rep,omitempty"`
 
 	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
 */

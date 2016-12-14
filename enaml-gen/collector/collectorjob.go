@@ -9,7 +9,7 @@ type CollectorJob struct {
 */
 	Nats *Nats `yaml:"nats,omitempty"`
 
-	/*Collector - Descr: Datadog application key Default: <nil>
+	/*Collector - Descr: enable CloudWatch plugin Default: false
 */
 	Collector *Collector `yaml:"collector,omitempty"`
 

@@ -5,11 +5,15 @@ package blobstore
 */
 type BlobstoreJob struct {
 
-	/*Blobstore - Descr: Max allowed file size for upload Default: 5000m
+	/*Blobstore - Descr: List of allow / deny rules for the blobstore internal server. Defaults to RFC 1918 Private Networks. Will be followed by 'deny all'. See http://nginx.org/en/docs/http/ngx_http_access_module.html for valid rules Default: [allow 10.0.0.0/8; allow 172.16.0.0/12; allow 192.168.0.0/16;]
 */
 	Blobstore *Blobstore `yaml:"blobstore,omitempty"`
 
-	/*Domain - Descr: The system domain.  The public server will listen on host 'blobstore.system-domain.tld' Default: <nil>
+	/*SystemDomain - Descr: The system domain.  The public server will listen on host 'blobstore.system-domain.tld' Default: <nil>
+*/
+	SystemDomain interface{} `yaml:"system_domain,omitempty"`
+
+	/*Domain - Descr: DEPRECATED: The system domain.  The public server will listen on host 'blobstore.system-domain.tld' Default: <nil>
 */
 	Domain interface{} `yaml:"domain,omitempty"`
 

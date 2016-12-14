@@ -5,10 +5,6 @@ package proxy
 */
 type SyslogAggregator struct {
 
-	/*Address - Descr: IP address for syslog aggregator Default: <nil>
-*/
-	Address interface{} `yaml:"address,omitempty"`
-
 	/*Transport - Descr: Transport to be used when forwarding logs (tcp|udp|relp). Default: tcp
 */
 	Transport interface{} `yaml:"transport,omitempty"`
@@ -20,5 +16,9 @@ type SyslogAggregator struct {
 	/*All - Descr: Define whether forwarders should also send non-mysql syslog activity to the aggregator. Default: false
 */
 	All interface{} `yaml:"all,omitempty"`
+
+	/*Address - Descr: IP address for syslog aggregator Default: <nil>
+*/
+	Address interface{} `yaml:"address,omitempty"`
 
 }

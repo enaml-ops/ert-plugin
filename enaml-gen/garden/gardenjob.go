@@ -5,7 +5,7 @@ package garden
 */
 type GardenJob struct {
 
-	/*Garden - Descr: list of comma-separated hosts for which the http and https proxies will be skipped Default: <nil>
+	/*Garden - Descr: If true, all existing containers will be destroyed any time the garden server starts up Default: false
 */
 	Garden *Garden `yaml:"garden,omitempty"`
 

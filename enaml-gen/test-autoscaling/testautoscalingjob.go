@@ -13,7 +13,7 @@ type TestAutoscalingJob struct {
 */
 	Domain interface{} `yaml:"domain,omitempty"`
 
-	/*Autoscale - Descr: Username of the CF admin user Default: <nil>
+	/*Autoscale - Descr: Password of the CF admin user Default: <nil>
 */
 	Autoscale *Autoscale `yaml:"autoscale,omitempty"`
 

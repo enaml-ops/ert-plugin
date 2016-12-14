@@ -5,7 +5,7 @@ package postgres
 */
 type PostgresJob struct {
 
-	/*Databases - Descr: The database scheme Default: <nil>
+	/*Databases - Descr: The database port Default: <nil>
 */
 	Databases *Databases `yaml:"databases,omitempty"`
 

@@ -5,7 +5,7 @@ package auctioneer
 */
 type AuctioneerJob struct {
 
-	/*Diego - Descr: PEM-encoded client key Default: <nil>
+	/*Diego - Descr: address where auctioneer listens for LRP and task start auction requests Default: 0.0.0.0:9016
 */
 	Diego *Diego `yaml:"diego,omitempty"`
 

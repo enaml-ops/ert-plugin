@@ -5,29 +5,9 @@ package cloud_controller_worker
 */
 type Jobs struct {
 
-	/*BlobstoreDelete - Descr: The longest this job can take before it is cancelled Default: <nil>
+	/*DropletUpload - Descr: The longest this job can take before it is cancelled Default: <nil>
 */
-	BlobstoreDelete *BlobstoreDelete `yaml:"blobstore_delete,omitempty"`
-
-	/*AppUsageEventsCleanup - Descr: The longest this job can take before it is cancelled Default: <nil>
-*/
-	AppUsageEventsCleanup *AppUsageEventsCleanup `yaml:"app_usage_events_cleanup,omitempty"`
-
-	/*BlobstoreUpload - Descr: The longest this job can take before it is cancelled Default: <nil>
-*/
-	BlobstoreUpload *BlobstoreUpload `yaml:"blobstore_upload,omitempty"`
-
-	/*AppBitsPacker - Descr: The longest this job can take before it is cancelled Default: <nil>
-*/
-	AppBitsPacker *AppBitsPacker `yaml:"app_bits_packer,omitempty"`
-
-	/*Global - Descr: The longest any job can take before it is cancelled unless overriden per job Default: 14400
-*/
-	Global *Global `yaml:"global,omitempty"`
-
-	/*DropletDeletion - Descr: The longest this job can take before it is cancelled Default: <nil>
-*/
-	DropletDeletion *DropletDeletion `yaml:"droplet_deletion,omitempty"`
+	DropletUpload *DropletUpload `yaml:"droplet_upload,omitempty"`
 
 	/*Generic - Descr: Number of generic cloud_controller_worker workers Default: 1
 */
@@ -37,8 +17,28 @@ type Jobs struct {
 */
 	AppEventsCleanup *AppEventsCleanup `yaml:"app_events_cleanup,omitempty"`
 
-	/*DropletUpload - Descr: The longest this job can take before it is cancelled Default: <nil>
+	/*AppUsageEventsCleanup - Descr: The longest this job can take before it is cancelled Default: <nil>
 */
-	DropletUpload *DropletUpload `yaml:"droplet_upload,omitempty"`
+	AppUsageEventsCleanup *AppUsageEventsCleanup `yaml:"app_usage_events_cleanup,omitempty"`
+
+	/*AppBitsPacker - Descr: The longest this job can take before it is cancelled Default: <nil>
+*/
+	AppBitsPacker *AppBitsPacker `yaml:"app_bits_packer,omitempty"`
+
+	/*BlobstoreDelete - Descr: The longest this job can take before it is cancelled Default: <nil>
+*/
+	BlobstoreDelete *BlobstoreDelete `yaml:"blobstore_delete,omitempty"`
+
+	/*Global - Descr: The longest any job can take before it is cancelled unless overriden per job Default: 14400
+*/
+	Global *Global `yaml:"global,omitempty"`
+
+	/*BlobstoreUpload - Descr: The longest this job can take before it is cancelled Default: <nil>
+*/
+	BlobstoreUpload *BlobstoreUpload `yaml:"blobstore_upload,omitempty"`
+
+	/*DropletDeletion - Descr: The longest this job can take before it is cancelled Default: <nil>
+*/
+	DropletDeletion *DropletDeletion `yaml:"droplet_deletion,omitempty"`
 
 }

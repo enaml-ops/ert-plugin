@@ -5,24 +5,28 @@ package acceptance_tests
 */
 type Cf struct {
 
-	/*SkipSslValidation - Descr: Whether to add --skip-ssl-validation for cf cli Default: false
+	/*AppDomains - Descr: List of shared domains for pushed apps (tests will use the first domain) Default: <nil>
 */
-	SkipSslValidation interface{} `yaml:"skip_ssl_validation,omitempty"`
-
-	/*AdminUsername - Descr: Username of the admin user Default: <nil>
-*/
-	AdminUsername interface{} `yaml:"admin_username,omitempty"`
+	AppDomains interface{} `yaml:"app_domains,omitempty"`
 
 	/*AdminPassword - Descr: Password of the admin user Default: <nil>
 */
 	AdminPassword interface{} `yaml:"admin_password,omitempty"`
 
+	/*SmokeTests - Descr: Runs smoke test errand as an existing org. Creates a new org if false Default: false
+*/
+	SmokeTests *SmokeTests `yaml:"smoke_tests,omitempty"`
+
 	/*ApiUrl - Descr: Full URL of Cloud Foundry API Default: <nil>
 */
 	ApiUrl interface{} `yaml:"api_url,omitempty"`
 
-	/*AppsDomain - Descr: Shared domain for pushed apps Default: <nil>
+	/*AdminUsername - Descr: Username of the admin user Default: <nil>
 */
-	AppsDomain interface{} `yaml:"apps_domain,omitempty"`
+	AdminUsername interface{} `yaml:"admin_username,omitempty"`
+
+	/*SkipSslValidation - Descr: Whether to add --skip-ssl-validation for cf cli Default: false
+*/
+	SkipSslValidation interface{} `yaml:"skip_ssl_validation,omitempty"`
 
 }

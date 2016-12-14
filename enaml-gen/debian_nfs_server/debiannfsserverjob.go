@@ -5,7 +5,7 @@ package debian_nfs_server
 */
 type DebianNfsServerJob struct {
 
-	/*NfsServer - Descr: Exports /var/vcap/store with no_root_squash when set to true Default: false
+	/*NfsServer - Descr: Pipefs directory for NFS idmapd Default: /var/lib/nfs/rpc_pipef
 */
 	NfsServer *NfsServer `yaml:"nfs_server,omitempty"`
 

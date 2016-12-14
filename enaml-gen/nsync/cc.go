@@ -5,32 +5,32 @@ package nsync
 */
 type Cc struct {
 
-	/*FetchTimeoutInSeconds - Descr: How long to wait for completion of requests to CC in seconds. Default: 30
+	/*PollingIntervalInSeconds - Descr: interval at which to poll bulk API in seconds Default: 30
 */
-	FetchTimeoutInSeconds interface{} `yaml:"fetch_timeout_in_seconds,omitempty"`
+	PollingIntervalInSeconds interface{} `yaml:"polling_interval_in_seconds,omitempty"`
 
-	/*BaseUrl - Descr: base URL of the cloud controller Default: <nil>
+	/*BulkBatchSize - Descr: number of apps to fetch at once from bulk API Default: 500
 */
-	BaseUrl interface{} `yaml:"base_url,omitempty"`
-
-	/*BasicAuthPassword - Descr: basic auth password for CC bulk API Default: <nil>
-*/
-	BasicAuthPassword interface{} `yaml:"basic_auth_password,omitempty"`
+	BulkBatchSize interface{} `yaml:"bulk_batch_size,omitempty"`
 
 	/*ExternalPort - Descr: External Cloud Controller port Default: 9022
 */
 	ExternalPort interface{} `yaml:"external_port,omitempty"`
 
-	/*PollingIntervalInSeconds - Descr: interval at which to poll bulk API in seconds Default: 30
+	/*BaseUrl - Descr: base URL of the cloud controller Default: <nil>
 */
-	PollingIntervalInSeconds interface{} `yaml:"polling_interval_in_seconds,omitempty"`
+	BaseUrl interface{} `yaml:"base_url,omitempty"`
+
+	/*FetchTimeoutInSeconds - Descr: How long to wait for completion of requests to CC in seconds. Default: 30
+*/
+	FetchTimeoutInSeconds interface{} `yaml:"fetch_timeout_in_seconds,omitempty"`
+
+	/*BasicAuthPassword - Descr: basic auth password for CC bulk API Default: <nil>
+*/
+	BasicAuthPassword interface{} `yaml:"basic_auth_password,omitempty"`
 
 	/*BasicAuthUsername - Descr: basic auth username for CC bulk API Default: internal_user
 */
 	BasicAuthUsername interface{} `yaml:"basic_auth_username,omitempty"`
-
-	/*BulkBatchSize - Descr: number of apps to fetch at once from bulk API Default: 500
-*/
-	BulkBatchSize interface{} `yaml:"bulk_batch_size,omitempty"`
 
 }

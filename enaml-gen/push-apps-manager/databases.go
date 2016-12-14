@@ -5,12 +5,8 @@ package push_apps_manager
 */
 type Databases struct {
 
-	/*AppUsageService - Descr: IP of database server for the app usage service Default: <nil>
+	/*AppUsageService - Descr: Password credential for the app usage service Default: <nil>
 */
 	AppUsageService *DatabasesAppUsageService `yaml:"app_usage_service,omitempty"`
-
-	/*Console - Descr: Postgres database name for Console application Default: console
-*/
-	Console *Console `yaml:"console,omitempty"`
 
 }

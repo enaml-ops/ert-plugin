@@ -5,21 +5,21 @@ package deploy_autoscaling
 */
 type DeployAutoscalingJob struct {
 
-	/*Ssl - Descr: Whether to verify SSL certs when making web requests Default: <nil>
+	/*Autoscale - Descr: Base64 encoded image for marketplace registration Default: <nil>
 */
-	Ssl *Ssl `yaml:"ssl,omitempty"`
-
-	/*Domain - Descr: CloudFoundry system domain Default: <nil>
-*/
-	Domain interface{} `yaml:"domain,omitempty"`
+	Autoscale *Autoscale `yaml:"autoscale,omitempty"`
 
 	/*AppDomains - Descr: CloudFoundry application domains Default: <nil>
 */
 	AppDomains interface{} `yaml:"app_domains,omitempty"`
 
-	/*Autoscale - Descr: Enable diego deployment of autoscaling Default: <nil>
+	/*Domain - Descr: CloudFoundry system domain Default: <nil>
 */
-	Autoscale *Autoscale `yaml:"autoscale,omitempty"`
+	Domain interface{} `yaml:"domain,omitempty"`
+
+	/*Ssl - Descr: Whether to verify SSL certs when making web requests Default: <nil>
+*/
+	Ssl *Ssl `yaml:"ssl,omitempty"`
 
 	/*Uaa - Descr: UAA Client Secret Default: <nil>
 */

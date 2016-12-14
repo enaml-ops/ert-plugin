@@ -5,7 +5,7 @@ package push_apps_manager
 */
 type Services struct {
 
-	/*Authentication - Descr: Cloud Foundry login server URL Default: <nil>
+	/*Authentication - Descr: Cloud Foundry UAA server URL Default: <nil>
 */
 	Authentication *Authentication `yaml:"authentication,omitempty"`
 

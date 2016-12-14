@@ -5,28 +5,24 @@ package push_apps_manager
 */
 type Cf struct {
 
-	/*AdminPassword - Descr: Password of the admin user Default: <nil>
+	/*SystemDomain - Descr: Cloud Foundry system domain, used for the Console application's URL Default: <nil>
 */
-	AdminPassword interface{} `yaml:"admin_password,omitempty"`
+	SystemDomain interface{} `yaml:"system_domain,omitempty"`
 
 	/*ApiUrl - Descr: Full URL of Cloud Foundry API Default: <nil>
 */
 	ApiUrl interface{} `yaml:"api_url,omitempty"`
 
-	/*SystemDomain - Descr: Cloud Foundry system domain, used for the Console application's URL Default: <nil>
+	/*AdminPassword - Descr: Password of the admin user Default: <nil>
 */
-	SystemDomain interface{} `yaml:"system_domain,omitempty"`
-
-	/*ConsoleSubdomain - Descr: Console subdomain name Default: apps
-*/
-	ConsoleSubdomain interface{} `yaml:"console_subdomain,omitempty"`
+	AdminPassword interface{} `yaml:"admin_password,omitempty"`
 
 	/*AdminUsername - Descr: Username of the admin user Default: <nil>
 */
 	AdminUsername interface{} `yaml:"admin_username,omitempty"`
 
-	/*MaximumHealthCheckTimeout - Descr: The maximum time (in seconds) for cf-push to wait for console app to start Default: 600
+	/*AppsDomain - Descr: Cloud Foundry apps domain, used for default app domains Default: <nil>
 */
-	MaximumHealthCheckTimeout interface{} `yaml:"maximum_health_check_timeout,omitempty"`
+	AppsDomain interface{} `yaml:"apps_domain,omitempty"`
 
 }

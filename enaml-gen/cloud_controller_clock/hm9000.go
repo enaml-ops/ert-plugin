@@ -5,6 +5,10 @@ package cloud_controller_clock
 */
 type Hm9000 struct {
 
+	/*Port - Descr: Port of the hm9000 Api Server Default: <nil>
+*/
+	Port interface{} `yaml:"port,omitempty"`
+
 	/*Url - Descr: URL of the hm9000 server Default: <nil>
 */
 	Url interface{} `yaml:"url,omitempty"`

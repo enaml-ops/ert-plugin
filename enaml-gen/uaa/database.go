@@ -9,9 +9,9 @@ type Database struct {
 */
 	RemoveAbandoned interface{} `yaml:"remove_abandoned,omitempty"`
 
-	/*AbandonedTimeout - Descr: Timeout in seconds for the longest running queries. Take into DB migrations for this timeout as they may run during a long period of time. Default: 300
+	/*MaxIdleConnections - Descr: The max number of open idle connections to the DB from a running UAA instance Default: 10
 */
-	AbandonedTimeout interface{} `yaml:"abandoned_timeout,omitempty"`
+	MaxIdleConnections interface{} `yaml:"max_idle_connections,omitempty"`
 
 	/*LogAbandoned - Descr: Should connections that are forcibly closed be logged. Default: true
 */
@@ -21,12 +21,16 @@ type Database struct {
 */
 	CaseInsensitive interface{} `yaml:"case_insensitive,omitempty"`
 
-	/*MaxIdleConnections - Descr: The max number of open idle connections to the DB from a running UAA instance Default: 10
-*/
-	MaxIdleConnections interface{} `yaml:"max_idle_connections,omitempty"`
-
 	/*MaxConnections - Descr: The max number of open connections to the DB from a running UAA instance Default: 100
 */
 	MaxConnections interface{} `yaml:"max_connections,omitempty"`
+
+	/*MinIdleConnections - Descr: The min number of open idle connections to the DB from a running UAA instance Default: 0
+*/
+	MinIdleConnections interface{} `yaml:"min_idle_connections,omitempty"`
+
+	/*AbandonedTimeout - Descr: Timeout in seconds for the longest running queries. Take into DB migrations for this timeout as they may run during a long period of time. Default: 300
+*/
+	AbandonedTimeout interface{} `yaml:"abandoned_timeout,omitempty"`
 
 }

@@ -5,7 +5,7 @@ package etcd_metrics_server
 */
 type EtcdMetricsServerJob struct {
 
-	/*EtcdMetricsServer - Descr: port of ETCD server to instrument Default: 4001
+	/*EtcdMetricsServer - Descr: basic auth password for metrics server (leave empty for generated) Default: 
 */
 	EtcdMetricsServer *EtcdMetricsServer `yaml:"etcd_metrics_server,omitempty"`
 

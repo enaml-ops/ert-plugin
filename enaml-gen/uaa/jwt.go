@@ -5,11 +5,19 @@ package uaa
 */
 type Jwt struct {
 
-	/*Policy - Descr: Map of key IDs and signing keys, each defined with a property `signingKey` Default: <nil>
+	/*Policy - Descr: The global refresh token validity for all zones if nothing is configured on the client Default: 2592000
 */
 	Policy *JwtPolicy `yaml:"policy,omitempty"`
 
-	/*VerificationKey - Descr: The key used to verify JWT-based OAuth2 tokens Default: <nil>
+	/*Refresh - Descr: Disallows refresh-token grant for any client for which the user has not approved the `uaa.offline_token` scope Default: false
+*/
+	Refresh *Refresh `yaml:"refresh,omitempty"`
+
+	/*Revocable - Descr: Set to true if you wish that even JWT tokens become individually revocable and stored in the UAA token storage. This setting applies to the default zone only. Default: false
+*/
+	Revocable interface{} `yaml:"revocable,omitempty"`
+
+	/*VerificationKey - Descr: Deprecated. Use uaa.jwt.policy.keys. The key used to verify JWT-based OAuth2 tokens Default: <nil>
 */
 	VerificationKey interface{} `yaml:"verification_key,omitempty"`
 
@@ -17,12 +25,8 @@ type Jwt struct {
 */
 	Claims *Claims `yaml:"claims,omitempty"`
 
-	/*SigningKey - Descr: The key used to sign the JWT-based OAuth2 tokens Default: <nil>
+	/*SigningKey - Descr: Deprecated. Use uaa.jwt.policy.keys. The key used to sign the JWT-based OAuth2 tokens Default: <nil>
 */
 	SigningKey interface{} `yaml:"signing_key,omitempty"`
-
-	/*Revocable - Descr: Set to true if you wish that even JWT tokens become individually revocable and stored in the UAA token storage. This setting applies to the default zone only. Default: false
-*/
-	Revocable interface{} `yaml:"revocable,omitempty"`
 
 }

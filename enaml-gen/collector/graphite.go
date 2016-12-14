@@ -5,12 +5,12 @@ package collector
 */
 type Graphite struct {
 
-	/*Address - Descr: IP address of Graphite Default: <nil>
-*/
-	Address interface{} `yaml:"address,omitempty"`
-
 	/*Port - Descr: TCP port of Graphite Default: <nil>
 */
 	Port interface{} `yaml:"port,omitempty"`
+
+	/*Address - Descr: IP address of Graphite Default: <nil>
+*/
+	Address interface{} `yaml:"address,omitempty"`
 
 }

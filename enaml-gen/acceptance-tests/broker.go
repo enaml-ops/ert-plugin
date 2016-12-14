@@ -5,8 +5,8 @@ package acceptance_tests
 */
 type Broker struct {
 
-	/*Host - Descr: Host for the broker. Should be the same as jobs.cf-mysql-broker.properties.external_host Default: <nil>
+	/*Services - Descr: Array of Services the broker provides Default: <nil>
 */
-	Host interface{} `yaml:"host,omitempty"`
+	Services interface{} `yaml:"services,omitempty"`
 
 }

@@ -5,8 +5,8 @@ package acceptance_tests
 */
 type AcceptanceTestsJob struct {
 
-	/*AcceptanceTests - Descr: Flag for using HTTP when making api and application requests rather than the default HTTPS Default: false
+	/*Consul - Descr: Password for the BOSH registry Default: password
 */
-	AcceptanceTests *AcceptanceTests `yaml:"acceptance_tests,omitempty"`
+	Consul *Consul `yaml:"consul,omitempty"`
 
 }

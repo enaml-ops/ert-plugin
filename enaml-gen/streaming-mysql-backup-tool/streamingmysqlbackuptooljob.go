@@ -5,8 +5,12 @@ package streaming_mysql_backup_tool
 */
 type StreamingMysqlBackupToolJob struct {
 
-	/*MysqlBackup - Descr: Command which is executed in order to take a backup Default: <nil>
+	/*CfMysqlBackup - Descr: Username used by backup client to stream a backup from the mysql node Default: <nil>
 */
-	MysqlBackup *MysqlBackup `yaml:"mysql-backup,omitempty"`
+	CfMysqlBackup *CfMysqlBackup `yaml:"cf-mysql-backup,omitempty"`
+
+	/*CfMysql - Descr: Password for the MySQL server admin user Default: <nil>
+*/
+	CfMysql *CfMysql `yaml:"cf_mysql,omitempty"`
 
 }

@@ -5,101 +5,131 @@ package gorouter
 */
 type Router struct {
 
-	/*DnsHealthCheckHost - Descr: Host to ping for confirmation of DNS resolution, only used when Routing API is enabled Default: consul.service.cf.internal
+	/*Tracing - Descr: Enables the addition of the X-B3-Trace-Id header to incoming requests. If the header already exists on the incoming request, it will not be overwritten. Default: false
 */
-	DnsHealthCheckHost interface{} `yaml:"dns_health_check_host,omitempty"`
-
-	/*SslCert - Descr: The public ssl cert for ssl termination Default: 
-*/
-	SslCert interface{} `yaml:"ssl_cert,omitempty"`
-
-	/*TraceKey - Descr: If the X-Vcap-Trace request header is set and has this value, trace headers are added to the response. Default: 22
-*/
-	TraceKey interface{} `yaml:"trace_key,omitempty"`
-
-	/*RouteServicesTimeout - Descr: Expiry time of a route service signature in seconds Default: 60
-*/
-	RouteServicesTimeout interface{} `yaml:"route_services_timeout,omitempty"`
+	Tracing *Tracing `yaml:"tracing,omitempty"`
 
 	/*NumberOfCpus - Descr: Number of CPUs to utilize, the default (-1) will equal the number of available CPUs Default: -1
 */
 	NumberOfCpus interface{} `yaml:"number_of_cpus,omitempty"`
 
-	/*DebugAddr - Descr: Address at which to serve debug info Default: 0.0.0.0:17001
+	/*Offset - Descr:  Default: 0
 */
-	DebugAddr interface{} `yaml:"debug_addr,omitempty"`
-
-	/*RequestedRouteRegistrationIntervalInSeconds - Descr: On startup, the router will delay listening for requests by this duration to increase likelihood that it has a complete routing table before serving requests. The router also broadcasts the same duration as a recommended interval to registering clients via NATS. Default: 20
-*/
-	RequestedRouteRegistrationIntervalInSeconds interface{} `yaml:"requested_route_registration_interval_in_seconds,omitempty"`
-
-	/*SecureCookies - Descr: Set secure flag on http cookies Default: false
-*/
-	SecureCookies interface{} `yaml:"secure_cookies,omitempty"`
-
-	/*SslSkipValidation - Descr: Skip SSL client cert validation Default: false
-*/
-	SslSkipValidation interface{} `yaml:"ssl_skip_validation,omitempty"`
-
-	/*LoggingLevel - Descr: Log level for router Default: info
-*/
-	LoggingLevel interface{} `yaml:"logging_level,omitempty"`
+	Offset interface{} `yaml:"offset,omitempty"`
 
 	/*RouteServicesSecretDecryptOnly - Descr: To rotate keys, add your new key here and deploy. Then swap this key with the value of route_services_secret and deploy again. Default: 
 */
 	RouteServicesSecretDecryptOnly interface{} `yaml:"route_services_secret_decrypt_only,omitempty"`
 
-	/*SkipOauthTlsVerification - Descr: Skip TLS verification when talking to UAA Default: false
+	/*LoggingLevel - Descr: Log level for router Default: info
 */
-	SkipOauthTlsVerification interface{} `yaml:"skip_oauth_tls_verification,omitempty"`
+	LoggingLevel interface{} `yaml:"logging_level,omitempty"`
 
-	/*Status - Descr: Port for the Router varz/status endpoint. Default: 8080
+	/*LoadBalancerHealthyThreshold - Descr: Time period in seconds to wait until declaring the router instance started after starting the listener socket. This allows an external load balancer time to register the instance as healthy. Default: 20
 */
-	Status *Status `yaml:"status,omitempty"`
-
-	/*Logrotate - Descr: The frequency in minutes which logrotate will rotate VM logs Default: 5
-*/
-	Logrotate *Logrotate `yaml:"logrotate,omitempty"`
-
-	/*RouteServicesRecommendHttps - Descr: Route Services are told where to send requests after processing using the X-CF-Forwarded-Url header. When this property is true, the scheme for this URL is https. When false, the scheme is http. As requests from Route Services to applications on CF transit load balancers and gorouter, disable this property for deployments that have TLS termination disabled. Default: true
-*/
-	RouteServicesRecommendHttps interface{} `yaml:"route_services_recommend_https,omitempty"`
-
-	/*CipherSuites - Descr: An ordered list of supported SSL cipher suites containing golang tls constants separated by colons The cipher suite will be chosen according to this order during SSL handshake Default: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_RSA_WITH_AES_128_CBC_SHA:TLS_RSA_WITH_AES_256_CBC_SHA
-*/
-	CipherSuites interface{} `yaml:"cipher_suites,omitempty"`
-
-	/*Offset - Descr:  Default: 0
-*/
-	Offset interface{} `yaml:"offset,omitempty"`
-
-	/*EnableAccessLogStreaming - Descr: Enables streaming of access log to syslog. Warning: this comes with a performance cost; due to higher I/O, max request rate is reduced. Default: false
-*/
-	EnableAccessLogStreaming interface{} `yaml:"enable_access_log_streaming,omitempty"`
-
-	/*RouteServicesSecret - Descr: Support for route services is disabled when no value is configured. A robust passphrase is recommended. Default: 
-*/
-	RouteServicesSecret interface{} `yaml:"route_services_secret,omitempty"`
-
-	/*ExtraHeadersToLog - Descr: A list of headers that log events will be annotated with Default: []
-*/
-	ExtraHeadersToLog interface{} `yaml:"extra_headers_to_log,omitempty"`
+	LoadBalancerHealthyThreshold interface{} `yaml:"load_balancer_healthy_threshold,omitempty"`
 
 	/*SslKey - Descr: The private ssl key for ssl termination Default: 
 */
 	SslKey interface{} `yaml:"ssl_key,omitempty"`
 
+	/*SecureCookies - Descr: Set secure flag on http cookies Default: false
+*/
+	SecureCookies interface{} `yaml:"secure_cookies,omitempty"`
+
+	/*TraceKey - Descr: If the X-Vcap-Trace request header is set and has this value, trace headers are added to the response. Default: 22
+*/
+	TraceKey interface{} `yaml:"trace_key,omitempty"`
+
+	/*Status - Descr: Password for HTTP basic auth to the /varz and /routes endpoints. Default: <nil>
+*/
+	Status *Status `yaml:"status,omitempty"`
+
+	/*Logrotate - Descr: The number of files that logrotate will keep around on the VM Default: 7
+*/
+	Logrotate *Logrotate `yaml:"logrotate,omitempty"`
+
+	/*SslSkipValidation - Descr: Skip SSL client cert validation Default: false
+*/
+	SslSkipValidation interface{} `yaml:"ssl_skip_validation,omitempty"`
+
+	/*BalancingAlgorithm - Descr: Algorithm used to distribute requests for a route across backends. Supported values are round-robin and least-connection Default: round-robin
+*/
+	BalancingAlgorithm interface{} `yaml:"balancing_algorithm,omitempty"`
+
+	/*RouteServicesTimeout - Descr: Expiry time of a route service signature in seconds Default: 60
+*/
+	RouteServicesTimeout interface{} `yaml:"route_services_timeout,omitempty"`
+
+	/*CipherSuites - Descr: An ordered list of supported SSL cipher suites containing golang tls constants separated by colons The cipher suite will be chosen according to this order during SSL handshake Default: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_RSA_WITH_AES_128_CBC_SHA:TLS_RSA_WITH_AES_256_CBC_SHA
+*/
+	CipherSuites interface{} `yaml:"cipher_suites,omitempty"`
+
+	/*DebugAddress - Descr: Address at which to serve debug info Default: 0.0.0.0:17002
+*/
+	DebugAddress interface{} `yaml:"debug_address,omitempty"`
+
 	/*DrainWait - Descr: Delay in seconds after drain begins before server stops listening.
 During this time the server will respond with 503 Service Unavailable to
-requests having header User-Agent: HTTP-Monitor/1.1. This accommodates
-requests in transit sent while health check responded ok.
+requests having header
+User-Agent: {Value of router.healthcheck_user_agent}.
+This accommodates requests in transit sent during the time the health
+check responded with `ok`.
  Default: 0
 */
 	DrainWait interface{} `yaml:"drain_wait,omitempty"`
 
+	/*HealthcheckUserAgent - Descr: User-Agent for the health check agent (usually the Load Balancer). Default: HTTP-Monitor/1.1
+*/
+	HealthcheckUserAgent interface{} `yaml:"healthcheck_user_agent,omitempty"`
+
+	/*SslCert - Descr: The public ssl cert for ssl termination Default: 
+*/
+	SslCert interface{} `yaml:"ssl_cert,omitempty"`
+
+	/*ExtraHeadersToLog - Descr: An array of headers that access log events will be annotated with Default: []
+*/
+	ExtraHeadersToLog interface{} `yaml:"extra_headers_to_log,omitempty"`
+
 	/*Port - Descr: Listening Port for Router. Default: 80
 */
 	Port interface{} `yaml:"port,omitempty"`
+
+	/*RouteServicesSecret - Descr: Support for route services is disabled when no value is configured. A robust passphrase is recommended. Default: 
+*/
+	RouteServicesSecret interface{} `yaml:"route_services_secret,omitempty"`
+
+	/*SuspendPruningIfNatsUnavailable - Descr: Suspend pruning of routes when NATs is unavailable and maintain the
+current routing table. WARNING: This strategy favors availability over
+consistency and there is a possibility of routing to an incorrect
+endpoint in the case of port re-use. To be used with caution."
+ Default: false
+*/
+	SuspendPruningIfNatsUnavailable interface{} `yaml:"suspend_pruning_if_nats_unavailable,omitempty"`
+
+	/*RouteServicesRecommendHttps - Descr: Route Services are told where to send requests after processing using the X-CF-Forwarded-Url header. When this property is true, the scheme for this URL is https. When false, the scheme is http. As requests from Route Services to applications on CF transit load balancers and gorouter, disable this property for deployments that have TLS termination disabled. Default: true
+*/
+	RouteServicesRecommendHttps interface{} `yaml:"route_services_recommend_https,omitempty"`
+
+	/*EnableProxy - Descr: Enables support for the popular PROXY protocol, allowing downstream load balancers that do not support HTTP to pass along client information. Default: false
+*/
+	EnableProxy interface{} `yaml:"enable_proxy,omitempty"`
+
+	/*EnableAccessLogStreaming - Descr: Enables streaming of access log to syslog. Default: false
+*/
+	EnableAccessLogStreaming interface{} `yaml:"enable_access_log_streaming,omitempty"`
+
+	/*DnsHealthCheckHost - Descr: Host to ping for confirmation of DNS resolution, only used when Routing API is enabled Default: consul.service.cf.internal
+*/
+	DnsHealthCheckHost interface{} `yaml:"dns_health_check_host,omitempty"`
+
+	/*ForceForwardedProtoHttps - Descr: Enables setting X-Forwarded-Proto header if SSL termination happened upstream and incorrectly set the header value. When this property is set to true gorouter sets the header X-Forwarded-Proto to https. When this value set to false, gorouter set the header X-Forwarded-Proto to the protocol of the incoming request Default: false
+*/
+	ForceForwardedProtoHttps interface{} `yaml:"force_forwarded_proto_https,omitempty"`
+
+	/*RequestedRouteRegistrationIntervalInSeconds - Descr: On startup, the router will delay listening for requests by this duration to increase likelihood that it has a complete routing table before serving requests. The router also broadcasts the same duration as a recommended interval to registering clients via NATS. Default: 20
+*/
+	RequestedRouteRegistrationIntervalInSeconds interface{} `yaml:"requested_route_registration_interval_in_seconds,omitempty"`
 
 	/*EnableSsl - Descr: Enable ssl termination on the router Default: false
 */

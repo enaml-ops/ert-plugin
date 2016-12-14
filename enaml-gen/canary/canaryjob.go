@@ -5,7 +5,7 @@ package canary
 */
 type CanaryJob struct {
 
-	/*Diego - Descr: Number of instances of the canary app Default: <nil>
+	/*Diego - Descr: The Elastic Runtime space name to use for the canary app Default: <nil>
 */
 	Diego *Diego `yaml:"diego,omitempty"`
 

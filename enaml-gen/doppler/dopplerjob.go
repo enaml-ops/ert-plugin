@@ -5,20 +5,20 @@ package doppler
 */
 type DopplerJob struct {
 
-	/*DopplerEndpoint - Descr: Shared secret used to verify cryptographically signed dropsonde messages Default: <nil>
-*/
-	DopplerEndpoint *DopplerEndpoint `yaml:"doppler_endpoint,omitempty"`
-
-	/*Doppler - Descr: Zone of the doppler server Default: <nil>
-*/
-	Doppler *Doppler `yaml:"doppler,omitempty"`
-
 	/*MetronEndpoint - Descr: The port used to emit dropsonde messages to the Metron agent Default: 3457
 */
 	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
 
-	/*Loggregator - Descr: CA root required for key/cert verification Default: 
+	/*Doppler - Descr: Size of the internal buffer used by doppler to store messages for output to firehose or 'cf logs'. If the buffer gets full doppler will drop the messages. Default: 10000
+*/
+	Doppler *Doppler `yaml:"doppler,omitempty"`
+
+	/*Loggregator - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
 	Loggregator *Loggregator `yaml:"loggregator,omitempty"`
+
+	/*DopplerEndpoint - Descr: Shared secret used to verify cryptographically signed dropsonde messages Default: <nil>
+*/
+	DopplerEndpoint *DopplerEndpoint `yaml:"doppler_endpoint,omitempty"`
 
 }

@@ -5,13 +5,9 @@ package metron_agent
 */
 type Loggregator struct {
 
-	/*DropsondeIncomingPort - Descr: Port where loggregator listens for dropsonde log messages Default: 3457
+	/*Etcd - Descr: Number of concurrent requests to ETCD Default: 10
 */
-	DropsondeIncomingPort interface{} `yaml:"dropsonde_incoming_port,omitempty"`
-
-	/*Etcd - Descr: IPs pointing to the ETCD cluster Default: <nil>
-*/
-	Etcd *Etcd `yaml:"etcd,omitempty"`
+	Etcd *LoggregatorEtcd `yaml:"etcd,omitempty"`
 
 	/*Tls - Descr: CA root required for key/cert verification Default: 
 */

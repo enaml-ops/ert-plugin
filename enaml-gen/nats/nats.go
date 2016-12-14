@@ -5,13 +5,13 @@ package nats
 */
 type Nats struct {
 
+	/*Machines - Descr: IP of each NATS cluster member. Default: <nil>
+*/
+	Machines interface{} `yaml:"machines,omitempty"`
+
 	/*Trace - Descr: Enable trace logging output. Default: false
 */
 	Trace interface{} `yaml:"trace,omitempty"`
-
-	/*Password - Descr: Password for server authentication. Default: <nil>
-*/
-	Password interface{} `yaml:"password,omitempty"`
 
 	/*MonitorPort - Descr: Port for varz and connz monitoring. 0 means disabled. Default: 0
 */
@@ -21,6 +21,10 @@ type Nats struct {
 */
 	AuthorizationTimeout interface{} `yaml:"authorization_timeout,omitempty"`
 
+	/*Debug - Descr: Enable debug logging output. Default: false
+*/
+	Debug interface{} `yaml:"debug,omitempty"`
+
 	/*User - Descr: Username for server authentication. Default: <nil>
 */
 	User interface{} `yaml:"user,omitempty"`
@@ -29,16 +33,12 @@ type Nats struct {
 */
 	Port interface{} `yaml:"port,omitempty"`
 
-	/*Machines - Descr: IP of each NATS cluster member. Default: <nil>
-*/
-	Machines interface{} `yaml:"machines,omitempty"`
-
 	/*ProfPort - Descr: Port for pprof. 0 means disabled. Default: 0
 */
 	ProfPort interface{} `yaml:"prof_port,omitempty"`
 
-	/*Debug - Descr: Enable debug logging output. Default: false
+	/*Password - Descr: Password for server authentication. Default: <nil>
 */
-	Debug interface{} `yaml:"debug,omitempty"`
+	Password interface{} `yaml:"password,omitempty"`
 
 }

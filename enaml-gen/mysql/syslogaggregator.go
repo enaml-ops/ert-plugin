@@ -5,20 +5,20 @@ package mysql
 */
 type SyslogAggregator struct {
 
-	/*Address - Descr: IP address for syslog aggregator Default: <nil>
-*/
-	Address interface{} `yaml:"address,omitempty"`
-
 	/*All - Descr: Define whether forwarders should also send non-mysql syslog activity to the aggregator. Default: false
 */
 	All interface{} `yaml:"all,omitempty"`
+
+	/*Transport - Descr: Transport to be used when forwarding logs (tcp|udp|relp). Default: tcp
+*/
+	Transport interface{} `yaml:"transport,omitempty"`
 
 	/*Port - Descr: TCP port of syslog aggregator Default: <nil>
 */
 	Port interface{} `yaml:"port,omitempty"`
 
-	/*Transport - Descr: Transport to be used when forwarding logs (tcp|udp|relp). Default: tcp
+	/*Address - Descr: IP address for syslog aggregator Default: <nil>
 */
-	Transport interface{} `yaml:"transport,omitempty"`
+	Address interface{} `yaml:"address,omitempty"`
 
 }

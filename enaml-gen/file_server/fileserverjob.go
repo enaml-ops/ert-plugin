@@ -5,7 +5,7 @@ package file_server
 */
 type FileServerJob struct {
 
-	/*Diego - Descr: when connecting over https, ignore bad ssl certificates Default: false
+	/*Diego - Descr: Log level Default: info
 */
 	Diego *Diego `yaml:"diego,omitempty"`
 

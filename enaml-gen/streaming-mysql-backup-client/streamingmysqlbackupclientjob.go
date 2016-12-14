@@ -5,8 +5,12 @@ package streaming_mysql_backup_client
 */
 type StreamingMysqlBackupClientJob struct {
 
-	/*StreamingMysqlBackupClient - Descr: Folder to download / prepare backups Default: /var/vcap/data/mysql-backups-tmp
+	/*CfMysqlBackup - Descr: Password used by backup client to stream a backup from the mysql node Default: <nil>
 */
-	StreamingMysqlBackupClient *StreamingMysqlBackupClient `yaml:"streaming-mysql-backup-client,omitempty"`
+	CfMysqlBackup *CfMysqlBackup `yaml:"cf-mysql-backup,omitempty"`
+
+	/*CfMysql - Descr: List of IP address of servers which can generate backups Default: <nil>
+*/
+	CfMysql *CfMysql `yaml:"cf_mysql,omitempty"`
 
 }

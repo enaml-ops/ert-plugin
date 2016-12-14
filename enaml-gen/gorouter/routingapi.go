@@ -5,16 +5,16 @@ package gorouter
 */
 type RoutingApi struct {
 
-	/*AuthDisabled - Descr: Disables UAA authentication Default: false
+	/*Enabled - Descr: When enabled, GoRouter will fetch HTTP routes from the Routing API in addition to routes obtained via NATS. Default: false
 */
-	AuthDisabled interface{} `yaml:"auth_disabled,omitempty"`
+	Enabled interface{} `yaml:"enabled,omitempty"`
 
-	/*Port - Descr: Port on which routing-api is running. Default: 3000
+	/*Port - Descr: Port on which Routing API is running. Default: 3000
 */
 	Port interface{} `yaml:"port,omitempty"`
 
-	/*Enabled - Descr: Enable the GoRouter to receive routes from the Routing API Default: false
+	/*AuthDisabled - Descr: When false, Routing API requires OAuth tokens for authentication. Default: false
 */
-	Enabled interface{} `yaml:"enabled,omitempty"`
+	AuthDisabled interface{} `yaml:"auth_disabled,omitempty"`
 
 }

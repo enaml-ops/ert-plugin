@@ -5,36 +5,28 @@ package hm9000
 */
 type Hm9000Job struct {
 
-	/*DeaNext - Descr: Heartbeat interval for DEAs Default: <nil>
-*/
-	DeaNext *DeaNext `yaml:"dea_next,omitempty"`
-
-	/*Hm9000 - Descr: Each API call to the CC must succeed within this timeout. Default: 30
-*/
-	Hm9000 *Hm9000 `yaml:"hm9000,omitempty"`
-
-	/*Etcd - Descr: IPs pointing to the ETCD cluster Default: <nil>
-*/
-	Etcd *Etcd `yaml:"etcd,omitempty"`
-
-	/*Cc - Descr: Password used to access the bulk_api, health_manager uses it to connect to the cc, announced over NATS Default: <nil>
+	/*Cc - Descr: External port to connect to the CC Default: 9022
 */
 	Cc *Cc `yaml:"cc,omitempty"`
 
-	/*Domain - Descr: domain where cloud_controller will listen (api.domain) often the same as the system domain Default: <nil>
+	/*Hm9000 - Descr: PEM-encoded server key Default: <nil>
 */
-	Domain interface{} `yaml:"domain,omitempty"`
+	Hm9000 *Hm9000 `yaml:"hm9000,omitempty"`
 
 	/*Nats - Descr:  Default: <nil>
 */
 	Nats *Nats `yaml:"nats,omitempty"`
 
-	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
+	/*DeaNext - Descr: Heartbeat interval for DEAs Default: <nil>
 */
-	Ssl *Ssl `yaml:"ssl,omitempty"`
+	DeaNext *DeaNext `yaml:"dea_next,omitempty"`
 
 	/*MetronAgent - Descr: Incoming port for dropsonde log messages Default: 3457
 */
 	MetronAgent *MetronAgent `yaml:"metron_agent,omitempty"`
+
+	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
+*/
+	Ssl *Ssl `yaml:"ssl,omitempty"`
 
 }

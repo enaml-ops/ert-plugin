@@ -5,7 +5,7 @@ package test_autoscaling
 */
 type Autoscale struct {
 
-	/*Cf - Descr: Username of the CF admin user Default: <nil>
+	/*Cf - Descr: Password of the CF admin user Default: <nil>
 */
 	Cf *Cf `yaml:"cf,omitempty"`
 

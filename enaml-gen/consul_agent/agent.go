@@ -9,6 +9,22 @@ type Agent struct {
 */
 	ProtocolVersion interface{} `yaml:"protocol_version,omitempty"`
 
+	/*Mode - Descr: Mode to run the agent in. (client or server) Default: client
+*/
+	Mode interface{} `yaml:"mode,omitempty"`
+
+	/*Servers - Descr: WAN server addresses to join. Default: []
+*/
+	Servers *Servers `yaml:"servers,omitempty"`
+
+	/*Datacenter - Descr: Name of the agent's datacenter. Default: dc1
+*/
+	Datacenter interface{} `yaml:"datacenter,omitempty"`
+
+	/*DnsConfig - Descr: When allow_stale is specified, this is used to limit how stale results are allowed to be. Default: 5s
+*/
+	DnsConfig *DnsConfig `yaml:"dns_config,omitempty"`
+
 	/*Domain - Descr: Domain suffix for DNS Default: <nil>
 */
 	Domain interface{} `yaml:"domain,omitempty"`
@@ -16,18 +32,6 @@ type Agent struct {
 	/*LogLevel - Descr: Agent log level. Default: info
 */
 	LogLevel interface{} `yaml:"log_level,omitempty"`
-
-	/*Datacenter - Descr: Name of the agent's datacenter. Default: dc1
-*/
-	Datacenter interface{} `yaml:"datacenter,omitempty"`
-
-	/*Servers - Descr: LAN server addresses to join on start. Default: []
-*/
-	Servers *Servers `yaml:"servers,omitempty"`
-
-	/*Mode - Descr: Mode to run the agent in. (client or server) Default: client
-*/
-	Mode interface{} `yaml:"mode,omitempty"`
 
 	/*Services - Descr: Map of consul service definitions. Default: map[]
 */

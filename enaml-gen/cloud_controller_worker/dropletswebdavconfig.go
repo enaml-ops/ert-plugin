@@ -5,19 +5,23 @@ package cloud_controller_worker
 */
 type DropletsWebdavConfig struct {
 
-	/*CaCert - Descr: The ca cert to use when communicating with webdav Default: 
+	/*Username - Descr: The basic auth user that CC uses to connect to the admin endpoint on webdav Default: 
 */
-	CaCert interface{} `yaml:"ca_cert,omitempty"`
+	Username interface{} `yaml:"username,omitempty"`
+
+	/*BlobstoreTimeout - Descr: The timeout in seconds for requests to the blobstore Default: 5
+*/
+	BlobstoreTimeout interface{} `yaml:"blobstore_timeout,omitempty"`
 
 	/*PublicEndpoint - Descr: The location of the webdav server eg: https://blobstore.com Default: 
 */
 	PublicEndpoint interface{} `yaml:"public_endpoint,omitempty"`
 
-	/*Username - Descr: The basic auth user that CC uses to connect to the admin endpoint on webdav Default: 
+	/*CaCert - Descr: The ca cert to use when communicating with webdav Default: 
 */
-	Username interface{} `yaml:"username,omitempty"`
+	CaCert interface{} `yaml:"ca_cert,omitempty"`
 
-	/*PrivateEndpoint - Descr: The location of the webdav server eg: https://blobstore.internal Default: https://blobstore.service.cf.internal
+	/*PrivateEndpoint - Descr: The location of the webdav server eg: https://blobstore.internal Default: https://blobstore.service.cf.internal:4443
 */
 	PrivateEndpoint interface{} `yaml:"private_endpoint,omitempty"`
 

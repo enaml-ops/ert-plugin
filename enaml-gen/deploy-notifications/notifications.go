@@ -5,53 +5,53 @@ package deploy_notifications
 */
 type Notifications struct {
 
+	/*Smtp - Descr: Username for the SMTP host Default: <nil>
+*/
+	Smtp *Smtp `yaml:"smtp,omitempty"`
+
 	/*Sender - Descr: Sender of the notification Default: <nil>
 */
 	Sender interface{} `yaml:"sender,omitempty"`
-
-	/*Network - Descr: Network used to host application Default: <nil>
-*/
-	Network interface{} `yaml:"network,omitempty"`
-
-	/*Cf - Descr: Username of the CF admin user Default: <nil>
-*/
-	Cf *Cf `yaml:"cf,omitempty"`
-
-	/*DefaultTemplate - Descr: default template to use for the service Default: <nil>
-*/
-	DefaultTemplate interface{} `yaml:"default_template,omitempty"`
-
-	/*Organization - Descr: Organization that hosts the app Default: <nil>
-*/
-	Organization interface{} `yaml:"organization,omitempty"`
 
 	/*EncryptionKey - Descr: key used to encrypt unsubscribe IDs Default: <nil>
 */
 	EncryptionKey interface{} `yaml:"encryption_key,omitempty"`
 
-	/*InstanceCount - Descr: number of instances of service to run Default: <nil>
+	/*Network - Descr: Network used to host application Default: <nil>
 */
-	InstanceCount interface{} `yaml:"instance_count,omitempty"`
+	Network interface{} `yaml:"network,omitempty"`
 
-	/*ErrorOnMisconfiguration - Descr: Throw error on service misconfiguration during deployment Default: true
+	/*Organization - Descr: Organization that hosts the app Default: <nil>
 */
-	ErrorOnMisconfiguration interface{} `yaml:"error_on_misconfiguration,omitempty"`
+	Organization interface{} `yaml:"organization,omitempty"`
 
 	/*Space - Descr: Space that hosts the app Default: <nil>
 */
 	Space interface{} `yaml:"space,omitempty"`
 
-	/*Uaa - Descr: Admin client secret of the UAA Default: <nil>
+	/*ErrorOnMisconfiguration - Descr: Throw error on service misconfiguration during deployment Default: true
 */
-	Uaa *Uaa `yaml:"uaa,omitempty"`
+	ErrorOnMisconfiguration interface{} `yaml:"error_on_misconfiguration,omitempty"`
 
-	/*Smtp - Descr: Secret to use with CRAMMD5 auth mechanism Default: <nil>
+	/*Cf - Descr: Password of the CF admin user Default: <nil>
 */
-	Smtp *Smtp `yaml:"smtp,omitempty"`
+	Cf *Cf `yaml:"cf,omitempty"`
+
+	/*InstanceCount - Descr: number of instances of service to run Default: <nil>
+*/
+	InstanceCount interface{} `yaml:"instance_count,omitempty"`
 
 	/*BuildpackUrl - Descr: Optional parameter that specifies the url of the buildpack to use.  Helpful if your environment does not have the latest Go buildpack. Default: <nil>
 */
 	BuildpackUrl interface{} `yaml:"buildpack_url,omitempty"`
+
+	/*Database - Descr: URL pointing to database Default: <nil>
+*/
+	Database *Database `yaml:"database,omitempty"`
+
+	/*Uaa - Descr: Client id of the UAA Default: <nil>
+*/
+	Uaa *Uaa `yaml:"uaa,omitempty"`
 
 	/*SyslogUrl - Descr: External log service URL Default: <nil>
 */
@@ -61,12 +61,12 @@ type Notifications struct {
 */
 	AppDomain interface{} `yaml:"app_domain,omitempty"`
 
-	/*Database - Descr: URL pointing to database Default: <nil>
-*/
-	Database *Database `yaml:"database,omitempty"`
-
 	/*EnableDiego - Descr: Enable deployment to diego Default: <nil>
 */
 	EnableDiego interface{} `yaml:"enable_diego,omitempty"`
+
+	/*DefaultTemplate - Descr: default template to use for the service Default: <nil>
+*/
+	DefaultTemplate interface{} `yaml:"default_template,omitempty"`
 
 }

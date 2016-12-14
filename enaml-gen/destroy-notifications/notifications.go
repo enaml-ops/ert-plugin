@@ -5,10 +5,6 @@ package destroy_notifications
 */
 type Notifications struct {
 
-	/*AppDomain - Descr: Domain used to host application Default: <nil>
-*/
-	AppDomain interface{} `yaml:"app_domain,omitempty"`
-
 	/*Organization - Descr: Organization where the app is deployed Default: <nil>
 */
 	Organization interface{} `yaml:"organization,omitempty"`
@@ -20,5 +16,9 @@ type Notifications struct {
 	/*Cf - Descr: Username of the CF admin user Default: <nil>
 */
 	Cf *Cf `yaml:"cf,omitempty"`
+
+	/*AppDomain - Descr: Domain used to host application Default: <nil>
+*/
+	AppDomain interface{} `yaml:"app_domain,omitempty"`
 
 }

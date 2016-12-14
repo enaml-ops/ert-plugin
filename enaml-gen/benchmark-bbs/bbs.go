@@ -5,10 +5,6 @@ package benchmark_bbs
 */
 type Bbs struct {
 
-	/*Etcd - Descr: maximum number of etcd client idle http connections Default: <nil>
-*/
-	Etcd *BbsEtcd `yaml:"etcd,omitempty"`
-
 	/*ApiLocation - Descr: the address of the BBS Default: bbs.service.cf.internal:8889
 */
 	ApiLocation interface{} `yaml:"api_location,omitempty"`
@@ -24,5 +20,9 @@ type Bbs struct {
 	/*ClientKey - Descr: PEM-encoded client key Default: <nil>
 */
 	ClientKey interface{} `yaml:"client_key,omitempty"`
+
+	/*Etcd - Descr: maximum number of etcd client idle http connections Default: <nil>
+*/
+	Etcd *BbsEtcd `yaml:"etcd,omitempty"`
 
 }

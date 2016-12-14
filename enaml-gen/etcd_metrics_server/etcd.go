@@ -5,12 +5,39 @@ package etcd_metrics_server
 */
 type Etcd struct {
 
-	/*Port - Descr: port of ETCD server to instrument Default: 4001
+	/*Port - Descr: port of etcd server to instrument Default: 4001
 */
 	Port interface{} `yaml:"port,omitempty"`
 
-	/*Machine - Descr: address of ETCD server to instrument Default: 127.0.0.1
+	/*ClientCert - Descr: PEM-encoded client certificate Default: 
+*/
+	ClientCert interface{} `yaml:"client_cert,omitempty"`
+
+	/*ClientKey - Descr: PEM-encoded client key Default: 
+*/
+	ClientKey interface{} `yaml:"client_key,omitempty"`
+
+	/*RequireSsl - Descr: enable ssl for all communication with etcd Default: false
+*/
+	RequireSsl interface{} `yaml:"require_ssl,omitempty"`
+
+	/*CaCert - Descr: PEM-encoded CA certificate Default: 
+*/
+	CaCert interface{} `yaml:"ca_cert,omitempty"`
+
+	/*Machine - Descr: Address of any etcd server to instrument.
+Target etcd server does not need to be colocated with this etcd_metrics_server.
+This address must be an IP or a domain name that resolves to a single etcd server.
+This property is only used if 'etcd_metrics_server.etcd.require_ssl' is 'false'.
+ Default: 127.0.0.1
 */
 	Machine interface{} `yaml:"machine,omitempty"`
+
+	/*DnsSuffix - Descr: DNS suffix of the etcd server to instrument.
+Target etcd server must be colocated with this etcd_metrics_server.
+This property is only used if 'etcd_metrics_server.etcd.require_ssl' is 'true'."
+ Default: <nil>
+*/
+	DnsSuffix interface{} `yaml:"dns_suffix,omitempty"`
 
 }

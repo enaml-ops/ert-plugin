@@ -5,7 +5,7 @@ package syslog_drain_binder
 */
 type Ssl struct {
 
-	/*SkipCertVerify - Descr: when connecting over https, ignore bad ssl certificates Default: false
+	/*SkipCertVerify - Descr: When connecting over https, ignore bad ssl certificates Default: false
 */
 	SkipCertVerify interface{} `yaml:"skip_cert_verify,omitempty"`
 

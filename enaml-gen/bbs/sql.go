@@ -5,12 +5,24 @@ package bbs
 */
 type Sql struct {
 
-	/*DbConnectionString - Descr: EXPERIMENTAL: connection string to use for SQL backend [username:password@tcp(1.1.1.1:1234)/database] Default: <nil>
+	/*CaCert - Descr: Bundle of CA certificates for the BBS to verify the SQL server SSL certificate when connecting via SSL Default: <nil>
+*/
+	CaCert interface{} `yaml:"ca_cert,omitempty"`
+
+	/*RequireSsl - Descr: Whether to require SSL for BBS communication to the SQL backend Default: false
+*/
+	RequireSsl interface{} `yaml:"require_ssl,omitempty"`
+
+	/*DbConnectionString - Descr: Connection string to use for SQL backend (for example, username:password@tcp(1.1.1.1:1234)/database) Default: <nil>
 */
 	DbConnectionString interface{} `yaml:"db_connection_string,omitempty"`
 
 	/*MaxOpenConnections - Descr: Maximum number of open connections to the SQL database Default: <nil>
 */
 	MaxOpenConnections interface{} `yaml:"max_open_connections,omitempty"`
+
+	/*DbDriver - Descr: Database driver to use for SQL backend (for example: mysql,postgres) Default: mysql
+*/
+	DbDriver interface{} `yaml:"db_driver,omitempty"`
 
 }

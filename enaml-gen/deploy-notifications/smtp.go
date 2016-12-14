@@ -9,18 +9,6 @@ type Smtp struct {
 */
 	Host interface{} `yaml:"host,omitempty"`
 
-	/*AuthMechanism - Descr: SMTP Authentication mechanism, should be one of [none plain cram-md5] Default: <nil>
-*/
-	AuthMechanism interface{} `yaml:"auth_mechanism,omitempty"`
-
-	/*Pass - Descr: Password of the SMTP user Default: <nil>
-*/
-	Pass interface{} `yaml:"pass,omitempty"`
-
-	/*Port - Descr: SMTP port number Default: <nil>
-*/
-	Port interface{} `yaml:"port,omitempty"`
-
 	/*User - Descr: Username for the SMTP host Default: <nil>
 */
 	User interface{} `yaml:"user,omitempty"`
@@ -29,8 +17,20 @@ type Smtp struct {
 */
 	Crammd5Secret interface{} `yaml:"crammd5_secret,omitempty"`
 
+	/*Pass - Descr: Password of the SMTP user Default: <nil>
+*/
+	Pass interface{} `yaml:"pass,omitempty"`
+
 	/*Tls - Descr: Uses SMTP TLS Default: <nil>
 */
 	Tls interface{} `yaml:"tls,omitempty"`
+
+	/*Port - Descr: SMTP port number Default: <nil>
+*/
+	Port interface{} `yaml:"port,omitempty"`
+
+	/*AuthMechanism - Descr: SMTP Authentication mechanism, should be one of [none plain cram-md5] Default: <nil>
+*/
+	AuthMechanism interface{} `yaml:"auth_mechanism,omitempty"`
 
 }

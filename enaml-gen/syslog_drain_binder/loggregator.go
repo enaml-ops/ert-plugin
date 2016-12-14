@@ -7,6 +7,6 @@ type Loggregator struct {
 
 	/*Etcd - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
-	Etcd *Etcd `yaml:"etcd,omitempty"`
+	Etcd *LoggregatorEtcd `yaml:"etcd,omitempty"`
 
 }

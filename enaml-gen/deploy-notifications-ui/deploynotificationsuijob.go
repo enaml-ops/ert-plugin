@@ -5,16 +5,16 @@ package deploy_notifications_ui
 */
 type DeployNotificationsUiJob struct {
 
-	/*Ssl - Descr: Whether to verify SSL certs when making web requests Default: <nil>
-*/
-	Ssl *Ssl `yaml:"ssl,omitempty"`
-
 	/*Domain - Descr: Cloud Foundry System Domain Default: <nil>
 */
 	Domain interface{} `yaml:"domain,omitempty"`
 
-	/*NotificationsUi - Descr: Organization to deploy to Default: <nil>
+	/*NotificationsUi - Descr: Subdomain of route serving the application, usually the app name, e.g. notifications-ui Default: <nil>
 */
 	NotificationsUi *NotificationsUi `yaml:"notifications_ui,omitempty"`
+
+	/*Ssl - Descr: Whether to verify SSL certs when making web requests Default: <nil>
+*/
+	Ssl *Ssl `yaml:"ssl,omitempty"`
 
 }

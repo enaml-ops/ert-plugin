@@ -5,20 +5,28 @@ package syslog_drain_binder
 */
 type SyslogDrainBinder struct {
 
-	/*UpdateIntervalSeconds - Descr: Interval on which to poll cloud controller in seconds Default: 15
+	/*PollingBatchSize - Descr: Batch size for the poll from cloud controller Default: 1000
 */
-	UpdateIntervalSeconds interface{} `yaml:"update_interval_seconds,omitempty"`
-
-	/*Debug - Descr: boolean value to turn on verbose logging for syslog_drain_binder Default: false
-*/
-	Debug interface{} `yaml:"debug,omitempty"`
+	PollingBatchSize interface{} `yaml:"polling_batch_size,omitempty"`
 
 	/*DrainUrlTtlSeconds - Descr: Time to live for drain urls in seconds Default: 60
 */
 	DrainUrlTtlSeconds interface{} `yaml:"drain_url_ttl_seconds,omitempty"`
 
-	/*PollingBatchSize - Descr: Batch size for the poll from cloud controller Default: 1000
+	/*UpdateIntervalSeconds - Descr: Interval on which to poll cloud controller in seconds Default: 15
 */
-	PollingBatchSize interface{} `yaml:"polling_batch_size,omitempty"`
+	UpdateIntervalSeconds interface{} `yaml:"update_interval_seconds,omitempty"`
+
+	/*Debug - Descr: Boolean value to turn on verbose logging for syslog_drain_binder Default: false
+*/
+	Debug interface{} `yaml:"debug,omitempty"`
+
+	/*LockedMemoryLimit - Descr: Size (KB) of shell's locked memory limit. Set to 'kernel' to use the kernel's default. Non-numeric values other than 'kernel', 'soft', 'hard', and 'unlimited' will result in an error. Default: unlimited
+*/
+	LockedMemoryLimit interface{} `yaml:"locked_memory_limit,omitempty"`
+
+	/*Etcd - Descr: PEM-encoded client key Default: 
+*/
+	Etcd *SyslogDrainBinderEtcd `yaml:"etcd,omitempty"`
 
 }

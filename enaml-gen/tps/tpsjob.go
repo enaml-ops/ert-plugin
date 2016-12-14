@@ -5,6 +5,10 @@ package tps
 */
 type TpsJob struct {
 
+	/*Capi - Descr: Basic auth username for CC internal API Default: internal_user
+*/
+	Capi *Capi `yaml:"capi,omitempty"`
+
 	/*Diego - Descr: when connecting over https, ignore bad ssl certificates Default: false
 */
 	Diego *Diego `yaml:"diego,omitempty"`

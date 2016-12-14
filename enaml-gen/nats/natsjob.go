@@ -5,7 +5,7 @@ package nats
 */
 type NatsJob struct {
 
-	/*Nats - Descr: After accepting a connection, wait up to this many seconds for credentials. Default: 15
+	/*Nats - Descr: Port for pprof. 0 means disabled. Default: 0
 */
 	Nats *Nats `yaml:"nats,omitempty"`
 

@@ -5,15 +5,15 @@ package uaa
 */
 type Env struct {
 
+	/*HttpProxy - Descr: The http_proxy across the VMs used for all requests over http Default: <nil>
+*/
+	HttpProxy interface{} `yaml:"http_proxy,omitempty"`
+
 	/*NoProxy - Descr: Set No_Proxy across the VMs Default: <nil>
 */
 	NoProxy interface{} `yaml:"no_proxy,omitempty"`
 
-	/*HttpProxy - Descr: The http_proxy across the VMs Default: <nil>
-*/
-	HttpProxy interface{} `yaml:"http_proxy,omitempty"`
-
-	/*HttpsProxy - Descr: The https_proxy across the VMs Default: <nil>
+	/*HttpsProxy - Descr: The http_proxy across the VMs used for all requests over https Default: <nil>
 */
 	HttpsProxy interface{} `yaml:"https_proxy,omitempty"`
 

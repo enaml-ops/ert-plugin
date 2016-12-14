@@ -5,14 +5,6 @@ package cloud_controller_worker
 */
 type Nats struct {
 
-	/*Password - Descr: Password for cc client to connect to NATS Default: <nil>
-*/
-	Password interface{} `yaml:"password,omitempty"`
-
-	/*Port - Descr: IP port of Cloud Foundry NATS server Default: <nil>
-*/
-	Port interface{} `yaml:"port,omitempty"`
-
 	/*Machines - Descr: IP of each NATS cluster member. Default: <nil>
 */
 	Machines interface{} `yaml:"machines,omitempty"`
@@ -20,5 +12,13 @@ type Nats struct {
 	/*User - Descr: Username for cc client to connect to NATS Default: <nil>
 */
 	User interface{} `yaml:"user,omitempty"`
+
+	/*Port - Descr: IP port of Cloud Foundry NATS server Default: <nil>
+*/
+	Port interface{} `yaml:"port,omitempty"`
+
+	/*Password - Descr: Password for cc client to connect to NATS Default: <nil>
+*/
+	Password interface{} `yaml:"password,omitempty"`
 
 }

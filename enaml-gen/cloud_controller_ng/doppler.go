@@ -5,16 +5,16 @@ package cloud_controller_ng
 */
 type Doppler struct {
 
-	/*UseSsl - Descr: Whether to use ssl for the doppler_logging_endpoint listed at /v2/info Default: true
+	/*Port - Descr: Port for doppler_logging_endpoint listed at /v2/info Default: 443
 */
-	UseSsl interface{} `yaml:"use_ssl,omitempty"`
+	Port interface{} `yaml:"port,omitempty"`
 
 	/*Enabled - Descr: Whether to expose the doppler_logging_endpoint listed at /v2/info Default: true
 */
 	Enabled interface{} `yaml:"enabled,omitempty"`
 
-	/*Port - Descr: Port for doppler_logging_endpoint listed at /v2/info Default: 443
+	/*UseSsl - Descr: Whether to use ssl for the doppler_logging_endpoint listed at /v2/info Default: true
 */
-	Port interface{} `yaml:"port,omitempty"`
+	UseSsl interface{} `yaml:"use_ssl,omitempty"`
 
 }

@@ -5,16 +5,16 @@ package cloud_controller_worker
 */
 type BuildpacksCdn struct {
 
-	/*PrivateKey - Descr: Private key for signing download URIs Default: 
+	/*Uri - Descr: URI for a CDN to used for buildpack downloads Default: 
 */
-	PrivateKey interface{} `yaml:"private_key,omitempty"`
+	Uri interface{} `yaml:"uri,omitempty"`
 
 	/*KeyPairId - Descr: Key pair name for signed download URIs Default: 
 */
 	KeyPairId interface{} `yaml:"key_pair_id,omitempty"`
 
-	/*Uri - Descr: URI for a CDN to used for buildpack downloads Default: 
+	/*PrivateKey - Descr: Private key for signing download URIs Default: 
 */
-	Uri interface{} `yaml:"uri,omitempty"`
+	PrivateKey interface{} `yaml:"private_key,omitempty"`
 
 }
