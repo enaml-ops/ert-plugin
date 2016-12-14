@@ -57,8 +57,8 @@ crosscompile:
         code: |
           COMMIT=`git rev-parse HEAD | cut -c1-6`
           VERSION=${WERCKER_GITHUB_CREATE_RELEASE_ID}-${COMMIT}
-          GOOS=darwin go build -o cloudfoundry-plugin-osx -ldflags "-s -w -X main.Version=${VERSION}" ./plugin/cmd/cloudfoundry/main.go
-          GOOS=linux go build -o cloudfoundry-plugin-linux -ldflags "-s -w -X main.Version=${VERSION}" ./plugin/cmd/cloudfoundry/main.go
+          GOOS=darwin go build -o cloudfoundry-plugin-osx -ldflags "-s -w -X main.Version=${VERSION}" ./cmd/cloudfoundry/main.go
+          GOOS=linux go build -o cloudfoundry-plugin-linux -ldflags "-s -w -X main.Version=${VERSION}" ./cmd/cloudfoundry/main.go
 
     - script:
         name: add repo to artifact
