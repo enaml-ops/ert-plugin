@@ -6,17 +6,11 @@ func (j *GorouterJob) MarshalYAML() (interface{}, error) {
 	if j.Nats != nil {
 		result["nats"] = j.Nats
 	}
-	if j.MetronEndpoint != nil {
-		result["metron_endpoint"] = j.MetronEndpoint
-	}
 	if j.RequestTimeoutInSeconds != nil {
 		result["request_timeout_in_seconds"] = j.RequestTimeoutInSeconds
 	}
 	if j.Uaa != nil {
 		result["uaa"] = j.Uaa
-	}
-	if j.Dropsonde != nil {
-		result["dropsonde"] = j.Dropsonde
 	}
 	if j.Router != nil {
 		result["router"] = j.Router

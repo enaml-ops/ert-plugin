@@ -1,7 +1,7 @@
 package gorouter_test
 
 import (
-	"github.com/enaml-ops/omg-product-bundle/products/cloudfoundry/enaml-gen/gorouter"
+	"github.com/enaml-ops/omg-product-bundle/products/oss_cf/enaml-gen/gorouter"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	yaml "gopkg.in/yaml.v2"
