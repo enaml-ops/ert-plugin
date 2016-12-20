@@ -66,6 +66,7 @@ func (s *Plugin) GetFlags() (flags []pcli.Flag) {
 		pcli.CreateStringFlag("stemcell-version", "version of stemcell", s.GetMeta().Stemcell.Version),
 
 		// shared for all instance groups:
+		pcli.CreateStringFlag("deployment-name", "the name for the deployment", DeploymentName),
 		pcli.CreateBoolFlag("infer-from-cloud", "setting this flag will attempt to pull as many defaults from your targetted bosh's cloud config as it can (vmtype, network, disk, etc)."),
 		pcli.CreateStringFlag("stemcell-name", "the alias of your desired stemcell", s.GetMeta().Stemcell.Alias),
 		pcli.CreateStringSliceFlag("az", "list of AZ names to use"),
@@ -368,7 +369,11 @@ func (s *Plugin) GetProduct(args []string, cloudConfig []byte, cs cred.Store) (b
 
 func (s *Plugin) getDeploymentManifest(c *cli.Context, config *config.Config) (*enaml.DeploymentManifest, error) {
 	dm := enaml.NewDeploymentManifest([]byte(``))
-	dm.SetName(DeploymentName)
+	if config != nil {
+		dm.SetName(config.DeploymentName)
+	} else {
+		dm.SetName(DeploymentName)
+	}
 
 	dm.AddRelease(enaml.Release{
 		Name:    CFReleaseName,

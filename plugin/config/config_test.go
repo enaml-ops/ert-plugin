@@ -13,6 +13,7 @@ func BuildConfigContext() *cli.Context {
 	plugin := new(cloudfoundry.Plugin)
 	c := plugin.GetContext([]string{
 		"cloudfoundry",
+		"--deployment-name", "cf-staging",
 		"--az", "z1",
 		"--network", "theNetwork",
 		"--system-domain", "sys.yourdomain.com",
@@ -173,6 +174,10 @@ var _ = Describe("Config", func() {
 			Ω(config).ShouldNot(BeNil())
 		})
 
+		It("then deployment name should be set", func() {
+			Ω(config.DeploymentName).Should(Equal("cf-staging"))
+		})
+
 		It("then az should be set", func() {
 			Ω(config.AZs).Should(ConsistOf("z1"))
 		})
@@ -200,6 +205,5 @@ var _ = Describe("Config", func() {
 		It("then mysql bootstrap password should be set", func() {
 			Ω(config.MySQLBootstrapPassword).Should(Equal("mysqlbootstrappwd"))
 		})
-
 	})
 })
