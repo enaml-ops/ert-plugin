@@ -72,6 +72,9 @@ func (s *Etcd) newEtcdMetricsServerJob() enaml.InstanceJob {
 			EtcdMetricsServer: &etcdmetricslib.EtcdMetricsServer{
 				Nats: &etcdmetricslib.Nats{
 					Machines: s.Config.NATSMachines,
+					Port:     s.Config.NATSPort,
+					Username: s.Config.NATSUser,
+					Password: s.Config.NATSPassword,
 				},
 			},
 		},

@@ -12,8 +12,10 @@ import (
 var _ = Describe("Etcd Partition", func() {
 	Context("when initialized WITH a complete set of arguments", func() {
 		var etcdPartition InstanceGroupCreator
+		var cfg *config.Config
+
 		BeforeEach(func() {
-			config := &config.Config{
+			cfg = &config.Config{
 				StemcellName:    "cool-ubuntu-animal",
 				AZs:             []string{"eastprod-1"},
 				NetworkName:     "foundry-net",
@@ -28,15 +30,16 @@ var _ = Describe("Etcd Partition", func() {
 				InstanceCount:   config.InstanceCount{},
 				IP:              config.IP{},
 			}
-			config.EtcdMachines = []string{"1.0.0.7", "1.0.0.8"}
-			config.EtcdVMType = "blah"
-			config.EtcdPersistentDiskType = "blah-disk"
-			config.DopplerSharedSecret = "metronsecret"
-			config.NATSUser = "nats"
-			config.NATSPassword = "pass"
-			config.NATSMachines = []string{"1.0.0.5", "1.0.0.6"}
+			cfg.EtcdMachines = []string{"1.0.0.7", "1.0.0.8"}
+			cfg.EtcdVMType = "blah"
+			cfg.EtcdPersistentDiskType = "blah-disk"
+			cfg.DopplerSharedSecret = "metronsecret"
+			cfg.NATSPort = 12345
+			cfg.NATSUser = "nats"
+			cfg.NATSPassword = "pass"
+			cfg.NATSMachines = []string{"1.0.0.5", "1.0.0.6"}
 
-			etcdPartition = NewEtcdPartition(config)
+			etcdPartition = NewEtcdPartition(cfg)
 		})
 		It("then it should allow the user to configure the etcd IPs", func() {
 			ig := etcdPartition.ToInstanceGroup()
@@ -107,6 +110,9 @@ var _ = Describe("Etcd Partition", func() {
 			props, _ := job.Properties.(*etcd_metrics_server.EtcdMetricsServerJob)
 			Ω(props.EtcdMetricsServer).ShouldNot(BeNil())
 			Ω(props.EtcdMetricsServer.Nats.Machines).Should(ConsistOf("1.0.0.5", "1.0.0.6"))
+			Ω(props.EtcdMetricsServer.Nats.Port).Should(Equal(cfg.NATSPort))
+			Ω(props.EtcdMetricsServer.Nats.Username).Should(Equal(cfg.NATSUser))
+			Ω(props.EtcdMetricsServer.Nats.Password).Should(Equal(cfg.NATSPassword))
 		})
 	})
 })
