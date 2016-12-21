@@ -93,7 +93,7 @@ deploy-pre-release:
     - github-create-release:
         token: $GITHUB_TOKEN
         tag: $WERCKER_GITHUB_CREATE_RELEASE_ID
-        title: omg-product-bundles $WERCKER_GITHUB_CREATE_RELEASE_ID
+        title: ert-plugin $WERCKER_GITHUB_CREATE_RELEASE_ID
         draft: true
         prerelease: ${IS_PRE_RELEASE}
 
