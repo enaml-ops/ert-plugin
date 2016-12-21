@@ -50,6 +50,9 @@ func (c *clockGlobal) ToInstanceGroup() *enaml.InstanceGroup {
 
 func (c *clockGlobal) newCloudControllerClockJob(ccng *cloud_controller_ng.CloudControllerNgJob) *enaml.InstanceJob {
 	props := &cloud_controller_clock.CloudControllerClockJob{
+		Hm9000: &cloud_controller_clock.Hm9000{
+			Port: DefaultHM9000Port,
+		},
 		Domain:                   c.Config.SystemDomain,
 		SystemDomain:             c.Config.SystemDomain,
 		SystemDomainOrganization: "system",

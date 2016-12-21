@@ -106,6 +106,7 @@ var _ = Describe("Etcd Partition", func() {
 			Ω(job).ShouldNot(BeNil())
 			props, _ := job.Properties.(*etcd_metrics_server.EtcdMetricsServerJob)
 			Ω(props.EtcdMetricsServer).ShouldNot(BeNil())
+			Ω(props.EtcdMetricsServer.Nats.Machines).Should(ConsistOf("1.0.0.5", "1.0.0.6"))
 		})
 	})
 })

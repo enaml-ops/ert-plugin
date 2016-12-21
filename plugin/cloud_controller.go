@@ -75,6 +75,9 @@ func newCloudControllerNgJob(c *CloudControllerPartition) enaml.InstanceJob {
 		Name:    "cloud_controller_ng",
 		Release: CFReleaseName,
 		Properties: &ccnglib.CloudControllerNgJob{
+			Hm9000: &ccnglib.Hm9000{
+				Port: DefaultHM9000Port,
+			},
 			AppSsh: &ccnglib.AppSsh{
 				HostKeyFingerprint: c.Config.HostKeyFingerprint,
 			},

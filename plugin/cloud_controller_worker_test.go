@@ -97,6 +97,7 @@ var _ = Describe("Cloud Controller Worker Partition", func() {
 			Ω(props.SystemDomain).Should(Equal("sys.yourdomain.com"))
 			Ω(props.AppDomains).Should(ConsistOf("apps.yourdomain.com"))
 			Ω(props.SystemDomainOrganization).Should(Equal("system"))
+			Ω(props.Hm9000.Port).Should(Equal(DefaultHM9000Port))
 
 			ssl := props.Ssl
 			Ω(ssl).ShouldNot(BeNil())

@@ -103,6 +103,7 @@ var _ = Describe("given a clock_global partition", func() {
 			Ω(props.Domain).Should(Equal("sys.test.com"))
 			Ω(props.SystemDomain).Should(Equal("sys.test.com"))
 			Ω(props.SystemDomainOrganization).Should(Equal("system"))
+			Ω(props.Hm9000.Port).Should(Equal(DefaultHM9000Port))
 
 			ad := props.AppDomains.([]string)
 			Ω(len(ad)).Should(Equal(1))

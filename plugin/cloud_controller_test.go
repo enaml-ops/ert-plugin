@@ -148,6 +148,7 @@ var _ = Describe("Cloud Controller Partition", func() {
 			Ω(props.SystemDomain).Should(Equal("sys.yourdomain.com"))
 			Ω(props.SystemDomainOrganization).Should(Equal("system"))
 			Ω(props.Login.Url).Should(Equal("https://uaa.sys.yourdomain.com"))
+			Ω(props.Hm9000.Port).Should(Equal(DefaultHM9000Port))
 
 			By("configuring CC")
 			Ω(props.Cc.AllowedCorsDomains).Should(ConsistOf("https://uaa.sys.yourdomain.com"))

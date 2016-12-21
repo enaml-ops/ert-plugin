@@ -1,8 +1,9 @@
 package cloudfoundry
 
 const (
-	CFReleaseName    = "cf"
-	CFReleaseVersion = "239.0.40"
+	DefaultHM9000Port = 15487
+	CFReleaseName     = "cf"
+	CFReleaseVersion  = "239.0.40"
 
 	PivotalERTVersion = "1.8.21"
 

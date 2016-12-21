@@ -53,6 +53,9 @@ func newCloudControllerWorkerJob(c *CloudControllerWorkerPartition) enaml.Instan
 		Name:    "cloud_controller_worker",
 		Release: CFReleaseName,
 		Properties: &ccworkerlib.CloudControllerWorkerJob{
+			Hm9000: &ccworkerlib.Hm9000{
+				Port: DefaultHM9000Port,
+			},
 			Domain:                   c.Config.SystemDomain,
 			SystemDomain:             c.Config.SystemDomain,
 			AppDomains:               c.Config.AppDomains,
