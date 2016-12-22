@@ -17,6 +17,12 @@ func NewPushAppsManager(c *config.Config) InstanceGroupCreator {
 }
 
 func (p *pushAppsManager) ToInstanceGroup() *enaml.InstanceGroup {
+
+	var appsDomain = ""
+	if len(p.Config.AppDomains) > 0 {
+		appsDomain = p.Config.AppDomains[0]
+	}
+
 	return &enaml.InstanceGroup{
 		Name:      "push-apps-manager",
 		Instances: 1,
@@ -36,6 +42,7 @@ func (p *pushAppsManager) ToInstanceGroup() *enaml.InstanceGroup {
 				Release: PushAppsReleaseName,
 				Properties: &pam.PushAppsManagerJob{
 					Cf: &pam.Cf{
+						AppsDomain:    appsDomain,
 						ApiUrl:        fmt.Sprintf("https://api.%s", p.Config.SystemDomain),
 						AdminUsername: "push_apps_manager",
 						AdminPassword: p.Config.PushAppsManagerPassword,

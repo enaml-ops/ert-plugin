@@ -33,6 +33,7 @@ var _ = Describe("push-apps-manager", func() {
 				StemcellName: "cool-ubuntu-animal",
 				NetworkName:  "foundry-net",
 				SystemDomain: "sys.example.com",
+				AppDomains:   []string{"app.example.com"},
 				Secret: config.Secret{
 					PushAppsManagerPassword: controlPushAppsPassword,
 					PortalClientSecret:      controlPortalClientSecret,
@@ -102,6 +103,7 @@ var _ = Describe("push-apps-manager", func() {
 			Ω(props.Cf.AdminUsername).Should(Equal("push_apps_manager"))
 			Ω(props.Cf.AdminPassword).Should(Equal(controlPushAppsPassword))
 			Ω(props.Cf.SystemDomain).Should(Equal("sys.example.com"))
+			Ω(props.Cf.AppsDomain).Should(Equal("app.example.com"))
 
 			By("configuring the service authentication")
 			Ω(props.Services).ShouldNot(BeNil())
