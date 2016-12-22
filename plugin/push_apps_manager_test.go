@@ -29,11 +29,12 @@ var _ = Describe("push-apps-manager", func() {
 
 		BeforeEach(func() {
 			c := &config.Config{
-				AZs:          []string{"z1"},
-				StemcellName: "cool-ubuntu-animal",
-				NetworkName:  "foundry-net",
-				SystemDomain: "sys.example.com",
-				AppDomains:   []string{"app.example.com"},
+				AZs:             []string{"z1"},
+				StemcellName:    "cool-ubuntu-animal",
+				NetworkName:     "foundry-net",
+				SystemDomain:    "sys.example.com",
+				AppDomains:      []string{"app.example.com"},
+				LoggregatorPort: 4443,
 				Secret: config.Secret{
 					PushAppsManagerPassword: controlPushAppsPassword,
 					PortalClientSecret:      controlPortalClientSecret,
@@ -122,6 +123,8 @@ var _ = Describe("push-apps-manager", func() {
 			Ω(props.Env.UsageServiceHost).Should(Equal("https://app-usage.sys.example.com"))
 			Ω(props.Env.GenericWhiteLabelConfigJson).ShouldNot(BeNil())
 			Ω(props.Env.GenericWhiteLabelConfigJson.FooterText).ShouldNot(BeEmpty())
+			Ω(props.Env.CfLoggregatorWebsocketUrl).ShouldNot(BeEmpty())
+			Ω(props.Env.CfLoggregatorWebsocketUrl).Should(Equal("wss://loggregator.sys.example.com:4443"))
 
 			By("configuring the databases")
 			Ω(props.Databases).ShouldNot(BeNil())

@@ -60,6 +60,7 @@ func (p *pushAppsManager) ToInstanceGroup() *enaml.InstanceGroup {
 						SecretToken:               p.Config.AppsManagerSecretToken,
 						CfCcApiUrl:                fmt.Sprintf("https://api.%s", p.Config.SystemDomain),
 						CfLoggregatorHttpUrl:      fmt.Sprintf("http://loggregator.%s", p.Config.SystemDomain),
+						CfLoggregatorWebsocketUrl: fmt.Sprintf("wss://loggregator.%s:%v", p.Config.SystemDomain, p.Config.LoggregatorPort),
 						CfNotificationsServiceUrl: fmt.Sprintf("https://notifications.%s", p.Config.SystemDomain),
 						UsageServiceHost:          fmt.Sprintf("https://app-usage.%s", p.Config.SystemDomain),
 						GenericWhiteLabelConfigJson: &pam.GenericWhiteLabelConfigJson{
