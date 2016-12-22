@@ -54,6 +54,8 @@ func (s *smokeErrand) createSmokeJob() enaml.InstanceJob {
 				SkipSslValidation: s.Config.SkipSSLCertVerify,
 				UseExistingOrg:    false,
 				Org:               "CF_SMOKE_TEST_ORG",
+				Space:             "CF_SMOKE_TEST_SPACE",
+				UseExistingSpace:  false,
 			},
 		},
 	}

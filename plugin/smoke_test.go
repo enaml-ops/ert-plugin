@@ -83,6 +83,8 @@ var _ = Describe("Smoke test errand", func() {
 			Ω(props.SmokeTests.Password).Should(Equal("password"))
 			Ω(props.SmokeTests.UseExistingOrg).Should(BeFalse())
 			Ω(props.SmokeTests.SkipSslValidation).Should(BeTrue())
+			Ω(props.SmokeTests.UseExistingSpace).Should(BeFalse())
+			Ω(props.SmokeTests.Space).Should(Equal("CF_SMOKE_TEST_SPACE"))
 		})
 	})
 })
