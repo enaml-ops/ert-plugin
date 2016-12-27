@@ -53,11 +53,21 @@ func (a *acceptanceTests) newAcceptanceTestsProperties(internet bool) *acceptanc
 	}
 	return &acceptance_tests.AcceptanceTestsJob{
 		AcceptanceTests: &acceptance_tests.AcceptanceTests{
-			SkipSslValidation: a.Config.SkipSSLCertVerify,
-			Api:               prefixSystemDomain(a.Config.SystemDomain, "api"),
-			AppsDomain:        ad,
-			AdminUser:         "admin",
-			AdminPassword:     a.Config.AdminPassword,
+			SkipSslValidation:        a.Config.SkipSSLCertVerify,
+			Api:                      prefixSystemDomain(a.Config.SystemDomain, "api"),
+			AppsDomain:               ad,
+			AdminUser:                "admin",
+			AdminPassword:            a.Config.AdminPassword,
+			IncludeLogging:           true,
+			IncludeInternetDependent: true,
+			IncludeOperator:          true,
+			IncludeServices:          true,
+			IncludeSecurityGroups:    false,
+			SkipRegex:                "lucid64",
+			JavaBuildpackName:        "java-buildpack-offline",
+			IncludeDiegoSsh:          true,
+			IncludeRouteServices:     true,
+			IncludeSso:               true,
 		},
 	}
 }
