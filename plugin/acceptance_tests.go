@@ -2,7 +2,7 @@ package cloudfoundry
 
 import (
 	"github.com/enaml-ops/enaml"
-	"github.com/enaml-ops/ert-plugin/enaml-gen/acceptance_tests"
+	"github.com/enaml-ops/ert-plugin/enaml-gen/acceptance-tests"
 	"github.com/enaml-ops/ert-plugin/plugin/config"
 )
 
@@ -54,13 +54,10 @@ func (a *acceptanceTests) newAcceptanceTestsProperties(internet bool) *acceptanc
 	return &acceptance_tests.AcceptanceTestsJob{
 		AcceptanceTests: &acceptance_tests.AcceptanceTests{
 			SkipSslValidation: a.Config.SkipSSLCertVerify,
-			SystemDomain:      a.Config.SystemDomain,
-			CloudController: &acceptance_tests.CloudController{
-				Api:           prefixSystemDomain(a.Config.SystemDomain, "api"),
-				AppsDomain:    ad,
-				AdminUser:     "admin",
-				AdminPassword: a.Config.AdminPassword,
-			},
+			Api:               prefixSystemDomain(a.Config.SystemDomain, "api"),
+			AppsDomain:        ad,
+			AdminUser:         "admin",
+			AdminPassword:     a.Config.AdminPassword,
 		},
 	}
 }

@@ -258,7 +258,7 @@ var _ = Describe("UAA Partition", func() {
 			Ω(props.Login.Branding).ShouldNot(BeNil())
 
 			Ω(props.Login.Links).ShouldNot(BeNil())
-			links := props.Login.Links.(*uaa.Links)
+			links := props.Login.Links
 			Ω(links.Passwd).Should(Equal("https://uaa.sys.test.com/forgot_password"))
 			Ω(links.Signup).Should(Equal("https://uaa.sys.test.com/create_account"))
 
