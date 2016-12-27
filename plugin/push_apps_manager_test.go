@@ -25,6 +25,7 @@ var _ = Describe("push-apps-manager", func() {
 			controlConsoleDBPass      = "consoledbpass"
 			controlAppUsageDBPass     = "appusagedbpassword"
 			controlMySQLAdminPassword = "mysqladmin"
+			controlMySQLAdminUser     = "user"
 		)
 
 		BeforeEach(func() {
@@ -53,6 +54,8 @@ var _ = Describe("push-apps-manager", func() {
 				},
 				SkipSSLCertVerify: true,
 			}
+			c.MySQLBootstrapUser = controlMySQLAdminUser
+			c.MySQLBootstrapPassword = controlMySQLAdminPassword
 			igc = NewPushAppsManager(c)
 			ig = igc.ToInstanceGroup()
 
@@ -132,7 +135,7 @@ var _ = Describe("push-apps-manager", func() {
 			Ω(props.Databases.AppUsageService.Name).Should(Equal("app_usage_service"))
 			Ω(props.Databases.AppUsageService.Ip).Should(Equal(controlProxyIP))
 			Ω(props.Databases.AppUsageService.Port).Should(Equal(3306))
-			Ω(props.Databases.AppUsageService.Username).Should(Equal("root"))
+			Ω(props.Databases.AppUsageService.Username).Should(Equal(controlMySQLAdminUser))
 			Ω(props.Databases.AppUsageService.Password).Should(Equal(controlMySQLAdminPassword))
 
 			By("configuring SSL")
