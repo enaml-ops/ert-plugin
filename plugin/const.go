@@ -21,25 +21,25 @@ const (
 	DiegoReleaseVersion = "0.1485.8"
 
 	CFMysqlReleaseName    = "cf-mysql"
-	CFMysqlReleaseVersion = "26.8.0"
+	CFMysqlReleaseVersion = "26.8"
 
 	EtcdReleaseName    = "etcd"
 	EtcdReleaseVersion = "60.0.1"
 
 	PushAppsReleaseName    = "push-apps-manager-release"
-	PushAppsReleaseVersion = "652.0.0"
+	PushAppsReleaseVersion = "652"
 
 	NotificationsReleaseName    = "notifications"
-	NotificationsReleaseVersion = "24.0.0"
+	NotificationsReleaseVersion = "24"
 
 	NotificationsUIReleaseName    = "notifications-ui"
-	NotificationsUIReleaseVersion = "22.0.0"
+	NotificationsUIReleaseVersion = "22"
 
 	CFAutoscalingReleaseName    = "cf-autoscaling"
-	CFAutoscalingReleaseVersion = "36.0.0"
+	CFAutoscalingReleaseVersion = "36"
 
 	MySQLBackupReleaseName    = "mysql-backup"
-	MySQLBackupReleaseVersion = "11.25.0"
+	MySQLBackupReleaseVersion = "1.25.0"
 
 	ServiceBackupReleaseVersion = "14.0.0"
 )
