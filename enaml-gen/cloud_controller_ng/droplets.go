@@ -5,32 +5,32 @@ package cloud_controller_ng
 */
 type Droplets struct {
 
-	/*DropletDirectoryKey - Descr: Directory (bucket) used store droplets.  It does not have be pre-created. Default: cc-droplets
-*/
-	DropletDirectoryKey interface{} `yaml:"droplet_directory_key,omitempty"`
-
-	/*WebdavConfig - Descr: The basic auth user that CC uses to connect to the admin endpoint on webdav Default: 
+	/*WebdavConfig - Descr: The location of the webdav server eg: https://blobstore.com Default: 
 */
 	WebdavConfig *DropletsWebdavConfig `yaml:"webdav_config,omitempty"`
 
-	/*Cdn - Descr: Private key for signing download URIs Default: 
+	/*FogAwsStorageOptions - Descr: Storage options passed to fog for aws blobstores. Valid keys: ['encryption']. Default: <nil>
 */
-	Cdn *DropletsCdn `yaml:"cdn,omitempty"`
-
-	/*MaxStagedDropletsStored - Descr: Number of recent, staged droplets stored per app (not including current droplet) Default: 5
-*/
-	MaxStagedDropletsStored interface{} `yaml:"max_staged_droplets_stored,omitempty"`
+	FogAwsStorageOptions interface{} `yaml:"fog_aws_storage_options,omitempty"`
 
 	/*BlobstoreType - Descr: The type of blobstore backing to use. Valid values: ['fog', 'webdav'] Default: fog
 */
 	BlobstoreType interface{} `yaml:"blobstore_type,omitempty"`
 
+	/*DropletDirectoryKey - Descr: Directory (bucket) used store droplets.  It does not have be pre-created. Default: cc-droplets
+*/
+	DropletDirectoryKey interface{} `yaml:"droplet_directory_key,omitempty"`
+
+	/*Cdn - Descr: Private key for signing download URIs Default: 
+*/
+	Cdn *DropletsCdn `yaml:"cdn,omitempty"`
+
 	/*FogConnection - Descr: Fog connection hash Default: <nil>
 */
 	FogConnection interface{} `yaml:"fog_connection,omitempty"`
 
-	/*FogAwsStorageOptions - Descr: Storage options passed to fog for aws blobstores. Valid keys: ['encryption']. Default: <nil>
+	/*MaxStagedDropletsStored - Descr: Number of recent, staged droplets stored per app (not including current droplet) Default: 5
 */
-	FogAwsStorageOptions interface{} `yaml:"fog_aws_storage_options,omitempty"`
+	MaxStagedDropletsStored interface{} `yaml:"max_staged_droplets_stored,omitempty"`
 
 }

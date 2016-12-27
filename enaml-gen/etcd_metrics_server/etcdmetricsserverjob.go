@@ -5,7 +5,7 @@ package etcd_metrics_server
 */
 type EtcdMetricsServerJob struct {
 
-	/*EtcdMetricsServer - Descr: basic auth password for metrics server (leave empty for generated) Default: 
+	/*EtcdMetricsServer - Descr: array of NATS addresses Default: <nil>
 */
 	EtcdMetricsServer *EtcdMetricsServer `yaml:"etcd_metrics_server,omitempty"`
 

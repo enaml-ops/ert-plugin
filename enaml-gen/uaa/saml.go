@@ -5,35 +5,19 @@ package uaa
 */
 type Saml struct {
 
+	/*ServiceProviderKeyPassword - Descr: Password to protect the service provider private key. Default: <nil>
+*/
+	ServiceProviderKeyPassword interface{} `yaml:"serviceProviderKeyPassword,omitempty"`
+
 	/*Entityid - Descr: This is used as the SAML Service Provider Entity ID. Each zone has a unique entity ID. Zones other than
 the default zone will derive their entity ID from this setting by prefexing it with the subdomain.
  Default: <nil>
 */
 	Entityid interface{} `yaml:"entityid,omitempty"`
 
-	/*SignRequest - Descr: Global property to sign Local/SP requests Default: true
+	/*Providers - Descr: Contains a hash of SAML Identity Providers, the key is the IDP Alias, followed by key/value pairs. To learn more about how to setup a saml identity provider go to https://simplesamlphp.org Default: <nil>
 */
-	SignRequest interface{} `yaml:"signRequest,omitempty"`
-
-	/*Socket - Descr: Timeout in milliseconds for connection pooling for SAML metadata HTTP requests Default: 10000
-*/
-	Socket *Socket `yaml:"socket,omitempty"`
-
-	/*ServiceProviderKeyPassword - Descr: Password to protect the service provider private key. Default: <nil>
-*/
-	ServiceProviderKeyPassword interface{} `yaml:"serviceProviderKeyPassword,omitempty"`
-
-	/*ServiceProviderCertificate - Descr: Service provider certificate. Default: <nil>
-*/
-	ServiceProviderCertificate interface{} `yaml:"serviceProviderCertificate,omitempty"`
-
-	/*SignatureAlgorithm - Descr: Signature hashing algorithm for SAML. Can be SHA1, SHA256, or SHA512. Default: <nil>
-*/
-	SignatureAlgorithm interface{} `yaml:"signatureAlgorithm,omitempty"`
-
-	/*WantAssertionSigned - Descr: Global property to request that external IDPs sign their SAML assertion before sending them to the UAA Default: false
-*/
-	WantAssertionSigned interface{} `yaml:"wantAssertionSigned,omitempty"`
+	Providers interface{} `yaml:"providers,omitempty"`
 
 	/*EntityBaseUrl - Descr: The URL for which SAML identity providers will post assertions to.
 If set it overrides the default.
@@ -49,12 +33,28 @@ The UAA will display this link in the cf --sso call if there is a SAML provider 
 */
 	SignMetaData interface{} `yaml:"signMetaData,omitempty"`
 
-	/*Providers - Descr: Contains a hash of SAML Identity Providers, the key is the IDP Alias, followed by key/value pairs. To learn more about how to setup a saml identity provider go to https://simplesamlphp.org Default: <nil>
+	/*Socket - Descr: Timeout in milliseconds for connection pooling for SAML metadata HTTP requests Default: 10000
 */
-	Providers interface{} `yaml:"providers,omitempty"`
+	Socket *Socket `yaml:"socket,omitempty"`
+
+	/*WantAssertionSigned - Descr: Global property to request that external IDPs sign their SAML assertion before sending them to the UAA Default: false
+*/
+	WantAssertionSigned interface{} `yaml:"wantAssertionSigned,omitempty"`
+
+	/*SignRequest - Descr: Global property to sign Local/SP requests Default: true
+*/
+	SignRequest interface{} `yaml:"signRequest,omitempty"`
 
 	/*ServiceProviderKey - Descr: Private key for the service provider certificate. Default: <nil>
 */
 	ServiceProviderKey interface{} `yaml:"serviceProviderKey,omitempty"`
+
+	/*ServiceProviderCertificate - Descr: Service provider certificate. Default: <nil>
+*/
+	ServiceProviderCertificate interface{} `yaml:"serviceProviderCertificate,omitempty"`
+
+	/*SignatureAlgorithm - Descr: Signature hashing algorithm for SAML. Can be SHA1, SHA256, or SHA512. Default: <nil>
+*/
+	SignatureAlgorithm interface{} `yaml:"signatureAlgorithm,omitempty"`
 
 }

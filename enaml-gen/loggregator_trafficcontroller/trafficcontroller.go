@@ -5,17 +5,9 @@ package loggregator_trafficcontroller
 */
 type TrafficController struct {
 
-	/*Etcd - Descr: PEM-encoded client key Default: 
+	/*Etcd - Descr: PEM-encoded client certificate Default: 
 */
 	Etcd *TrafficControllerEtcd `yaml:"etcd,omitempty"`
-
-	/*DisableAccessControl - Descr: Traffic controller bypasses authentication with the UAA and CC Default: false
-*/
-	DisableAccessControl interface{} `yaml:"disable_access_control,omitempty"`
-
-	/*LockedMemoryLimit - Descr: Size (KB) of shell's locked memory limit. Set to 'kernel' to use the kernel's default. Non-numeric values other than 'kernel', 'soft', 'hard', and 'unlimited' will result in an error. Default: unlimited
-*/
-	LockedMemoryLimit interface{} `yaml:"locked_memory_limit,omitempty"`
 
 	/*OutgoingPort - Descr: DEPRECATED Default: 8080
 */
@@ -25,8 +17,16 @@ type TrafficController struct {
 */
 	SecurityEventLogging *SecurityEventLogging `yaml:"security_event_logging,omitempty"`
 
+	/*LockedMemoryLimit - Descr: Size (KB) of shell's locked memory limit. Set to 'kernel' to use the kernel's default. Non-numeric values other than 'kernel', 'soft', 'hard', and 'unlimited' will result in an error. Default: unlimited
+*/
+	LockedMemoryLimit interface{} `yaml:"locked_memory_limit,omitempty"`
+
 	/*Debug - Descr: boolean value to turn on verbose logging for loggregator system (dea agent & loggregator server) Default: false
 */
 	Debug interface{} `yaml:"debug,omitempty"`
+
+	/*DisableAccessControl - Descr: Traffic controller bypasses authentication with the UAA and CC Default: false
+*/
+	DisableAccessControl interface{} `yaml:"disable_access_control,omitempty"`
 
 }

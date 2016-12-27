@@ -5,20 +5,20 @@ package metron_agent
 */
 type MetronAgentJob struct {
 
-	/*MetronEndpoint - Descr: Shared secret used to verify cryptographically signed dropsonde messages Default: <nil>
-*/
-	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
-
-	/*MetronAgent - Descr: The size at which logrotate will decide to rotate the log file Default: 50M
+	/*MetronAgent - Descr: PEM-encoded client key Default: 
 */
 	MetronAgent *MetronAgent `yaml:"metron_agent,omitempty"`
 
-	/*Loggregator - Descr: CA root required for key/cert verification Default: 
+	/*Loggregator - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
 	Loggregator *Loggregator `yaml:"loggregator,omitempty"`
 
-	/*SyslogDaemonConfig - Descr: maximum message size to be sent Default: 4k
+	/*SyslogDaemonConfig - Descr: TCP port of syslog aggregator Default: <nil>
 */
 	SyslogDaemonConfig *SyslogDaemonConfig `yaml:"syslog_daemon_config,omitempty"`
+
+	/*MetronEndpoint - Descr: Shared secret used to verify cryptographically signed dropsonde messages Default: <nil>
+*/
+	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
 
 }

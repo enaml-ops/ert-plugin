@@ -5,37 +5,25 @@ package etcd
 */
 type Etcd struct {
 
-	/*HeartbeatIntervalInMilliseconds - Descr: Interval between heartbeats in milliseconds. See https://coreos.com/docs/cluster-management/debugging/etcd-tuning Default: 50
-*/
-	HeartbeatIntervalInMilliseconds interface{} `yaml:"heartbeat_interval_in_milliseconds,omitempty"`
-
-	/*PeerCert - Descr: PEM-encoded peer certificate Default: <nil>
-*/
-	PeerCert interface{} `yaml:"peer_cert,omitempty"`
-
-	/*PeerRequireSsl - Descr: enable ssl between etcd peers Default: true
-*/
-	PeerRequireSsl interface{} `yaml:"peer_require_ssl,omitempty"`
-
 	/*CaCert - Descr: PEM-encoded CA certificate Default: <nil>
 */
 	CaCert interface{} `yaml:"ca_cert,omitempty"`
 
-	/*ClientKey - Descr: PEM-encoded client key Default: <nil>
+	/*PeerKey - Descr: PEM-encoded peer key Default: <nil>
 */
-	ClientKey interface{} `yaml:"client_key,omitempty"`
-
-	/*DnsHealthCheckHost - Descr: Host to ping for confirmation of DNS resolution Default: consul.service.cf.internal
-*/
-	DnsHealthCheckHost interface{} `yaml:"dns_health_check_host,omitempty"`
+	PeerKey interface{} `yaml:"peer_key,omitempty"`
 
 	/*ServerKey - Descr: PEM-encoded server key Default: <nil>
 */
 	ServerKey interface{} `yaml:"server_key,omitempty"`
 
-	/*RequireSsl - Descr: enable ssl for all communication with etcd Default: true
+	/*ClientCert - Descr: PEM-encoded client certificate Default: <nil>
 */
-	RequireSsl interface{} `yaml:"require_ssl,omitempty"`
+	ClientCert interface{} `yaml:"client_cert,omitempty"`
+
+	/*Cluster - Descr: Information about etcd cluster Default: <nil>
+*/
+	Cluster interface{} `yaml:"cluster,omitempty"`
 
 	/*AdvertiseUrlsDnsSuffix - Descr: DNS suffix for all nodes in the etcd cluster Default: <nil>
 */
@@ -45,28 +33,40 @@ type Etcd struct {
 */
 	ElectionTimeoutInMilliseconds interface{} `yaml:"election_timeout_in_milliseconds,omitempty"`
 
-	/*Machines - Descr: Addresses of etcd machines Default: <nil>
-*/
-	Machines interface{} `yaml:"machines,omitempty"`
-
-	/*Cluster - Descr: Information about etcd cluster Default: <nil>
-*/
-	Cluster interface{} `yaml:"cluster,omitempty"`
-
 	/*ServerCert - Descr: PEM-encoded server certificate Default: <nil>
 */
 	ServerCert interface{} `yaml:"server_cert,omitempty"`
-
-	/*ClientCert - Descr: PEM-encoded client certificate Default: <nil>
-*/
-	ClientCert interface{} `yaml:"client_cert,omitempty"`
 
 	/*PeerCaCert - Descr: PEM-encoded peer CA certificate Default: <nil>
 */
 	PeerCaCert interface{} `yaml:"peer_ca_cert,omitempty"`
 
-	/*PeerKey - Descr: PEM-encoded peer key Default: <nil>
+	/*DnsHealthCheckHost - Descr: Host to ping for confirmation of DNS resolution Default: consul.service.cf.internal
 */
-	PeerKey interface{} `yaml:"peer_key,omitempty"`
+	DnsHealthCheckHost interface{} `yaml:"dns_health_check_host,omitempty"`
+
+	/*ClientKey - Descr: PEM-encoded client key Default: <nil>
+*/
+	ClientKey interface{} `yaml:"client_key,omitempty"`
+
+	/*Machines - Descr: Addresses of etcd machines Default: <nil>
+*/
+	Machines interface{} `yaml:"machines,omitempty"`
+
+	/*PeerCert - Descr: PEM-encoded peer certificate Default: <nil>
+*/
+	PeerCert interface{} `yaml:"peer_cert,omitempty"`
+
+	/*HeartbeatIntervalInMilliseconds - Descr: Interval between heartbeats in milliseconds. See https://coreos.com/docs/cluster-management/debugging/etcd-tuning Default: 50
+*/
+	HeartbeatIntervalInMilliseconds interface{} `yaml:"heartbeat_interval_in_milliseconds,omitempty"`
+
+	/*RequireSsl - Descr: enable ssl for all communication with etcd Default: true
+*/
+	RequireSsl interface{} `yaml:"require_ssl,omitempty"`
+
+	/*PeerRequireSsl - Descr: enable ssl between etcd peers Default: true
+*/
+	PeerRequireSsl interface{} `yaml:"peer_require_ssl,omitempty"`
 
 }

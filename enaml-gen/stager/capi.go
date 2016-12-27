@@ -5,7 +5,7 @@ package stager
 */
 type Capi struct {
 
-	/*Stager - Descr: URL of file server Default: http://file-server.service.cf.internal:8080
+	/*Stager - Descr: URL of cc uploader Default: http://cc-uploader.service.cf.internal:9090
 */
 	Stager *Stager `yaml:"stager,omitempty"`
 

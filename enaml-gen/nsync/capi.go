@@ -5,7 +5,7 @@ package nsync
 */
 type Capi struct {
 
-	/*Nsync - Descr: Whether or not to use privileged containers for  buildpack based LRPs and tasks. Containers with a docker-image-based rootfs will continue to always be unprivileged and cannot be changed. Default: false
+	/*Nsync - Descr: External Cloud Controller port Default: 9022
 */
 	Nsync *Nsync `yaml:"nsync,omitempty"`
 

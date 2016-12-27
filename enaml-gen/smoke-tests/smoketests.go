@@ -5,6 +5,26 @@ package smoke_tests
 */
 type SmokeTests struct {
 
+	/*LoggingApp - Descr: The Elastic Runtime app name to use when running logging tests Default: 
+*/
+	LoggingApp interface{} `yaml:"logging_app,omitempty"`
+
+	/*Backend - Descr: Defines the backend to be used. ('dea', 'diego', '' (default)) Default: 
+*/
+	Backend interface{} `yaml:"backend,omitempty"`
+
+	/*UseExistingOrg - Descr: Toggles setup and cleanup of the Elastic Runtime organization Default: false
+*/
+	UseExistingOrg interface{} `yaml:"use_existing_org,omitempty"`
+
+	/*UseExistingSpace - Descr: Toggles setup and cleanup of the Elastic Runtime space Default: false
+*/
+	UseExistingSpace interface{} `yaml:"use_existing_space,omitempty"`
+
+	/*SuiteName - Descr: A token used by the tests when creating Apps / Spaces Default: CF_SMOKE_TESTS
+*/
+	SuiteName interface{} `yaml:"suite_name,omitempty"`
+
 	/*User - Descr: The Elastic Runtime API user Default: <nil>
 */
 	User interface{} `yaml:"user,omitempty"`
@@ -17,45 +37,25 @@ type SmokeTests struct {
 */
 	Password interface{} `yaml:"password,omitempty"`
 
-	/*Space - Descr: The Elastic Runtime space name to use when running tests Default: <nil>
+	/*RuntimeApp - Descr: The Elastic Runtime app name to use when running runtime tests Default: 
 */
-	Space interface{} `yaml:"space,omitempty"`
-
-	/*Api - Descr: The Elastic Runtime API endpoint URL Default: <nil>
-*/
-	Api interface{} `yaml:"api,omitempty"`
-
-	/*Backend - Descr: Defines the backend to be used. ('dea', 'diego', '' (default)) Default: 
-*/
-	Backend interface{} `yaml:"backend,omitempty"`
-
-	/*SuiteName - Descr: A token used by the tests when creating Apps / Spaces Default: CF_SMOKE_TESTS
-*/
-	SuiteName interface{} `yaml:"suite_name,omitempty"`
+	RuntimeApp interface{} `yaml:"runtime_app,omitempty"`
 
 	/*Org - Descr: The Elastic Runtime organization name to use when running tests Default: <nil>
 */
 	Org interface{} `yaml:"org,omitempty"`
 
-	/*UseExistingSpace - Descr: Toggles setup and cleanup of the Elastic Runtime space Default: false
-*/
-	UseExistingSpace interface{} `yaml:"use_existing_space,omitempty"`
-
-	/*LoggingApp - Descr: The Elastic Runtime app name to use when running logging tests Default: 
-*/
-	LoggingApp interface{} `yaml:"logging_app,omitempty"`
-
 	/*GinkgoOpts - Descr: Ginkgo options for the smoke tests Default: 
 */
 	GinkgoOpts interface{} `yaml:"ginkgo_opts,omitempty"`
 
-	/*RuntimeApp - Descr: The Elastic Runtime app name to use when running runtime tests Default: 
+	/*Api - Descr: The Elastic Runtime API endpoint URL Default: <nil>
 */
-	RuntimeApp interface{} `yaml:"runtime_app,omitempty"`
+	Api interface{} `yaml:"api,omitempty"`
 
-	/*UseExistingOrg - Descr: Toggles setup and cleanup of the Elastic Runtime organization Default: false
+	/*Space - Descr: The Elastic Runtime space name to use when running tests Default: <nil>
 */
-	UseExistingOrg interface{} `yaml:"use_existing_org,omitempty"`
+	Space interface{} `yaml:"space,omitempty"`
 
 	/*EnableWindowsTests - Descr: Toggles a portion of the suite that exercises Windows platform support Default: false
 */

@@ -5,6 +5,26 @@ package nats
 */
 type Nats struct {
 
+	/*AuthorizationTimeout - Descr: After accepting a connection, wait up to this many seconds for credentials. Default: 15
+*/
+	AuthorizationTimeout interface{} `yaml:"authorization_timeout,omitempty"`
+
+	/*ProfPort - Descr: Port for pprof. 0 means disabled. Default: 0
+*/
+	ProfPort interface{} `yaml:"prof_port,omitempty"`
+
+	/*Debug - Descr: Enable debug logging output. Default: false
+*/
+	Debug interface{} `yaml:"debug,omitempty"`
+
+	/*Port - Descr: The port for the NATS server to listen on. Default: <nil>
+*/
+	Port interface{} `yaml:"port,omitempty"`
+
+	/*Password - Descr: Password for server authentication. Default: <nil>
+*/
+	Password interface{} `yaml:"password,omitempty"`
+
 	/*Machines - Descr: IP of each NATS cluster member. Default: <nil>
 */
 	Machines interface{} `yaml:"machines,omitempty"`
@@ -17,28 +37,8 @@ type Nats struct {
 */
 	MonitorPort interface{} `yaml:"monitor_port,omitempty"`
 
-	/*AuthorizationTimeout - Descr: After accepting a connection, wait up to this many seconds for credentials. Default: 15
-*/
-	AuthorizationTimeout interface{} `yaml:"authorization_timeout,omitempty"`
-
-	/*Debug - Descr: Enable debug logging output. Default: false
-*/
-	Debug interface{} `yaml:"debug,omitempty"`
-
 	/*User - Descr: Username for server authentication. Default: <nil>
 */
 	User interface{} `yaml:"user,omitempty"`
-
-	/*Port - Descr: The port for the NATS server to listen on. Default: <nil>
-*/
-	Port interface{} `yaml:"port,omitempty"`
-
-	/*ProfPort - Descr: Port for pprof. 0 means disabled. Default: 0
-*/
-	ProfPort interface{} `yaml:"prof_port,omitempty"`
-
-	/*Password - Descr: Password for server authentication. Default: <nil>
-*/
-	Password interface{} `yaml:"password,omitempty"`
 
 }

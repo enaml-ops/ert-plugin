@@ -9,13 +9,13 @@ type Nats struct {
 */
 	Port interface{} `yaml:"port,omitempty"`
 
-	/*Password - Descr: Password for cc client to connect to NATS Default: <nil>
-*/
-	Password interface{} `yaml:"password,omitempty"`
-
 	/*Machines - Descr: IP of each NATS cluster member. Default: <nil>
 */
 	Machines interface{} `yaml:"machines,omitempty"`
+
+	/*Password - Descr: Password for cc client to connect to NATS Default: <nil>
+*/
+	Password interface{} `yaml:"password,omitempty"`
 
 	/*User - Descr: Username for cc client to connect to NATS Default: <nil>
 */

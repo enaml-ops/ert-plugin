@@ -5,7 +5,7 @@ package syslog_drain_binder
 */
 type Loggregator struct {
 
-	/*Etcd - Descr: IPs pointing to the ETCD cluster Default: <nil>
+	/*Etcd - Descr: PEM-encoded CA certificate Default: 
 */
 	Etcd *LoggregatorEtcd `yaml:"etcd,omitempty"`
 

@@ -5,7 +5,7 @@ package tps
 */
 type Capi struct {
 
-	/*Tps - Descr: Basic auth username for CC internal API Default: internal_user
+	/*Tps - Descr: address at which to serve debug info Default: 0.0.0.0:17014
 */
 	Tps *Tps `yaml:"tps,omitempty"`
 

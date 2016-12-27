@@ -5,7 +5,7 @@ package metron_agent
 */
 type Loggregator struct {
 
-	/*Etcd - Descr: Number of concurrent requests to ETCD Default: 10
+	/*Etcd - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
 	Etcd *LoggregatorEtcd `yaml:"etcd,omitempty"`
 

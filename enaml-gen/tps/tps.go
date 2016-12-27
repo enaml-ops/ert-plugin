@@ -5,6 +5,18 @@ package tps
 */
 type Tps struct {
 
+	/*TrafficControllerUrl - Descr: URL of Traffic controller Default: <nil>
+*/
+	TrafficControllerUrl interface{} `yaml:"traffic_controller_url,omitempty"`
+
+	/*Cc - Descr: Basic auth username for CC internal API Default: internal_user
+*/
+	Cc *Cc `yaml:"cc,omitempty"`
+
+	/*Watcher - Descr: address at which to serve debug info Default: 0.0.0.0:17015
+*/
+	Watcher *Watcher `yaml:"watcher,omitempty"`
+
 	/*DropsondePort - Descr: local metron agent's port Default: 3457
 */
 	DropsondePort interface{} `yaml:"dropsonde_port,omitempty"`
@@ -13,29 +25,17 @@ type Tps struct {
 */
 	ConsulAgentPort interface{} `yaml:"consul_agent_port,omitempty"`
 
-	/*TrafficControllerUrl - Descr: URL of Traffic controller Default: <nil>
-*/
-	TrafficControllerUrl interface{} `yaml:"traffic_controller_url,omitempty"`
-
-	/*Bbs - Descr: PEM-encoded client key Default: <nil>
+	/*Bbs - Descr: maximum number of idle http connections Default: <nil>
 */
 	Bbs *Bbs `yaml:"bbs,omitempty"`
 
-	/*Listener - Descr: address at which to serve API requests Default: 0.0.0.0:1518
+	/*Listener - Descr: address at which to serve debug info Default: 0.0.0.0:17014
 */
 	Listener *Listener `yaml:"listener,omitempty"`
-
-	/*Watcher - Descr: address at which to serve debug info Default: 0.0.0.0:17015
-*/
-	Watcher *Watcher `yaml:"watcher,omitempty"`
 
 	/*MaxInFlightRequests - Descr: Maximum number of requests to handle at once. Default: 200
 */
 	MaxInFlightRequests interface{} `yaml:"max_in_flight_requests,omitempty"`
-
-	/*Cc - Descr: Basic auth username for CC internal API Default: internal_user
-*/
-	Cc *Cc `yaml:"cc,omitempty"`
 
 	/*LogLevel - Descr: Log level Default: info
 */

@@ -9,100 +9,100 @@ type CloudControllerNgJob struct {
 */
 	Ssl *Ssl `yaml:"ssl,omitempty"`
 
-	/*Cc - Descr: Maximum depth of inlined relationships in the result Default: 2
-*/
-	Cc *Cc `yaml:"cc,omitempty"`
-
-	/*LoggerEndpoint - Descr: Port for logger endpoint listed at /v2/info Default: 443
-*/
-	LoggerEndpoint *LoggerEndpoint `yaml:"logger_endpoint,omitempty"`
-
-	/*Login - Descr: whether use login as the authorization endpoint or not Default: true
-*/
-	Login *Login `yaml:"login,omitempty"`
-
-	/*Router - Descr: Support for route services is disabled when no value is configured. Default: 
-*/
-	Router *Router `yaml:"router,omitempty"`
-
-	/*Description - Descr: 'description' attribute in the /v2/info endpoint Default: 
-*/
-	Description interface{} `yaml:"description,omitempty"`
-
-	/*AppSsh - Descr: The oauth client ID of the SSH proxy Default: ssh-proxy
-*/
-	AppSsh *AppSsh `yaml:"app_ssh,omitempty"`
-
-	/*Version - Descr: 'version' attribute in the /v2/info endpoint Default: 0
-*/
-	Version interface{} `yaml:"version,omitempty"`
-
-	/*Nats - Descr: IP of each NATS cluster member. Default: <nil>
-*/
-	Nats *Nats `yaml:"nats,omitempty"`
-
 	/*SystemDomain - Descr: Domain reserved for CF operator, base URL where the login, uaa, and other non-user apps listen Default: <nil>
 */
 	SystemDomain interface{} `yaml:"system_domain,omitempty"`
+
+	/*Doppler - Descr: Whether to expose the doppler_logging_endpoint listed at /v2/info Default: true
+*/
+	Doppler *Doppler `yaml:"doppler,omitempty"`
 
 	/*RequestTimeoutInSeconds - Descr: Timeout for requests in seconds. Default: 900
 */
 	RequestTimeoutInSeconds interface{} `yaml:"request_timeout_in_seconds,omitempty"`
 
-	/*DeaNext - Descr: PEM-encoded CA certificate Default: <nil>
+	/*Cc - Descr: Private key for signing download URIs Default: 
 */
-	DeaNext *DeaNext `yaml:"dea_next,omitempty"`
+	Cc *Cc `yaml:"cc,omitempty"`
 
-	/*Ccdb - Descr: The address of the database server Default: <nil>
+	/*Version - Descr: 'version' attribute in the /v2/info endpoint Default: 0
 */
-	Ccdb *Ccdb `yaml:"ccdb,omitempty"`
-
-	/*Uaa - Descr: URL of the UAA server Default: <nil>
-*/
-	Uaa *Uaa `yaml:"uaa,omitempty"`
-
-	/*Doppler - Descr: Port for doppler_logging_endpoint listed at /v2/info Default: 443
-*/
-	Doppler *Doppler `yaml:"doppler,omitempty"`
-
-	/*RoutingApi - Descr: Whether to expose the routing_endpoint listed at /v2/info. Enable this after deploying the Routing API Default: false
-*/
-	RoutingApi *RoutingApi `yaml:"routing_api,omitempty"`
-
-	/*SystemDomainOrganization - Descr: The User Org that owns the system_domain, required if system_domain is defined Default: 
-*/
-	SystemDomainOrganization interface{} `yaml:"system_domain_organization,omitempty"`
-
-	/*AppDomains - Descr: Array of domains for user apps (example: 'user.app.space.foo', a user app called 'neat' will listen at 'http://neat.user.app.space.foo') Default: <nil>
-*/
-	AppDomains interface{} `yaml:"app_domains,omitempty"`
+	Version interface{} `yaml:"version,omitempty"`
 
 	/*NfsServer - Descr: The location at which to mount the nfs share Default: /var/vcap/nfs
 */
 	NfsServer *NfsServer `yaml:"nfs_server,omitempty"`
 
-	/*MetronEndpoint - Descr: The port used to emit messages to the Metron agent Default: 3457
+	/*SystemDomainOrganization - Descr: The User Org that owns the system_domain, required if system_domain is defined Default: 
 */
-	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
+	SystemDomainOrganization interface{} `yaml:"system_domain_organization,omitempty"`
+
+	/*Ccdb - Descr: The type of database being used. mysql or postgres Default: postgres
+*/
+	Ccdb *Ccdb `yaml:"ccdb,omitempty"`
 
 	/*Build - Descr: 'build' attribute in the /v2/info endpoint Default: 
 */
 	Build interface{} `yaml:"build,omitempty"`
 
-	/*Name - Descr: 'name' attribute in the /v2/info endpoint Default: 
+	/*LoggerEndpoint - Descr: Whether to use ssl for logger endpoint listed at /v2/info Default: true
 */
-	Name interface{} `yaml:"name,omitempty"`
+	LoggerEndpoint *LoggerEndpoint `yaml:"logger_endpoint,omitempty"`
 
-	/*Hm9000 - Descr: Port of the hm9000 Api Server Default: <nil>
+	/*AppDomains - Descr: Array of domains for user apps (example: 'user.app.space.foo', a user app called 'neat' will listen at 'http://neat.user.app.space.foo') Default: <nil>
 */
-	Hm9000 *Hm9000 `yaml:"hm9000,omitempty"`
+	AppDomains interface{} `yaml:"app_domains,omitempty"`
 
 	/*SupportAddress - Descr: 'support' attribute in the /v2/info endpoint Default: 
 */
 	SupportAddress interface{} `yaml:"support_address,omitempty"`
 
+	/*Name - Descr: 'name' attribute in the /v2/info endpoint Default: 
+*/
+	Name interface{} `yaml:"name,omitempty"`
+
+	/*Uaa - Descr: Used to grant scope for SSO clients for service brokers Default: openid,cloud_controller_service_permissions.read
+*/
+	Uaa *Uaa `yaml:"uaa,omitempty"`
+
+	/*Description - Descr: 'description' attribute in the /v2/info endpoint Default: 
+*/
+	Description interface{} `yaml:"description,omitempty"`
+
+	/*DeaNext - Descr: Memory limit in mb for staging tasks Default: 1024
+*/
+	DeaNext *DeaNext `yaml:"dea_next,omitempty"`
+
+	/*RoutingApi - Descr: Whether to expose the routing_endpoint listed at /v2/info. Enable this after deploying the Routing API Default: false
+*/
+	RoutingApi *RoutingApi `yaml:"routing_api,omitempty"`
+
+	/*Login - Descr: http or https Default: https
+*/
+	Login *Login `yaml:"login,omitempty"`
+
+	/*AppSsh - Descr: External port for SSH access to application instances Default: 2222
+*/
+	AppSsh *AppSsh `yaml:"app_ssh,omitempty"`
+
+	/*Hm9000 - Descr: Port of the hm9000 Api Server Default: <nil>
+*/
+	Hm9000 *Hm9000 `yaml:"hm9000,omitempty"`
+
 	/*Domain - Descr: Deprecated in favor of system_domain. Domain where cloud_controller will listen (api.domain) Default: <nil>
 */
 	Domain interface{} `yaml:"domain,omitempty"`
+
+	/*Nats - Descr: IP of each NATS cluster member. Default: <nil>
+*/
+	Nats *Nats `yaml:"nats,omitempty"`
+
+	/*Router - Descr: Support for route services is disabled when no value is configured. Default: 
+*/
+	Router *Router `yaml:"router,omitempty"`
+
+	/*MetronEndpoint - Descr: The host used to emit messages to the Metron agent Default: 127.0.0.1
+*/
+	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
 
 }

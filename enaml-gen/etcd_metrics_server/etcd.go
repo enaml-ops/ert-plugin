@@ -5,22 +5,6 @@ package etcd_metrics_server
 */
 type Etcd struct {
 
-	/*Port - Descr: port of etcd server to instrument Default: 4001
-*/
-	Port interface{} `yaml:"port,omitempty"`
-
-	/*ClientCert - Descr: PEM-encoded client certificate Default: 
-*/
-	ClientCert interface{} `yaml:"client_cert,omitempty"`
-
-	/*ClientKey - Descr: PEM-encoded client key Default: 
-*/
-	ClientKey interface{} `yaml:"client_key,omitempty"`
-
-	/*RequireSsl - Descr: enable ssl for all communication with etcd Default: false
-*/
-	RequireSsl interface{} `yaml:"require_ssl,omitempty"`
-
 	/*CaCert - Descr: PEM-encoded CA certificate Default: 
 */
 	CaCert interface{} `yaml:"ca_cert,omitempty"`
@@ -33,11 +17,27 @@ This property is only used if 'etcd_metrics_server.etcd.require_ssl' is 'false'.
 */
 	Machine interface{} `yaml:"machine,omitempty"`
 
+	/*Port - Descr: port of etcd server to instrument Default: 4001
+*/
+	Port interface{} `yaml:"port,omitempty"`
+
+	/*ClientKey - Descr: PEM-encoded client key Default: 
+*/
+	ClientKey interface{} `yaml:"client_key,omitempty"`
+
 	/*DnsSuffix - Descr: DNS suffix of the etcd server to instrument.
 Target etcd server must be colocated with this etcd_metrics_server.
 This property is only used if 'etcd_metrics_server.etcd.require_ssl' is 'true'."
  Default: <nil>
 */
 	DnsSuffix interface{} `yaml:"dns_suffix,omitempty"`
+
+	/*RequireSsl - Descr: enable ssl for all communication with etcd Default: false
+*/
+	RequireSsl interface{} `yaml:"require_ssl,omitempty"`
+
+	/*ClientCert - Descr: PEM-encoded client certificate Default: 
+*/
+	ClientCert interface{} `yaml:"client_cert,omitempty"`
 
 }

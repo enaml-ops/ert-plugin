@@ -5,11 +5,7 @@ package hm9000
 */
 type Hm9000Job struct {
 
-	/*Cc - Descr: External port to connect to the CC Default: 9022
-*/
-	Cc *Cc `yaml:"cc,omitempty"`
-
-	/*Hm9000 - Descr: PEM-encoded server key Default: <nil>
+	/*Hm9000 - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
 	Hm9000 *Hm9000 `yaml:"hm9000,omitempty"`
 
@@ -17,16 +13,20 @@ type Hm9000Job struct {
 */
 	Nats *Nats `yaml:"nats,omitempty"`
 
-	/*DeaNext - Descr: Heartbeat interval for DEAs Default: <nil>
+	/*Cc - Descr: External port to connect to the CC Default: 9022
 */
-	DeaNext *DeaNext `yaml:"dea_next,omitempty"`
+	Cc *Cc `yaml:"cc,omitempty"`
+
+	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
+*/
+	Ssl *Ssl `yaml:"ssl,omitempty"`
 
 	/*MetronAgent - Descr: Incoming port for dropsonde log messages Default: 3457
 */
 	MetronAgent *MetronAgent `yaml:"metron_agent,omitempty"`
 
-	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
+	/*DeaNext - Descr: Heartbeat interval for DEAs Default: <nil>
 */
-	Ssl *Ssl `yaml:"ssl,omitempty"`
+	DeaNext *DeaNext `yaml:"dea_next,omitempty"`
 
 }

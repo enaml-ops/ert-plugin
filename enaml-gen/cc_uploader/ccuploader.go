@@ -5,17 +5,9 @@ package cc_uploader
 */
 type CcUploader struct {
 
-	/*ListenAddr - Descr: Address of interface on which to serve files Default: 0.0.0.0:9090
-*/
-	ListenAddr interface{} `yaml:"listen_addr,omitempty"`
-
 	/*DebugAddr - Descr: address at which to serve debug info Default: 0.0.0.0:17018
 */
 	DebugAddr interface{} `yaml:"debug_addr,omitempty"`
-
-	/*Cc - Descr: External Cloud Controller port Default: 9022
-*/
-	Cc *Cc `yaml:"cc,omitempty"`
 
 	/*LogLevel - Descr: Log level Default: info
 */
@@ -28,5 +20,13 @@ type CcUploader struct {
 	/*ConsulAgentPort - Descr: local consul agent's port Default: 8500
 */
 	ConsulAgentPort interface{} `yaml:"consul_agent_port,omitempty"`
+
+	/*Cc - Descr: the interval between job polling requests Default: <nil>
+*/
+	Cc *Cc `yaml:"cc,omitempty"`
+
+	/*ListenAddr - Descr: Address of interface on which to serve files Default: 0.0.0.0:9090
+*/
+	ListenAddr interface{} `yaml:"listen_addr,omitempty"`
 
 }

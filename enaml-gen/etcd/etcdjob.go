@@ -5,7 +5,7 @@ package etcd
 */
 type EtcdJob struct {
 
-	/*Etcd - Descr: PEM-encoded server key Default: <nil>
+	/*Etcd - Descr: PEM-encoded peer certificate Default: <nil>
 */
 	Etcd *Etcd `yaml:"etcd,omitempty"`
 

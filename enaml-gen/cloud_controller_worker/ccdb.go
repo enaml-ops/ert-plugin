@@ -5,6 +5,10 @@ package cloud_controller_worker
 */
 type Ccdb struct {
 
+	/*DbScheme - Descr: The type of database being used. mysql or postgres Default: postgres
+*/
+	DbScheme interface{} `yaml:"db_scheme,omitempty"`
+
 	/*PoolTimeout - Descr: The timeout for Sequel pooled connections Default: 10
 */
 	PoolTimeout interface{} `yaml:"pool_timeout,omitempty"`
@@ -13,24 +17,20 @@ type Ccdb struct {
 */
 	Address interface{} `yaml:"address,omitempty"`
 
-	/*MaxConnections - Descr: Maximum connections for Sequel Default: 25
-*/
-	MaxConnections interface{} `yaml:"max_connections,omitempty"`
-
 	/*Port - Descr: The port of the database server Default: <nil>
 */
 	Port interface{} `yaml:"port,omitempty"`
 
-	/*DbScheme - Descr: The type of database being used. mysql or postgres Default: postgres
+	/*Databases - Descr: Contains the name of the database on the database server Default: <nil>
 */
-	DbScheme interface{} `yaml:"db_scheme,omitempty"`
+	Databases interface{} `yaml:"databases,omitempty"`
+
+	/*MaxConnections - Descr: Maximum connections for Sequel Default: 25
+*/
+	MaxConnections interface{} `yaml:"max_connections,omitempty"`
 
 	/*Roles - Descr: Users to create on the database when seeding Default: <nil>
 */
 	Roles interface{} `yaml:"roles,omitempty"`
-
-	/*Databases - Descr: Contains the name of the database on the database server Default: <nil>
-*/
-	Databases interface{} `yaml:"databases,omitempty"`
 
 }

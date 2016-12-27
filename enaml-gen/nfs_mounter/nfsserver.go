@@ -5,18 +5,6 @@ package nfs_mounter
 */
 type NfsServer struct {
 
-	/*PipefsDirectory - Descr: Pipefs directory for NFS idmapd Default: /var/lib/nfs/rpc_pipefs
-*/
-	PipefsDirectory interface{} `yaml:"pipefs_directory,omitempty"`
-
-	/*SharePath - Descr: Location to mount the nfs share Default: /var/vcap/nfs
-*/
-	SharePath interface{} `yaml:"share_path,omitempty"`
-
-	/*Address - Descr: NFS server for droplets and apps (not used in an AWS deploy, use s3 instead) Default: <nil>
-*/
-	Address interface{} `yaml:"address,omitempty"`
-
 	/*Share - Descr: Path to share from the remote NFS server (not used in an AWS deploy, use s3 instead) Default: <nil>
 */
 	Share interface{} `yaml:"share,omitempty"`
@@ -28,5 +16,17 @@ type NfsServer struct {
 	/*IdmapdDomain - Descr: Domain name for NFS idmapd Default: localdomain
 */
 	IdmapdDomain interface{} `yaml:"idmapd_domain,omitempty"`
+
+	/*PipefsDirectory - Descr: Pipefs directory for NFS idmapd Default: /var/lib/nfs/rpc_pipefs
+*/
+	PipefsDirectory interface{} `yaml:"pipefs_directory,omitempty"`
+
+	/*SharePath - Descr: Location to mount the nfs share Default: /var/vcap/nfs
+*/
+	SharePath interface{} `yaml:"share_path,omitempty"`
+
+	/*Address - Descr: NFS server for droplets and apps (not used in an AWS deploy, use s3 instead) Default: <nil>
+*/
+	Address interface{} `yaml:"address,omitempty"`
 
 }

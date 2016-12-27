@@ -5,9 +5,29 @@ package dea_next
 */
 type DeaNextJob struct {
 
-	/*Nats - Descr: IP of each NATS cluster member. Default: <nil>
+	/*DeaNext - Descr: Default timeout for application to start Default: 60
+*/
+	DeaNext *DeaNext `yaml:"dea_next,omitempty"`
+
+	/*Hm9000 - Descr: PEM-encoded client key Default: <nil>
+*/
+	Hm9000 *Hm9000 `yaml:"hm9000,omitempty"`
+
+	/*Nats - Descr: TCP port of NATS server Default: <nil>
 */
 	Nats *Nats `yaml:"nats,omitempty"`
+
+	/*MetronEndpoint - Descr: The host used to emit messages to the Metron agent Default: 127.0.0.1
+*/
+	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
+
+	/*Cc - Descr: Password to access internal endpoints Default: <nil>
+*/
+	Cc *Cc `yaml:"cc,omitempty"`
+
+	/*SystemDomain - Descr: DNS domain name for this Cloud Foundry deployment Default: <nil>
+*/
+	SystemDomain interface{} `yaml:"system_domain,omitempty"`
 
 	/*Router - Descr: Interval at which the router requests routes to be registered. Default: 20
 */
@@ -20,25 +40,5 @@ type DeaNextJob struct {
 	/*DiskQuotaEnabled - Descr: disk quota must be disabled to use warden-inside-warden with the warden cpi Default: true
 */
 	DiskQuotaEnabled interface{} `yaml:"disk_quota_enabled,omitempty"`
-
-	/*MetronEndpoint - Descr: The host used to emit messages to the Metron agent Default: 127.0.0.1
-*/
-	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
-
-	/*SystemDomain - Descr: DNS domain name for this Cloud Foundry deployment Default: <nil>
-*/
-	SystemDomain interface{} `yaml:"system_domain,omitempty"`
-
-	/*DeaNext - Descr: An array of stacks, specifying the name and package path. Default: [map[name:cflinuxfs2 package_path:/var/vcap/packages/rootfs_cflinuxfs2/rootfs]]
-*/
-	DeaNext *DeaNext `yaml:"dea_next,omitempty"`
-
-	/*Cc - Descr: External Cloud Controller port Default: 9022
-*/
-	Cc *Cc `yaml:"cc,omitempty"`
-
-	/*Hm9000 - Descr: PEM-encoded CA certificate Default: <nil>
-*/
-	Hm9000 *Hm9000 `yaml:"hm9000,omitempty"`
 
 }

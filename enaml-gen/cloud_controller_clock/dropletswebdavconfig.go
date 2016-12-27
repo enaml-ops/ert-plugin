@@ -13,13 +13,13 @@ type DropletsWebdavConfig struct {
 */
 	Password interface{} `yaml:"password,omitempty"`
 
-	/*Username - Descr: The basic auth user that CC uses to connect to the admin endpoint on webdav Default: 
-*/
-	Username interface{} `yaml:"username,omitempty"`
-
 	/*PrivateEndpoint - Descr: The location of the webdav server eg: https://blobstore.internal Default: https://blobstore.service.cf.internal:4443
 */
 	PrivateEndpoint interface{} `yaml:"private_endpoint,omitempty"`
+
+	/*Username - Descr: The basic auth user that CC uses to connect to the admin endpoint on webdav Default: 
+*/
+	Username interface{} `yaml:"username,omitempty"`
 
 	/*CaCert - Descr: The ca cert to use when communicating with webdav Default: 
 */

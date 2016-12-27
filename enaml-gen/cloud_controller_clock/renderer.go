@@ -9,12 +9,12 @@ type Renderer struct {
 */
 	MaxInlineRelationsDepth interface{} `yaml:"max_inline_relations_depth,omitempty"`
 
-	/*MaxResultsPerPage - Descr: Maximum number of results returned per page Default: 100
-*/
-	MaxResultsPerPage interface{} `yaml:"max_results_per_page,omitempty"`
-
 	/*DefaultResultsPerPage - Descr: Default number of results returned per page if user does not specify Default: 50
 */
 	DefaultResultsPerPage interface{} `yaml:"default_results_per_page,omitempty"`
+
+	/*MaxResultsPerPage - Descr: Maximum number of results returned per page Default: 100
+*/
+	MaxResultsPerPage interface{} `yaml:"max_results_per_page,omitempty"`
 
 }

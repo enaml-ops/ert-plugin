@@ -5,7 +5,7 @@ package dea_logging_agent
 */
 type DeaLoggingAgentJob struct {
 
-	/*MetronEndpoint - Descr: The port used to emit dropsonde messages to the Metron agent Default: 3457
+	/*MetronEndpoint - Descr: The host used to emit messages to the Metron agent Default: 127.0.0.1
 */
 	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
 

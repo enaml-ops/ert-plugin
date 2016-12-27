@@ -5,13 +5,9 @@ package collector
 */
 type Collector struct {
 
-	/*UseAwsCloudwatch - Descr: enable CloudWatch plugin Default: false
+	/*Aws - Descr: AWS secret for CloudWatch access Default: <nil>
 */
-	UseAwsCloudwatch interface{} `yaml:"use_aws_cloudwatch,omitempty"`
-
-	/*Opentsdb - Descr: TCP port of OpenTsdb Default: <nil>
-*/
-	Opentsdb *Opentsdb `yaml:"opentsdb,omitempty"`
+	Aws *Aws `yaml:"aws,omitempty"`
 
 	/*Graphite - Descr: IP address of Graphite Default: <nil>
 */
@@ -21,36 +17,40 @@ type Collector struct {
 */
 	UseDatadog interface{} `yaml:"use_datadog,omitempty"`
 
-	/*MemoryThreshold - Descr: Memory threshold for collector restart (Mb) Default: 800
+	/*UseTsdb - Descr: enable OpenTsdb plugin Default: false
 */
-	MemoryThreshold interface{} `yaml:"memory_threshold,omitempty"`
+	UseTsdb interface{} `yaml:"use_tsdb,omitempty"`
 
 	/*LoggingLevel - Descr: the logging level for the collector Default: info
 */
 	LoggingLevel interface{} `yaml:"logging_level,omitempty"`
 
-	/*UseTsdb - Descr: enable OpenTsdb plugin Default: false
-*/
-	UseTsdb interface{} `yaml:"use_tsdb,omitempty"`
-
-	/*Aws - Descr: AWS secret for CloudWatch access Default: <nil>
-*/
-	Aws *Aws `yaml:"aws,omitempty"`
-
-	/*Intervals - Descr: the interval in seconds that the collector attempts to prune unresponsive components Default: 300
+	/*Intervals - Descr: the interval in seconds that the collector pings nats to record latency Default: 30
 */
 	Intervals *Intervals `yaml:"intervals,omitempty"`
 
-	/*Datadog - Descr: Datadog application key Default: <nil>
+	/*MemoryThreshold - Descr: Memory threshold for collector restart (Mb) Default: 800
 */
-	Datadog *Datadog `yaml:"datadog,omitempty"`
+	MemoryThreshold interface{} `yaml:"memory_threshold,omitempty"`
+
+	/*DeploymentName - Descr: name for this bosh deployment. All metrics will be tagged with deployment:XXX when sending them to CloudWatch, Datadog and Graphite Default: <nil>
+*/
+	DeploymentName interface{} `yaml:"deployment_name,omitempty"`
 
 	/*UseGraphite - Descr: enable Graphite plugin Default: false
 */
 	UseGraphite interface{} `yaml:"use_graphite,omitempty"`
 
-	/*DeploymentName - Descr: name for this bosh deployment. All metrics will be tagged with deployment:XXX when sending them to CloudWatch, Datadog and Graphite Default: <nil>
+	/*Opentsdb - Descr: TCP port of OpenTsdb Default: <nil>
 */
-	DeploymentName interface{} `yaml:"deployment_name,omitempty"`
+	Opentsdb *Opentsdb `yaml:"opentsdb,omitempty"`
+
+	/*Datadog - Descr: Datadog application key Default: <nil>
+*/
+	Datadog *Datadog `yaml:"datadog,omitempty"`
+
+	/*UseAwsCloudwatch - Descr: enable CloudWatch plugin Default: false
+*/
+	UseAwsCloudwatch interface{} `yaml:"use_aws_cloudwatch,omitempty"`
 
 }

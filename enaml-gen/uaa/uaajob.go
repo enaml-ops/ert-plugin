@@ -5,25 +5,19 @@ package uaa
 */
 type UaaJob struct {
 
-	/*Env - Descr: The http_proxy across the VMs used for all requests over https Default: <nil>
-*/
-	Env *Env `yaml:"env,omitempty"`
-
-	/*Uaa - Descr: A list of hostnames that are routed to the UAA, specifically the default zone in the UAA. The UAA will reject any Host headers that it doesn't recognize.
-By default the UAA recognizes:
-  The hostname from the property uaa.url
-  The hostname from the property login.url
-  localhost (in order to accept health checks)
-Any hostnames added as a list are additive to the default hostnames allowed.
- Default: <nil>
-*/
-	Uaa *Uaa `yaml:"uaa,omitempty"`
-
-	/*Login - Descr: When set to false, this allows an operator to leverage an open redirect on the UAA (/logout.do?redirect=google.com). No open redirect enabled Default: true
+	/*Login - Descr: SMTP from address Default: <nil>
 */
 	Login *Login `yaml:"login,omitempty"`
 
-	/*Uaadb - Descr: Database scheme for UAA DB Default: <nil>
+	/*Env - Descr: The http_proxy across the VMs used for all requests over http Default: <nil>
+*/
+	Env *Env `yaml:"env,omitempty"`
+
+	/*Uaa - Descr: Set to true to enable LDAP Default: false
+*/
+	Uaa *Uaa `yaml:"uaa,omitempty"`
+
+	/*Uaadb - Descr: The list of databases used in UAA database including tag/name Default: <nil>
 */
 	Uaadb *Uaadb `yaml:"uaadb,omitempty"`
 

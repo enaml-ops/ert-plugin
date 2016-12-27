@@ -9,6 +9,10 @@ type DopplerTls struct {
 */
 	Enable interface{} `yaml:"enable,omitempty"`
 
+	/*ServerKey - Descr: TLS server key Default: 
+*/
+	ServerKey interface{} `yaml:"server_key,omitempty"`
+
 	/*Port - Descr: Port for incoming messages in the dropsonde format over tls listener Default: 3459
 */
 	Port interface{} `yaml:"port,omitempty"`
@@ -16,9 +20,5 @@ type DopplerTls struct {
 	/*ServerCert - Descr: TLS server certificate Default: 
 */
 	ServerCert interface{} `yaml:"server_cert,omitempty"`
-
-	/*ServerKey - Descr: TLS server key Default: 
-*/
-	ServerKey interface{} `yaml:"server_key,omitempty"`
 
 }

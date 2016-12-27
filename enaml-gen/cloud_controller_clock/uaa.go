@@ -5,20 +5,20 @@ package cloud_controller_clock
 */
 type Uaa struct {
 
-	/*Clients - Descr: Used for generating SSO clients for service brokers. Default: <nil>
+	/*Cc - Descr: Symmetric secret used to decode uaa tokens. Used for testing. Default: <nil>
 */
-	Clients *Clients `yaml:"clients,omitempty"`
-
-	/*Jwt - Descr: ssl cert defined in the manifest by the UAA, required by the cc to communicate with UAA Default: 
-*/
-	Jwt *Jwt `yaml:"jwt,omitempty"`
+	Cc *UaaCc `yaml:"cc,omitempty"`
 
 	/*Url - Descr: URL of the UAA server Default: <nil>
 */
 	Url interface{} `yaml:"url,omitempty"`
 
-	/*Cc - Descr: Symmetric secret used to decode uaa tokens. Used for testing. Default: <nil>
+	/*Jwt - Descr: ssl cert defined in the manifest by the UAA, required by the cc to communicate with UAA Default: 
 */
-	Cc *UaaCc `yaml:"cc,omitempty"`
+	Jwt *Jwt `yaml:"jwt,omitempty"`
+
+	/*Clients - Descr: Used for generating SSO clients for service brokers. Default: <nil>
+*/
+	Clients *Clients `yaml:"clients,omitempty"`
 
 }

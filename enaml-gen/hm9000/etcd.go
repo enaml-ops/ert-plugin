@@ -5,10 +5,6 @@ package hm9000
 */
 type Etcd struct {
 
-	/*RequireSsl - Descr: Require TLS for communication with ETCD Default: false
-*/
-	RequireSsl interface{} `yaml:"require_ssl,omitempty"`
-
 	/*Machines - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
 	Machines interface{} `yaml:"machines,omitempty"`
@@ -24,5 +20,9 @@ type Etcd struct {
 	/*CaCert - Descr: PEM-encoded CA certificate Default: <nil>
 */
 	CaCert interface{} `yaml:"ca_cert,omitempty"`
+
+	/*RequireSsl - Descr: Require TLS for communication with ETCD Default: false
+*/
+	RequireSsl interface{} `yaml:"require_ssl,omitempty"`
 
 }

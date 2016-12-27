@@ -5,7 +5,7 @@ package uaa
 */
 type Logout struct {
 
-	/*Redirect - Descr: When set to false, this allows an operator to leverage an open redirect on the UAA (/logout.do?redirect=google.com). No open redirect enabled Default: true
+	/*Redirect - Descr: The Location of the redirect header following a logout of the the UAA (/logout.do). Default: /login
 */
 	Redirect *Redirect `yaml:"redirect,omitempty"`
 

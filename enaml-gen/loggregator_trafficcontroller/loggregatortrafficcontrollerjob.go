@@ -5,33 +5,13 @@ package loggregator_trafficcontroller
 */
 type LoggregatorTrafficcontrollerJob struct {
 
-	/*Login - Descr: Protocol to use to connect to UAA (used in case uaa.url is not set) Default: https
-*/
-	Login *Login `yaml:"login,omitempty"`
-
-	/*Loggregator - Descr: IPs pointing to the ETCD cluster Default: <nil>
+	/*Loggregator - Descr: Port for outgoing dropsonde messages Default: 8081
 */
 	Loggregator *Loggregator `yaml:"loggregator,omitempty"`
 
 	/*SystemDomain - Descr: Domain reserved for CF operator, base URL where the login, uaa, and other non-user apps listen Default: <nil>
 */
 	SystemDomain interface{} `yaml:"system_domain,omitempty"`
-
-	/*MetronEndpoint - Descr: The port used to emit dropsonde messages to the Metron agent Default: 3457
-*/
-	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
-
-	/*TrafficController - Descr: boolean value to turn on verbose logging for loggregator system (dea agent & loggregator server) Default: false
-*/
-	TrafficController *TrafficController `yaml:"traffic_controller,omitempty"`
-
-	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
-*/
-	Ssl *Ssl `yaml:"ssl,omitempty"`
-
-	/*Doppler - Descr: Doppler's client id to connect to UAA Default: doppler
-*/
-	Doppler *Doppler `yaml:"doppler,omitempty"`
 
 	/*Uaa - Descr: URL of UAA Default: <nil>
 */
@@ -40,5 +20,25 @@ type LoggregatorTrafficcontrollerJob struct {
 	/*Cc - Descr: API URI of cloud controller Default: <nil>
 */
 	Cc *Cc `yaml:"cc,omitempty"`
+
+	/*Doppler - Descr: Doppler's client id to connect to UAA Default: doppler
+*/
+	Doppler *Doppler `yaml:"doppler,omitempty"`
+
+	/*Login - Descr: Protocol to use to connect to UAA (used in case uaa.url is not set) Default: https
+*/
+	Login *Login `yaml:"login,omitempty"`
+
+	/*MetronEndpoint - Descr: The port used to emit dropsonde messages to the Metron agent Default: 3457
+*/
+	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
+
+	/*TrafficController - Descr: PEM-encoded client certificate Default: 
+*/
+	TrafficController *TrafficController `yaml:"traffic_controller,omitempty"`
+
+	/*Ssl - Descr: when connecting over https, ignore bad ssl certificates Default: false
+*/
+	Ssl *Ssl `yaml:"ssl,omitempty"`
 
 }

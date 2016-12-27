@@ -5,16 +5,16 @@ package doppler
 */
 type LoggregatorEtcd struct {
 
-	/*Machines - Descr: IPs pointing to the ETCD cluster Default: <nil>
+	/*CaCert - Descr: PEM-encoded CA certificate Default: 
 */
-	Machines interface{} `yaml:"machines,omitempty"`
+	CaCert interface{} `yaml:"ca_cert,omitempty"`
 
 	/*RequireSsl - Descr: Enable ssl for all communication with etcd Default: false
 */
 	RequireSsl interface{} `yaml:"require_ssl,omitempty"`
 
-	/*CaCert - Descr: PEM-encoded CA certificate Default: 
+	/*Machines - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
-	CaCert interface{} `yaml:"ca_cert,omitempty"`
+	Machines interface{} `yaml:"machines,omitempty"`
 
 }

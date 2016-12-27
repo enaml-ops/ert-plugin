@@ -5,16 +5,16 @@ package gorouter
 */
 type Status struct {
 
-	/*Port - Descr: Port for the /health, /varz, and /routes endpoints. Default: 8080
+	/*Password - Descr: Password for HTTP basic auth to the varz/status endpoint. Default: <nil>
 */
-	Port interface{} `yaml:"port,omitempty"`
+	Password interface{} `yaml:"password,omitempty"`
 
-	/*User - Descr: Username for HTTP basic auth to the /varz and /routes endpoints. Default: <nil>
+	/*User - Descr: Username for HTTP basic auth to the varz/status endpoint. Default: <nil>
 */
 	User interface{} `yaml:"user,omitempty"`
 
-	/*Password - Descr: Password for HTTP basic auth to the /varz and /routes endpoints. Default: <nil>
+	/*Port - Descr: Port for the Router varz/status endpoint. Default: 8080
 */
-	Password interface{} `yaml:"password,omitempty"`
+	Port interface{} `yaml:"port,omitempty"`
 
 }

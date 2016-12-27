@@ -5,13 +5,13 @@ package gorouter
 */
 type RoutingApi struct {
 
-	/*Enabled - Descr: When enabled, GoRouter will fetch HTTP routes from the Routing API in addition to routes obtained via NATS. Default: false
-*/
-	Enabled interface{} `yaml:"enabled,omitempty"`
-
 	/*Port - Descr: Port on which Routing API is running. Default: 3000
 */
 	Port interface{} `yaml:"port,omitempty"`
+
+	/*Enabled - Descr: When enabled, GoRouter will fetch HTTP routes from the Routing API in addition to routes obtained via NATS. Default: false
+*/
+	Enabled interface{} `yaml:"enabled,omitempty"`
 
 	/*AuthDisabled - Descr: When false, Routing API requires OAuth tokens for authentication. Default: false
 */

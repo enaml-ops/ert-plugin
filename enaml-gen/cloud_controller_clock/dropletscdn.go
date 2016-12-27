@@ -5,13 +5,13 @@ package cloud_controller_clock
 */
 type DropletsCdn struct {
 
-	/*Uri - Descr: URI for a CDN to used for droplet downloads Default: 
-*/
-	Uri interface{} `yaml:"uri,omitempty"`
-
 	/*KeyPairId - Descr: Key pair name for signed download URIs Default: 
 */
 	KeyPairId interface{} `yaml:"key_pair_id,omitempty"`
+
+	/*Uri - Descr: URI for a CDN to used for droplet downloads Default: 
+*/
+	Uri interface{} `yaml:"uri,omitempty"`
 
 	/*PrivateKey - Descr: Private key for signing download URIs Default: 
 */

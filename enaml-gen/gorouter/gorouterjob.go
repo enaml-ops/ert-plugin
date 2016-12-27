@@ -5,27 +5,27 @@ package gorouter
 */
 type GorouterJob struct {
 
-	/*RoutingApi - Descr: When false, Routing API requires OAuth tokens for authentication. Default: false
-*/
-	RoutingApi *RoutingApi `yaml:"routing_api,omitempty"`
-
-	/*Nats - Descr: IP of each NATS cluster member. Default: <nil>
-*/
-	Nats *Nats `yaml:"nats,omitempty"`
-
 	/*RequestTimeoutInSeconds - Descr: Timeout in seconds for Router -> Endpoint roundtrip. Default: 900
 */
 	RequestTimeoutInSeconds interface{} `yaml:"request_timeout_in_seconds,omitempty"`
 
-	/*Router - Descr: To rotate keys, add your new key here and deploy. Then swap this key with the value of route_services_secret and deploy again. Default: 
+	/*Router - Descr: Username for HTTP basic auth to the varz/status endpoint. Default: <nil>
 */
 	Router *Router `yaml:"router,omitempty"`
+
+	/*Nats - Descr:  Default: <nil>
+*/
+	Nats *Nats `yaml:"nats,omitempty"`
 
 	/*Metron - Descr: The port used to emit dropsonde messages to the Metron agent. Default: 3457
 */
 	Metron *Metron `yaml:"metron,omitempty"`
 
-	/*Uaa - Descr: Certificate authority for communication between clients and uaa. Default: 
+	/*RoutingApi - Descr: When false, Routing API requires OAuth tokens for authentication. Default: false
+*/
+	RoutingApi *RoutingApi `yaml:"routing_api,omitempty"`
+
+	/*Uaa - Descr:  Default: 
 */
 	Uaa *Uaa `yaml:"uaa,omitempty"`
 

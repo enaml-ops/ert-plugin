@@ -5,36 +5,36 @@ package cloud_controller_ng
 */
 type Packages struct {
 
-	/*MaxValidPackagesStored - Descr: Number of recent, valid packages stored per app (not including package for current droplet) Default: 5
+	/*FogAwsStorageOptions - Descr: Storage options passed to fog for aws blobstores. Valid keys: ['encryption']. Default: <nil>
 */
-	MaxValidPackagesStored interface{} `yaml:"max_valid_packages_stored,omitempty"`
+	FogAwsStorageOptions interface{} `yaml:"fog_aws_storage_options,omitempty"`
 
 	/*FogConnection - Descr: Fog connection hash Default: <nil>
 */
 	FogConnection interface{} `yaml:"fog_connection,omitempty"`
 
-	/*BlobstoreType - Descr: The type of blobstore backing to use. Valid values: ['fog', 'webdav'] Default: fog
+	/*MaxValidPackagesStored - Descr: Number of recent, valid packages stored per app (not including package for current droplet) Default: 5
 */
-	BlobstoreType interface{} `yaml:"blobstore_type,omitempty"`
+	MaxValidPackagesStored interface{} `yaml:"max_valid_packages_stored,omitempty"`
 
 	/*AppPackageDirectoryKey - Descr: Directory (bucket) used store app packages.  It does not have be pre-created. Default: cc-packages
 */
 	AppPackageDirectoryKey interface{} `yaml:"app_package_directory_key,omitempty"`
 
-	/*FogAwsStorageOptions - Descr: Storage options passed to fog for aws blobstores. Valid keys: ['encryption']. Default: <nil>
-*/
-	FogAwsStorageOptions interface{} `yaml:"fog_aws_storage_options,omitempty"`
-
-	/*MaxPackageSize - Descr: Maximum size of application package Default: 1073741824
-*/
-	MaxPackageSize interface{} `yaml:"max_package_size,omitempty"`
-
 	/*Cdn - Descr: Key pair name for signed download URIs Default: 
 */
 	Cdn *PackagesCdn `yaml:"cdn,omitempty"`
 
-	/*WebdavConfig - Descr: The ca cert to use when communicating with webdav Default: 
+	/*WebdavConfig - Descr: The timeout in seconds for requests to the blobstore Default: 5
 */
 	WebdavConfig *PackagesWebdavConfig `yaml:"webdav_config,omitempty"`
+
+	/*BlobstoreType - Descr: The type of blobstore backing to use. Valid values: ['fog', 'webdav'] Default: fog
+*/
+	BlobstoreType interface{} `yaml:"blobstore_type,omitempty"`
+
+	/*MaxPackageSize - Descr: Maximum size of application package Default: 1073741824
+*/
+	MaxPackageSize interface{} `yaml:"max_package_size,omitempty"`
 
 }

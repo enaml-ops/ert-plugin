@@ -5,7 +5,7 @@ package haproxy
 */
 type HaproxyJob struct {
 
-	/*HaProxy - Descr: List of SSL Ciphers that are passed to HAProxy Default: ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA:ECDHE-RSA-AES256-CBC-SHA:AES128-SHA256:AES128-SHA
+	/*HaProxy - Descr: Whether to enable a socket that can be used to query errors and status Default: false
 */
 	HaProxy *HaProxy `yaml:"ha_proxy,omitempty"`
 
@@ -17,12 +17,12 @@ type HaproxyJob struct {
 */
 	Cc *Cc `yaml:"cc,omitempty"`
 
-	/*Router - Descr: Listening port for Router Default: 80
-*/
-	Router *Router `yaml:"router,omitempty"`
-
 	/*AppSsh - Descr: External port for SSH access to application instances Default: 2222
 */
 	AppSsh *AppSsh `yaml:"app_ssh,omitempty"`
+
+	/*Router - Descr: Listening port for Router Default: 80
+*/
+	Router *Router `yaml:"router,omitempty"`
 
 }

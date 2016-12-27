@@ -5,37 +5,17 @@ package uaa
 */
 type Login struct {
 
-	/*Oauth - Descr: Contains a hash of OpenID Connect/Oauth Identity Providers, the key will be used as the origin key for that provider, followed by key/value pairs. Presence of the userInfoUrl will mark it as an OpenID provider instead of OAuth. Default: <nil>
-*/
-	Oauth *Oauth `yaml:"oauth,omitempty"`
-
-	/*AssetBaseUrl - Descr: Deprecated in favor of branding properties. Base url for static assets, allows custom styling of the login server.  Use '/resources/pivotal' for Pivotal style. Default: /resources/oss
-*/
-	AssetBaseUrl interface{} `yaml:"asset_base_url,omitempty"`
-
-	/*Protocol - Descr: Scheme to use for HTTP communication (http/https) Default: https
-*/
-	Protocol interface{} `yaml:"protocol,omitempty"`
-
-	/*IdpDiscoveryEnabled - Descr: IDP Discovery should be set to true if you have configured more than one identity provider for UAA. The discovery relies on email domain being set for each additional provider Default: false
-*/
-	IdpDiscoveryEnabled interface{} `yaml:"idpDiscoveryEnabled,omitempty"`
-
-	/*Prompt - Descr: The text used to prompt for a username during login Default: Email
-*/
-	Prompt *Prompt `yaml:"prompt,omitempty"`
-
-	/*Analytics - Descr: Google analytics domain. If Google Analytics is desired set both login.analytics.code and login.analytics.domain Default: <nil>
-*/
-	Analytics *Analytics `yaml:"analytics,omitempty"`
-
 	/*Notifications - Descr: The url for the notifications service (configure to use Notifications Service instead of SMTP server) Default: <nil>
 */
 	Notifications *Notifications `yaml:"notifications,omitempty"`
 
-	/*Saml - Descr: Global property to sign Local/SP requests Default: true
+	/*Branding - Descr: This name is used on the UAA Pages and in account management related communication in UAA Default: <nil>
 */
-	Saml *Saml `yaml:"saml,omitempty"`
+	Branding *Branding `yaml:"branding,omitempty"`
+
+	/*Analytics - Descr: Google analytics code. If Google Analytics is desired set both login.analytics.code and login.analytics.domain Default: <nil>
+*/
+	Analytics *Analytics `yaml:"analytics,omitempty"`
 
 	/*Messages - Descr: A nested or flat hash of messages that the login server uses to display UI message
 This will be flattened into a java.util.Properties file. The example below will lead
@@ -44,13 +24,43 @@ to four properties, where the key is the concatenated value delimited by dot, fo
 */
 	Messages interface{} `yaml:"messages,omitempty"`
 
-	/*Logout - Descr: When set to false, this allows an operator to leverage an open redirect on the UAA (/logout.do?redirect=google.com). No open redirect enabled Default: true
+	/*Prompt - Descr: The text used to prompt for a username during login Default: Email
 */
-	Logout *Logout `yaml:"logout,omitempty"`
+	Prompt *Prompt `yaml:"prompt,omitempty"`
 
-	/*Smtp - Descr: If true, authenticate using AUTH command. https://javamail.java.net/nonav/docs/api/com/sun/mail/smtp/package-summary.html Default: false
+	/*Protocol - Descr: Scheme to use for HTTP communication (http/https) Default: https
+*/
+	Protocol interface{} `yaml:"protocol,omitempty"`
+
+	/*AssetBaseUrl - Descr: Deprecated in favor of branding properties. Base url for static assets, allows custom styling of the login server.  Use '/resources/pivotal' for Pivotal style. Default: /resources/oss
+*/
+	AssetBaseUrl interface{} `yaml:"asset_base_url,omitempty"`
+
+	/*SelfServiceLinksEnabled - Descr: Enable self-service account creation and password resets links. Default: <nil>
+*/
+	SelfServiceLinksEnabled interface{} `yaml:"self_service_links_enabled,omitempty"`
+
+	/*Smtp - Descr: SMTP from address Default: <nil>
 */
 	Smtp *Smtp `yaml:"smtp,omitempty"`
+
+	/*IdpDiscoveryEnabled - Descr: IDP Discovery should be set to true if you have configured more than one identity provider for UAA. The discovery relies on email domain being set for each additional provider Default: false
+*/
+	IdpDiscoveryEnabled interface{} `yaml:"idpDiscoveryEnabled,omitempty"`
+
+	/*Links - Descr: URL for requesting password reset Default: /forgot_password
+*/
+	Links *Links `yaml:"links,omitempty"`
+
+	/*Saml - Descr: The URL for which SAML identity providers will post assertions to.
+If set it overrides the default.
+This URL should NOT have the schema (http:// or https:// prefix in it) instead just the hostname.
+The schema is derived by #{login.protocol} property.
+The default value is #{uaa.url}.replaceFirst('uaa','login'), typically login.example.com
+The UAA will display this link in the cf --sso call if there is a SAML provider enabled.
+ Default: <nil>
+*/
+	Saml *Saml `yaml:"saml,omitempty"`
 
 	/*Url - Descr: Set if you have an external login server.
 The UAA uses this link on by its email service to create links
@@ -60,20 +70,16 @@ This defaults to the uaa.url property, and if not set, to login.<domain>
 */
 	Url interface{} `yaml:"url,omitempty"`
 
-	/*Branding - Descr: This is a base64 encoded PNG image which will be used as the logo on all UAA pages like Login, Sign Up etc. Default: <nil>
-*/
-	Branding *Branding `yaml:"branding,omitempty"`
-
-	/*SelfServiceLinksEnabled - Descr: Enable self-service account creation and password resets links. Default: <nil>
-*/
-	SelfServiceLinksEnabled interface{} `yaml:"self_service_links_enabled,omitempty"`
-
-	/*Links - Descr: A hash of home/passwd/signup URLS (see commented examples below) Default: <nil>
-*/
-	Links interface{} `yaml:"links,omitempty"`
-
 	/*HomeRedirect - Descr: URL for configuring a custom home page Default: <nil>
 */
 	HomeRedirect interface{} `yaml:"home_redirect,omitempty"`
+
+	/*Oauth - Descr: Contains a hash of OpenID Connect/Oauth Identity Providers, the key will be used as the origin key for that provider, followed by key/value pairs. Presence of the userInfoUrl will mark it as an OpenID provider instead of OAuth. Default: <nil>
+*/
+	Oauth *Oauth `yaml:"oauth,omitempty"`
+
+	/*Logout - Descr: The Location of the redirect header following a logout of the the UAA (/logout.do). Default: /login
+*/
+	Logout *Logout `yaml:"logout,omitempty"`
 
 }

@@ -5,28 +5,28 @@ package syslog_drain_binder
 */
 type SyslogDrainBinderJob struct {
 
-	/*SystemDomain - Descr: Domain reserved for CF operator, base URL where the login, uaa, and other non-user apps listen Default: <nil>
+	/*MetronEndpoint - Descr: The host used to emit messages to the Metron agent Default: 127.0.0.1
 */
-	SystemDomain interface{} `yaml:"system_domain,omitempty"`
+	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
 
-	/*SyslogDrainBinder - Descr: PEM-encoded client key Default: 
-*/
-	SyslogDrainBinder *SyslogDrainBinder `yaml:"syslog_drain_binder,omitempty"`
-
-	/*Loggregator - Descr: IPs pointing to the ETCD cluster Default: <nil>
+	/*Loggregator - Descr: PEM-encoded CA certificate Default: 
 */
 	Loggregator *Loggregator `yaml:"loggregator,omitempty"`
-
-	/*Cc - Descr: API URI of cloud controller Default: <nil>
-*/
-	Cc *Cc `yaml:"cc,omitempty"`
 
 	/*Ssl - Descr: When connecting over https, ignore bad ssl certificates Default: false
 */
 	Ssl *Ssl `yaml:"ssl,omitempty"`
 
-	/*MetronEndpoint - Descr: The port used to emit dropsonde messages to the Metron agent Default: 3457
+	/*SystemDomain - Descr: Domain reserved for CF operator, base URL where the login, uaa, and other non-user apps listen Default: <nil>
 */
-	MetronEndpoint *MetronEndpoint `yaml:"metron_endpoint,omitempty"`
+	SystemDomain interface{} `yaml:"system_domain,omitempty"`
+
+	/*SyslogDrainBinder - Descr: Size (KB) of shell's locked memory limit. Set to 'kernel' to use the kernel's default. Non-numeric values other than 'kernel', 'soft', 'hard', and 'unlimited' will result in an error. Default: unlimited
+*/
+	SyslogDrainBinder *SyslogDrainBinder `yaml:"syslog_drain_binder,omitempty"`
+
+	/*Cc - Descr: API URI of cloud controller Default: <nil>
+*/
+	Cc *Cc `yaml:"cc,omitempty"`
 
 }

@@ -5,9 +5,13 @@ package hm9000
 */
 type Hm9000 struct {
 
-	/*FetcherNetworkTimeoutInSeconds - Descr: Each API call to the CC must succeed within this timeout. Default: 30
+	/*ServerKey - Descr: PEM-encoded server key Default: <nil>
 */
-	FetcherNetworkTimeoutInSeconds interface{} `yaml:"fetcher_network_timeout_in_seconds,omitempty"`
+	ServerKey interface{} `yaml:"server_key,omitempty"`
+
+	/*DesiredStateBatchSize - Descr: The batch size when fetching desired state information from the CC. Default: 5000
+*/
+	DesiredStateBatchSize interface{} `yaml:"desired_state_batch_size,omitempty"`
 
 	/*SenderMessageLimit - Descr: The maximum number of messages the sender should send per invocation. Default: 60
 */
@@ -17,24 +21,20 @@ type Hm9000 struct {
 */
 	ServerCert interface{} `yaml:"server_cert,omitempty"`
 
-	/*Etcd - Descr: Require TLS for communication with ETCD Default: false
+	/*Etcd - Descr: IPs pointing to the ETCD cluster Default: <nil>
 */
 	Etcd *Etcd `yaml:"etcd,omitempty"`
 
-	/*DesiredStateBatchSize - Descr: The batch size when fetching desired state information from the CC. Default: 5000
+	/*FetcherNetworkTimeoutInSeconds - Descr: Each API call to the CC must succeed within this timeout. Default: 30
 */
-	DesiredStateBatchSize interface{} `yaml:"desired_state_batch_size,omitempty"`
-
-	/*Port - Descr: The port to serve API requests Default: <nil>
-*/
-	Port interface{} `yaml:"port,omitempty"`
+	FetcherNetworkTimeoutInSeconds interface{} `yaml:"fetcher_network_timeout_in_seconds,omitempty"`
 
 	/*CaCert - Descr: PEM-encoded CA certificate Default: <nil>
 */
 	CaCert interface{} `yaml:"ca_cert,omitempty"`
 
-	/*ServerKey - Descr: PEM-encoded server key Default: <nil>
+	/*Port - Descr: The port to serve API requests Default: <nil>
 */
-	ServerKey interface{} `yaml:"server_key,omitempty"`
+	Port interface{} `yaml:"port,omitempty"`
 
 }

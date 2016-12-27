@@ -5,12 +5,12 @@ package collector
 */
 type CollectorJob struct {
 
-	/*Nats - Descr: NATS password Default: <nil>
-*/
-	Nats *Nats `yaml:"nats,omitempty"`
-
-	/*Collector - Descr: enable CloudWatch plugin Default: false
+	/*Collector - Descr: enable Graphite plugin Default: false
 */
 	Collector *Collector `yaml:"collector,omitempty"`
+
+	/*Nats - Descr: NATS TCP port Default: <nil>
+*/
+	Nats *Nats `yaml:"nats,omitempty"`
 
 }

@@ -5,7 +5,7 @@ package consul_agent
 */
 type ConsulAgentJob struct {
 
-	/*Consul - Descr: PEM-encoded server certificate Default: <nil>
+	/*Consul - Descr: A list of passphrases that will be converted into encryption keys, the first key in the list is the active one Default: <nil>
 */
 	Consul *Consul `yaml:"consul,omitempty"`
 

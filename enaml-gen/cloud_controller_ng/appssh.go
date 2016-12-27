@@ -5,10 +5,6 @@ package cloud_controller_ng
 */
 type AppSsh struct {
 
-	/*Port - Descr: External port for SSH access to application instances Default: 2222
-*/
-	Port interface{} `yaml:"port,omitempty"`
-
 	/*OauthClientId - Descr: The oauth client ID of the SSH proxy Default: ssh-proxy
 */
 	OauthClientId interface{} `yaml:"oauth_client_id,omitempty"`
@@ -16,5 +12,9 @@ type AppSsh struct {
 	/*HostKeyFingerprint - Descr: Fingerprint of the host key of the SSH proxy that brokers connections to application instances Default: <nil>
 */
 	HostKeyFingerprint interface{} `yaml:"host_key_fingerprint,omitempty"`
+
+	/*Port - Descr: External port for SSH access to application instances Default: 2222
+*/
+	Port interface{} `yaml:"port,omitempty"`
 
 }

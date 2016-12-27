@@ -5,20 +5,20 @@ package collector
 */
 type Nats struct {
 
-	/*Port - Descr: NATS TCP port Default: <nil>
+	/*Machines - Descr: IP of each NATS cluster member. Default: <nil>
 */
-	Port interface{} `yaml:"port,omitempty"`
-
-	/*Password - Descr: NATS password Default: <nil>
-*/
-	Password interface{} `yaml:"password,omitempty"`
+	Machines interface{} `yaml:"machines,omitempty"`
 
 	/*User - Descr: NATS user Default: <nil>
 */
 	User interface{} `yaml:"user,omitempty"`
 
-	/*Machines - Descr: IP of each NATS cluster member. Default: <nil>
+	/*Password - Descr: NATS password Default: <nil>
 */
-	Machines interface{} `yaml:"machines,omitempty"`
+	Password interface{} `yaml:"password,omitempty"`
+
+	/*Port - Descr: NATS TCP port Default: <nil>
+*/
+	Port interface{} `yaml:"port,omitempty"`
 
 }

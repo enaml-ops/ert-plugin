@@ -5,19 +5,16 @@ package etcd_metrics_server
 */
 type EtcdMetricsServer struct {
 
-	/*Etcd - Descr: DNS suffix of the etcd server to instrument.
-Target etcd server must be colocated with this etcd_metrics_server.
-This property is only used if 'etcd_metrics_server.etcd.require_ssl' is 'true'."
- Default: <nil>
+	/*Etcd - Descr: port of etcd server to instrument Default: 4001
 */
 	Etcd *Etcd `yaml:"etcd,omitempty"`
 
-	/*Status - Descr: basic auth password for metrics server (leave empty for generated) Default: 
-*/
-	Status *Status `yaml:"status,omitempty"`
-
-	/*Nats - Descr: NATS server password Default: <nil>
+	/*Nats - Descr: array of NATS addresses Default: <nil>
 */
 	Nats *Nats `yaml:"nats,omitempty"`
+
+	/*Status - Descr: basic auth username for metrics server (leave empty for generated) Default: 
+*/
+	Status *Status `yaml:"status,omitempty"`
 
 }

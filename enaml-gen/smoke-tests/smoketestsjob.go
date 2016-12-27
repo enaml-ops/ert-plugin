@@ -5,7 +5,7 @@ package smoke_tests
 */
 type SmokeTestsJob struct {
 
-	/*SmokeTests - Descr: The Elastic Runtime app name to use when running runtime tests Default: 
+	/*SmokeTests - Descr: Ginkgo options for the smoke tests Default: 
 */
 	SmokeTests *SmokeTests `yaml:"smoke_tests,omitempty"`
 

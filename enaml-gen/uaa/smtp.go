@@ -9,28 +9,28 @@ type Smtp struct {
 */
 	Port interface{} `yaml:"port,omitempty"`
 
-	/*Host - Descr: SMTP server host address Default: localhost
+	/*User - Descr: SMTP server username Default: <nil>
 */
-	Host interface{} `yaml:"host,omitempty"`
+	User interface{} `yaml:"user,omitempty"`
 
 	/*Starttls - Descr: If true, send STARTTLS command before login to server. https://javamail.java.net/nonav/docs/api/com/sun/mail/smtp/package-summary.html Default: false
 */
 	Starttls interface{} `yaml:"starttls,omitempty"`
 
+	/*Host - Descr: SMTP server host address Default: localhost
+*/
+	Host interface{} `yaml:"host,omitempty"`
+
 	/*FromAddress - Descr: SMTP from address Default: <nil>
 */
 	FromAddress interface{} `yaml:"from_address,omitempty"`
 
-	/*Auth - Descr: If true, authenticate using AUTH command. https://javamail.java.net/nonav/docs/api/com/sun/mail/smtp/package-summary.html Default: false
-*/
-	Auth interface{} `yaml:"auth,omitempty"`
-
-	/*User - Descr: SMTP server username Default: <nil>
-*/
-	User interface{} `yaml:"user,omitempty"`
-
 	/*Password - Descr: SMTP server password Default: <nil>
 */
 	Password interface{} `yaml:"password,omitempty"`
+
+	/*Auth - Descr: If true, authenticate using AUTH command. https://javamail.java.net/nonav/docs/api/com/sun/mail/smtp/package-summary.html Default: false
+*/
+	Auth interface{} `yaml:"auth,omitempty"`
 
 }

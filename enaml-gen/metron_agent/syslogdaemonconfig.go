@@ -9,28 +9,28 @@ type SyslogDaemonConfig struct {
 */
 	MaxMessageSize interface{} `yaml:"max_message_size,omitempty"`
 
-	/*Port - Descr: TCP port of syslog aggregator Default: <nil>
+	/*Address - Descr: IP address for syslog aggregator Default: <nil>
 */
-	Port interface{} `yaml:"port,omitempty"`
-
-	/*Enable - Descr: Enable or disable rsyslog configuration for forwarding syslog messages into metron Default: true
-*/
-	Enable interface{} `yaml:"enable,omitempty"`
-
-	/*Transport - Descr: Transport to be used when forwarding logs (tcp|udp|relp). Default: tcp
-*/
-	Transport interface{} `yaml:"transport,omitempty"`
-
-	/*CustomRule - Descr: Custom rule for syslog forward daemon Default: 
-*/
-	CustomRule interface{} `yaml:"custom_rule,omitempty"`
+	Address interface{} `yaml:"address,omitempty"`
 
 	/*FallbackAddresses - Descr: Addresses of fallback servers to be used if the primary syslog server is down. Only tcp or relp are supported. Each list entry should consist of "address", "transport" and "port" keys.  Default: []
 */
 	FallbackAddresses interface{} `yaml:"fallback_addresses,omitempty"`
 
-	/*Address - Descr: IP address for syslog aggregator Default: <nil>
+	/*Transport - Descr: Transport to be used when forwarding logs (tcp|udp|relp). Default: tcp
 */
-	Address interface{} `yaml:"address,omitempty"`
+	Transport interface{} `yaml:"transport,omitempty"`
+
+	/*Port - Descr: TCP port of syslog aggregator Default: <nil>
+*/
+	Port interface{} `yaml:"port,omitempty"`
+
+	/*CustomRule - Descr: Custom rule for syslog forward daemon Default: 
+*/
+	CustomRule interface{} `yaml:"custom_rule,omitempty"`
+
+	/*Enable - Descr: Enable or disable rsyslog configuration for forwarding syslog messages into metron Default: true
+*/
+	Enable interface{} `yaml:"enable,omitempty"`
 
 }

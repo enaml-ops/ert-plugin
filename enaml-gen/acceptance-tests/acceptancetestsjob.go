@@ -5,8 +5,8 @@ package acceptance_tests
 */
 type AcceptanceTestsJob struct {
 
-	/*Consul - Descr: Password for the BOSH registry Default: password
+	/*AcceptanceTests - Descr: Default Timeout Default: <nil>
 */
-	Consul *Consul `yaml:"consul,omitempty"`
+	AcceptanceTests *AcceptanceTests `yaml:"acceptance_tests,omitempty"`
 
 }

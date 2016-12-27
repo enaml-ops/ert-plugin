@@ -5,13 +5,13 @@ package gorouter
 */
 type Nats struct {
 
-	/*Port - Descr:  Default: <nil>
-*/
-	Port interface{} `yaml:"port,omitempty"`
-
 	/*User - Descr:  Default: <nil>
 */
 	User interface{} `yaml:"user,omitempty"`
+
+	/*Port - Descr:  Default: <nil>
+*/
+	Port interface{} `yaml:"port,omitempty"`
 
 	/*Machines - Descr: IP of each NATS cluster member. Default: <nil>
 */

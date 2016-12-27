@@ -5,24 +5,24 @@ package uaa
 */
 type JwtPolicy struct {
 
-	/*Global - Descr: The global refresh token validity for all zones if nothing is configured on the client Default: 2592000
+	/*AccessTokenValiditySeconds - Descr: The access token validity for the default zone if nothing is configured on the client. Will override global validity policies for the default zone only. Default: 43200
 */
-	Global *Global `yaml:"global,omitempty"`
-
-	/*Keys - Descr: Map of key IDs and signing keys, each defined with a property `signingKey` Default: <nil>
-*/
-	Keys interface{} `yaml:"keys,omitempty"`
-
-	/*RefreshTokenValiditySeconds - Descr: The refresh token validity for the default zone if nothing is configured on the client. Will override global validity policies for the default zone only. Default: 2592000
-*/
-	RefreshTokenValiditySeconds interface{} `yaml:"refreshTokenValiditySeconds,omitempty"`
+	AccessTokenValiditySeconds interface{} `yaml:"accessTokenValiditySeconds,omitempty"`
 
 	/*ActiveKeyId - Descr: The ID of the JWT signing key to be used when signing tokens. Default: <nil>
 */
 	ActiveKeyId interface{} `yaml:"active_key_id,omitempty"`
 
-	/*AccessTokenValiditySeconds - Descr: The access token validity for the default zone if nothing is configured on the client. Will override global validity policies for the default zone only. Default: 43200
+	/*RefreshTokenValiditySeconds - Descr: The refresh token validity for the default zone if nothing is configured on the client. Will override global validity policies for the default zone only. Default: 2592000
 */
-	AccessTokenValiditySeconds interface{} `yaml:"accessTokenValiditySeconds,omitempty"`
+	RefreshTokenValiditySeconds interface{} `yaml:"refreshTokenValiditySeconds,omitempty"`
+
+	/*Keys - Descr: Map of key IDs and signing keys, each defined with a property `signingKey` Default: <nil>
+*/
+	Keys interface{} `yaml:"keys,omitempty"`
+
+	/*Global - Descr: The global refresh token validity for all zones if nothing is configured on the client Default: 2592000
+*/
+	Global *Global `yaml:"global,omitempty"`
 
 }

@@ -5,18 +5,6 @@ package hm9000
 */
 type Cc struct {
 
-	/*BulkApiPassword - Descr: Password used to access the bulk_api, health_manager uses it to connect to the cc, announced over NATS Default: <nil>
-*/
-	BulkApiPassword interface{} `yaml:"bulk_api_password,omitempty"`
-
-	/*BulkApiUser - Descr: User used to access the bulk_api, health_manager uses it to connect to the cc, announced over NATS Default: bulk_api
-*/
-	BulkApiUser interface{} `yaml:"bulk_api_user,omitempty"`
-
-	/*SrvApiUri - Descr:  Default: <nil>
-*/
-	SrvApiUri interface{} `yaml:"srv_api_uri,omitempty"`
-
 	/*InternalApiUser - Descr: Username for hm9000 API Default: internal_user
 */
 	InternalApiUser interface{} `yaml:"internal_api_user,omitempty"`
@@ -24,6 +12,18 @@ type Cc struct {
 	/*InternalApiPassword - Descr: Password for hm9000 API Default: <nil>
 */
 	InternalApiPassword interface{} `yaml:"internal_api_password,omitempty"`
+
+	/*SrvApiUri - Descr:  Default: <nil>
+*/
+	SrvApiUri interface{} `yaml:"srv_api_uri,omitempty"`
+
+	/*BulkApiUser - Descr: User used to access the bulk_api, health_manager uses it to connect to the cc, announced over NATS Default: bulk_api
+*/
+	BulkApiUser interface{} `yaml:"bulk_api_user,omitempty"`
+
+	/*BulkApiPassword - Descr: Password used to access the bulk_api, health_manager uses it to connect to the cc, announced over NATS Default: <nil>
+*/
+	BulkApiPassword interface{} `yaml:"bulk_api_password,omitempty"`
 
 	/*ExternalPort - Descr: External port to connect to the CC Default: 9022
 */

@@ -5,7 +5,7 @@ package cc_uploader
 */
 type CcUploaderJob struct {
 
-	/*Capi - Descr: Address of interface on which to serve files Default: 0.0.0.0:9090
+	/*Capi - Descr: local metron agent's port Default: 3457
 */
 	Capi *Capi `yaml:"capi,omitempty"`
 
