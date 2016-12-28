@@ -1,13 +1,54 @@
 package config
 
 import (
+	"crypto/md5"
+	"encoding/base64"
+	"fmt"
+	"log"
+	"strings"
+
 	"github.com/enaml-ops/pluginlib/pcli"
+	"github.com/enaml-ops/pluginlib/pluginutil"
+	"github.com/xchapter7x/lo"
 	"gopkg.in/urfave/cli.v2"
 )
 
+func getFingerPrint(pubKey string) string {
+	pubKey = strings.Trim(pubKey, "-----BEGIN PUBLIC KEY-----")
+	pubKey = strings.Trim(pubKey, "-----END PUBLIC KEY-----")
+	parts := strings.Fields(pubKey)
+	if len(parts) < 2 {
+		log.Fatal("bad key")
+	}
+
+	k, err := base64.StdEncoding.DecodeString(parts[1])
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fp := md5.Sum([]byte(k))
+	var res string
+	for i, b := range fp {
+		res += fmt.Sprintf("%02x", b)
+		if i < len(fp)-1 {
+			res += fmt.Sprint(":")
+		}
+	}
+	return res
+}
+
 func NewConfig(c *cli.Context) (*Config, error) {
+	var err error
 	config := &Config{}
-	err := pcli.UnmarshalFlags(config, c)
+	config.DiegoSSHPublicKey, config.DiegoSSHPrivateKey, err = pluginutil.GenerateKeys()
+
+	if err != nil {
+		lo.G.Error("couldn't generate private key for SSH proxy")
+		return nil, err
+	}
+	config.DiegoSSHHostFingerPrint = getFingerPrint(config.DiegoSSHPublicKey)
+
+	err = pcli.UnmarshalFlags(config, c)
 	if err != nil {
 		return nil, err
 	}
@@ -32,6 +73,9 @@ func NewConfig(c *cli.Context) (*Config, error) {
 }
 
 type Config struct {
+	DiegoSSHHostFingerPrint       string   `omg:"-"`
+	DiegoSSHPublicKey             string   `omg:"-"`
+	DiegoSSHPrivateKey            string   `omg:"-"`
 	DeploymentName                string   `omg:"deployment-name,optional"`
 	AZs                           []string `omg:"az"`
 	StemcellName                  string

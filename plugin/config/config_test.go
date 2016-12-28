@@ -174,6 +174,12 @@ var _ = Describe("Config", func() {
 			Ω(config).ShouldNot(BeNil())
 		})
 
+		It("should add a set of public, private & fingerprints for diego braing & cloud controller ssh", func() {
+			Ω(config.DiegoSSHPublicKey).ShouldNot(BeEmpty(), "we should have a public key set")
+			Ω(config.DiegoSSHPrivateKey).ShouldNot(BeEmpty(), "we should have a private key set")
+			Ω(config.DiegoSSHHostFingerPrint).ShouldNot(BeEmpty(), "we should have a fingerprint set")
+		})
+
 		It("then deployment name should be set", func() {
 			Ω(config.DeploymentName).Should(Equal("cf-staging"))
 		})
