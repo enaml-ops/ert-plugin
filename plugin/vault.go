@@ -101,7 +101,6 @@ func getPasswordObject() []byte {
 		"apps-metrics-processing-client-secret",
 		"consul-encryption-key",
 		"cc-db-encryption-key",
-		"host-key-fingerprint",
 		"apps-manager-secret-token",
 	}
 

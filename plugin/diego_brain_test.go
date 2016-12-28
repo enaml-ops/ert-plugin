@@ -23,9 +23,10 @@ var _ = Describe("given a Diego Brain Partition", func() {
 	Context("when initialized with a complete set of arguments", func() {
 		var deploymentManifest *enaml.DeploymentManifest
 		var grouper InstanceGroupCreator
+		var cfg *config.Config
 
 		BeforeEach(func() {
-			config := &config.Config{
+			cfg = &config.Config{
 				SystemDomain:              "sys.test.com",
 				AZs:                       []string{"eastprod-1"},
 				StemcellName:              "cool-ubuntu-animal",
@@ -44,28 +45,29 @@ var _ = Describe("given a Diego Brain Partition", func() {
 				InstanceCount:             config.InstanceCount{},
 				IP:                        config.IP{},
 			}
-			config.NATSMachines = []string{"10.0.0.11", "10.0.0.12"}
-			config.DopplerSharedSecret = "metronsecret"
-			config.ConsulEncryptKeys = []string{"encyption-key"}
-			config.ConsulAgentCert = "agent-cert"
-			config.ConsulAgentKey = "agent-key"
-			config.ConsulServerCert = "server-cert"
-			config.ConsulServerKey = "server-key"
-			config.NATSUser = "nats"
-			config.NATSPassword = "natspass"
-			config.EtcdMachines = []string{"1.0.0.7", "1.0.0.8"}
-			config.ConsulIPs = []string{"1.0.0.1", "1.0.0.2"}
-			config.DiegoBrainIPs = []string{"10.0.0.39", "10.0.0.40"}
-			config.DiegoBrainVMType = "brainvmtype"
-			config.DiegoBrainPersistentDiskType = "braindisktype"
-			config.BBSCACert = "cacert"
-			config.BBSClientCert = "clientcert"
-			config.BBSClientKey = "clientkey"
-			config.SSHProxyClientSecret = "secret"
-			config.CCInternalAPIUser = "internaluser"
-			config.CCInternalAPIPassword = "internalpassword"
+			cfg.NATSMachines = []string{"10.0.0.11", "10.0.0.12"}
+			cfg.DopplerSharedSecret = "metronsecret"
+			cfg.ConsulEncryptKeys = []string{"encyption-key"}
+			cfg.ConsulAgentCert = "agent-cert"
+			cfg.ConsulAgentKey = "agent-key"
+			cfg.ConsulServerCert = "server-cert"
+			cfg.ConsulServerKey = "server-key"
+			cfg.NATSUser = "nats"
+			cfg.NATSPassword = "natspass"
+			cfg.EtcdMachines = []string{"1.0.0.7", "1.0.0.8"}
+			cfg.ConsulIPs = []string{"1.0.0.1", "1.0.0.2"}
+			cfg.DiegoBrainIPs = []string{"10.0.0.39", "10.0.0.40"}
+			cfg.DiegoBrainVMType = "brainvmtype"
+			cfg.DiegoBrainPersistentDiskType = "braindisktype"
+			cfg.BBSCACert = "cacert"
+			cfg.BBSClientCert = "clientcert"
+			cfg.BBSClientKey = "clientkey"
+			cfg.SSHProxyClientSecret = "secret"
+			cfg.CCInternalAPIUser = "internaluser"
+			cfg.CCInternalAPIPassword = "internalpassword"
+			cfg.DiegoSSHPrivateKey = "privatesecretvalue"
 
-			grouper = NewDiegoBrainPartition(config)
+			grouper = NewDiegoBrainPartition(cfg)
 			deploymentManifest = new(enaml.DeploymentManifest)
 			deploymentManifest.AddInstanceGroup(grouper.ToInstanceGroup())
 		})
@@ -176,7 +178,7 @@ var _ = Describe("given a Diego Brain Partition", func() {
 			Ω(s.Diego.SshProxy.Cc.ExternalPort).Should(Equal(9023))
 			Ω(s.Diego.SshProxy.UaaTokenUrl).Should(Equal("https://uaa.sys.test.com/oauth/token"))
 			Ω(s.Diego.SshProxy.UaaSecret).Should(Equal("secret"))
-			Ω(s.Diego.SshProxy.HostKey).ShouldNot(BeEmpty())
+			Ω(s.Diego.SshProxy.HostKey).Should(Equal(cfg.DiegoSSHPrivateKey))
 
 			By("configuring the stager")
 			job = ig.GetJobByName("stager")

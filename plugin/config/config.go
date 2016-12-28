@@ -107,7 +107,6 @@ type Config struct {
 	LDAPMailAttributeName         string   `omg:"uaa-ldap-mail-attributename,optional"`
 	LDAPEnabled                   bool     `omg:"uaa-ldap-enabled,optional"`
 	SharePath                     string   `omg:"nfs-share-path"`
-	HostKeyFingerprint            string
 	SupportAddress                string   `omg:"support-address,optional"`
 	MinCliVersion                 string   `omg:"min-cli-version"`
 	HAProxySkip                   bool     `omg:"skip-haproxy"`

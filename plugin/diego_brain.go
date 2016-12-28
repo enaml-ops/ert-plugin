@@ -14,8 +14,6 @@ import (
 	"github.com/enaml-ops/ert-plugin/enaml-gen/stager"
 	"github.com/enaml-ops/ert-plugin/enaml-gen/tps"
 	"github.com/enaml-ops/ert-plugin/plugin/config"
-	"github.com/enaml-ops/pluginlib/pluginutil"
-	"github.com/xchapter7x/lo"
 )
 
 type diegoBrain struct {
@@ -174,12 +172,6 @@ func (d *diegoBrain) newRouteEmitter() *enaml.InstanceJob {
 }
 
 func (d *diegoBrain) newSSHProxy() *enaml.InstanceJob {
-	_, privateKey, err := pluginutil.GenerateKeys()
-	if err != nil {
-		lo.G.Error("couldn't generate private key for SSH proxy")
-		return nil
-	}
-
 	return &enaml.InstanceJob{
 		Name:    "ssh_proxy",
 		Release: DiegoReleaseName,
@@ -201,7 +193,7 @@ func (d *diegoBrain) newSSHProxy() *enaml.InstanceJob {
 					EnableDiegoAuth: d.Config.AllowSSHAccess,
 					UaaSecret:       d.Config.SSHProxyClientSecret,
 					UaaTokenUrl:     prefixSystemDomain(d.Config.SystemDomain, "uaa") + "/oauth/token",
-					HostKey:         privateKey,
+					HostKey:         d.Config.DiegoSSHPrivateKey,
 				},
 			},
 		},

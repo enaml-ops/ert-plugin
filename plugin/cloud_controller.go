@@ -79,7 +79,7 @@ func newCloudControllerNgJob(c *CloudControllerPartition) enaml.InstanceJob {
 				Port: DefaultHM9000Port,
 			},
 			AppSsh: &ccnglib.AppSsh{
-				HostKeyFingerprint: c.Config.HostKeyFingerprint,
+				HostKeyFingerprint: c.Config.DiegoSSHHostFingerPrint,
 			},
 			Domain:                   c.Config.SystemDomain,
 			SystemDomain:             c.Config.SystemDomain,
