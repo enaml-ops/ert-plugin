@@ -49,7 +49,7 @@ const (
 
 	defaultBBSAPILocation = "bbs.service.cf.internal:8889"
 
-	javaBuildpackName    = "java-offline-buildpack"
+	javaBuildpackName    = "java_buildpack_offline"
 	javaBuildpackPackage = "buildpack_java_offline"
 )
 
