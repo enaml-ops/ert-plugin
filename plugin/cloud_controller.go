@@ -34,7 +34,7 @@ func (s *CloudControllerPartition) ToInstanceGroup() (ig *enaml.InstanceGroup) {
 		"ruby-buildpack",
 		"php-buildpack",
 		"python-buildpack",
-		javaBuildpackName,
+		"java-offline-buildpack",
 		"staticfile-buildpack"}
 
 	ig = &enaml.InstanceGroup{

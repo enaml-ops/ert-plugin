@@ -108,7 +108,7 @@ var _ = Describe("Cloud Controller Partition", func() {
 				"ruby-buildpack",
 				"php-buildpack",
 				"python-buildpack",
-				"java_buildpack_offline",
+				"java-offline-buildpack",
 				"staticfile-buildpack"))
 		})
 
