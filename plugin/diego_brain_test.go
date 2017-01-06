@@ -173,8 +173,8 @@ var _ = Describe("given a Diego Brain Partition", func() {
 			Ω(s.Diego.SshProxy.Bbs.ClientCert).Should(Equal("clientcert"))
 			Ω(s.Diego.SshProxy.Bbs.ClientKey).Should(Equal("clientkey"))
 			Ω(s.Diego.SshProxy.Bbs.RequireSsl).Should(BeFalse())
-			Ω(s.Diego.SshProxy.EnableCfAuth).Should(BeTrue())    // tied to allow-app-ssh-access
-			Ω(s.Diego.SshProxy.EnableDiegoAuth).Should(BeTrue()) // tied to allow-app-ssh-access
+			Ω(s.Diego.SshProxy.EnableCfAuth).Should(BeTrue(), "tied to allow-app-ssh-access")
+			Ω(s.Diego.SshProxy.EnableDiegoAuth).Should(BeFalse(), "should be hard coded to false and not tied to allow-app-ssh-access")
 			Ω(s.Diego.SshProxy.Cc.ExternalPort).Should(Equal(9023))
 			Ω(s.Diego.SshProxy.UaaTokenUrl).Should(Equal("https://uaa.sys.test.com/oauth/token"))
 			Ω(s.Diego.SshProxy.UaaSecret).Should(Equal("secret"))

@@ -49,8 +49,9 @@ const (
 
 	defaultBBSAPILocation = "bbs.service.cf.internal:8889"
 
-	javaBuildpackName    = "java_buildpack_offline"
-	javaBuildpackPackage = "buildpack_java_offline"
+	javaBuildpackName      = "java_buildpack_offline"
+	javaBuildpackPackage   = "buildpack_java_offline"
+	defaultEnableDiegoAuth = false
 )
 
 var flagsToInferFromCloudConfig = map[string][]string{

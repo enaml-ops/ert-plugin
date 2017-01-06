@@ -190,7 +190,7 @@ func (d *diegoBrain) newSSHProxy() *enaml.InstanceJob {
 						ExternalPort: d.Config.CCExternalPort,
 					},
 					EnableCfAuth:    d.Config.AllowSSHAccess,
-					EnableDiegoAuth: d.Config.AllowSSHAccess,
+					EnableDiegoAuth: defaultEnableDiegoAuth,
 					UaaSecret:       d.Config.SSHProxyClientSecret,
 					UaaTokenUrl:     prefixSystemDomain(d.Config.SystemDomain, "uaa") + "/oauth/token",
 					HostKey:         d.Config.DiegoSSHPrivateKey,
