@@ -106,7 +106,7 @@ var _ = Describe("given the acceptance-tests partition", func() {
 			Ω(props.AcceptanceTests.IncludeServices).Should(BeTrue())
 			Ω(props.AcceptanceTests.IncludeSecurityGroups).Should(BeFalse())
 			Ω(props.AcceptanceTests.SkipRegex).Should(Equal("lucid64"))
-			Ω(props.AcceptanceTests.JavaBuildpackName).Should(Equal("java-buildpack-offline"))
+			Ω(props.AcceptanceTests.JavaBuildpackName).Should(Equal("java_buildpack_offline"))
 			Ω(props.AcceptanceTests.IncludeDiegoSsh).Should(BeTrue())
 			Ω(props.AcceptanceTests.IncludeRouteServices).Should(BeTrue())
 			Ω(props.AcceptanceTests.IncludeSso).Should(BeTrue())

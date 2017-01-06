@@ -64,7 +64,7 @@ func (a *acceptanceTests) newAcceptanceTestsProperties(internet bool) *acceptanc
 			IncludeServices:          true,
 			IncludeSecurityGroups:    false,
 			SkipRegex:                "lucid64",
-			JavaBuildpackName:        "java-buildpack-offline",
+			JavaBuildpackName:        javaBuildpackName,
 			IncludeDiegoSsh:          true,
 			IncludeRouteServices:     true,
 			IncludeSso:               true,
