@@ -1,15 +1,15 @@
 hash: d37426604292cc38856ba142621eadee65533f737123f275cf3899b43fa13906
-updated: 2016-12-13T19:15:04.428956098-05:00
+updated: 2017-01-06T10:00:11.537359114-05:00
 imports:
 - name: github.com/enaml-ops/enaml
   version: daa906ffdfea29e28f26a5965100f645736de450
 - name: github.com/enaml-ops/omg-product-bundle
-  version: ad22bb51c9ff0c2c3bf13d32c141fe6e2a03c2df
+  version: 484e6cbf7270ffc87a467ffc18f3600df71aa534
   subpackages:
   - products/cf-mysql/enaml-gen/bootstrap
   - products/cf-mysql/enaml-gen/mysql
   - products/cf-mysql/enaml-gen/proxy
-  - products/cloudfoundry/enaml-gen/gorouter
+  - products/oss_cf/enaml-gen/gorouter
 - name: github.com/enaml-ops/pluginlib
   version: 399f71c718525e0b9481a633bbfde9c888638961
   subpackages:
@@ -23,6 +23,8 @@ imports:
   version: d1caa6c97c9fc1cc9e83bbe34d0603f9ff0ce8bd
 - name: github.com/op/go-logging
   version: 970db520ece77730c7e4724c61121037378659d9
+- name: github.com/pkg/errors
+  version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
 - name: github.com/square/certstrap
   version: b6aef507a0840bf78bac99e7ffa6e6eb5c2c3c9f
   subpackages:
@@ -31,6 +33,10 @@ imports:
   version: e33b245fc7a8186582208abc2458c2691bff681c
   subpackages:
   - lofakes
+- name: golang.org/x/crypto
+  version: bfc286917c5fcb7420d7e3092b50bbfd31b38a98
+  subpackages:
+  - ssh
 - name: gopkg.in/urfave/cli.v2
   version: c72728f42438425ffcd487986936357e17ebba3f
 - name: gopkg.in/yaml.v2
@@ -41,7 +47,7 @@ testImports:
   subpackages:
   - proto
 - name: github.com/onsi/ginkgo
-  version: 00054c0bb96fc880d4e0be1b90937fad438c5290
+  version: a23f924ce96d61f963fb6219b8ff069d8d768cc2
   subpackages:
   - config
   - internal/codelocation

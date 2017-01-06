@@ -1,61 +1,64 @@
 package config
 
 import (
-	"crypto/md5"
-	"encoding/base64"
-	"fmt"
-	"log"
-	"strings"
+	"bytes"
+	"crypto/rand"
+	"crypto/rsa"
+	"crypto/x509"
+	"encoding/pem"
 
 	"github.com/enaml-ops/pluginlib/pcli"
-	"github.com/enaml-ops/pluginlib/pluginutil"
 	"github.com/xchapter7x/lo"
+	"golang.org/x/crypto/ssh"
 	"gopkg.in/urfave/cli.v2"
+
+	"github.com/pkg/errors"
 )
 
-func getFingerPrint(pubKey string) string {
-	pubKey = strings.Trim(pubKey, "-----BEGIN PUBLIC KEY-----")
-	pubKey = strings.Trim(pubKey, "-----END PUBLIC KEY-----")
-	parts := strings.Fields(pubKey)
-	if len(parts) < 2 {
-		log.Fatal("bad key")
-	}
+func generateCfSshKeypair() (privatekey string, publickey string, err error) {
 
-	k, err := base64.StdEncoding.DecodeString(parts[1])
+	pk, err := rsa.GenerateKey(rand.Reader, 1024)
 	if err != nil {
-		log.Fatal(err)
+		return "", "", errors.Wrap(err, "rsa.generateKey failed")
 	}
 
-	fp := md5.Sum([]byte(k))
-	var res string
-	for i, b := range fp {
-		res += fmt.Sprintf("%02x", b)
-		if i < len(fp)-1 {
-			res += fmt.Sprint(":")
-		}
+	pkBuffer := bytes.NewBufferString("")
+	pkPEM := &pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(pk)}
+	if err := pem.Encode(pkBuffer, pkPEM); err != nil {
+		return "", "", errors.Wrap(err, "pem.Encode failed")
 	}
-	return res
+
+	pub, err := ssh.NewPublicKey(&pk.PublicKey)
+	if err != nil {
+		return "", "", errors.Wrap(err, "ssh.NewPublicKey failed")
+	}
+
+	public := ssh.MarshalAuthorizedKey(pub)
+	return pkBuffer.String(), string(public), nil
 }
 
 func NewConfig(c *cli.Context) (*Config, error) {
 	var err error
 	config := &Config{}
-	config.DiegoSSHPublicKey, config.DiegoSSHPrivateKey, err = pluginutil.GenerateKeys()
+	config.DiegoSSHPrivateKey, config.DiegoSSHPublicKey, err = generateCfSshKeypair()
 
 	if err != nil {
 		lo.G.Error("couldn't generate private key for SSH proxy")
 		return nil, err
 	}
-	config.DiegoSSHHostFingerPrint = getFingerPrint(config.DiegoSSHPublicKey)
+	config.DiegoSSHHostFingerPrint, err = GetFingerPrint(config.DiegoSSHPublicKey)
+	if err != nil {
+		return nil, errors.Wrap(err, "GetFingerPrint failed")
+	}
 
 	err = pcli.UnmarshalFlags(config, c)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "UnmarshalFlags failed")
 	}
 
 	secret, err := NewSecret(c)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "NewSecret failed")
 	}
 	config.Secret = *secret
 	config.User = NewUser(c)
@@ -66,7 +69,7 @@ func NewConfig(c *cli.Context) (*Config, error) {
 
 	certs, err := NewCerts(c)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "NewCerts failed")
 	}
 	config.Certs = certs
 	return config, nil

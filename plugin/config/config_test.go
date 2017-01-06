@@ -175,6 +175,7 @@ var _ = Describe("Config", func() {
 
 		It("should add a set of public, private & fingerprints for diego braing & cloud controller ssh", func() {
 			Ω(config.DiegoSSHPublicKey).ShouldNot(BeEmpty(), "we should have a public key set")
+			Ω(config.DiegoSSHPublicKey).Should(HavePrefix("ssh-rsa "), "the public key needs to be in ssh-rsa format or the fingerprint will be incorrect")
 			Ω(config.DiegoSSHPrivateKey).ShouldNot(BeEmpty(), "we should have a private key set")
 			Ω(config.DiegoSSHHostFingerPrint).ShouldNot(BeEmpty(), "we should have a fingerprint set")
 		})
