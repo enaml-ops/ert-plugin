@@ -1,5 +1,5 @@
-hash: d37426604292cc38856ba142621eadee65533f737123f275cf3899b43fa13906
-updated: 2017-01-06T10:00:11.537359114-05:00
+hash: 35fc83b63bf35852d90acec68e1544e290770be0688771d9cce770f231149825
+updated: 2017-01-24T17:17:40.349359073-07:00
 imports:
 - name: github.com/enaml-ops/enaml
   version: daa906ffdfea29e28f26a5965100f645736de450
@@ -11,7 +11,7 @@ imports:
   - products/cf-mysql/enaml-gen/proxy
   - products/oss_cf/enaml-gen/gorouter
 - name: github.com/enaml-ops/pluginlib
-  version: 399f71c718525e0b9481a633bbfde9c888638961
+  version: c244e6734dd27c48b5d3cf32d8e1d1c9c0f943a7
   subpackages:
   - cred
   - pcli
@@ -43,11 +43,11 @@ imports:
   version: a5b47d31c556af34a302ce5d659e6fea44d90de0
 testImports:
 - name: github.com/golang/protobuf
-  version: 8ee79997227bf9b34611aee7946ae64735e6fd93
+  version: 87c000235d3d852c1628dc9490cd21ab36a7d69f
   subpackages:
   - proto
 - name: github.com/onsi/ginkgo
-  version: a23f924ce96d61f963fb6219b8ff069d8d768cc2
+  version: 00054c0bb96fc880d4e0be1b90937fad438c5290
   subpackages:
   - config
   - internal/codelocation
@@ -66,7 +66,7 @@ testImports:
   - reporters/stenographer/support/go-isatty
   - types
 - name: github.com/onsi/gomega
-  version: f1f0f388b31eca4e2cbe7a6dd8a3a1dfddda5b1c
+  version: ff4bc6b6f9f5affa66635cd04d31d2a7ee21ffd6
   subpackages:
   - format
   - ghttp
@@ -81,6 +81,6 @@ testImports:
   - matchers/support/goraph/util
   - types
 - name: golang.org/x/sys
-  version: 478fcf54317e52ab69f40bb4c7a1520288d7f7ea
+  version: c200b10b5d5e122be351b67af224adc6128af5bf
   subpackages:
   - unix

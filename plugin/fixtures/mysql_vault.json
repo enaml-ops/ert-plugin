@@ -52,7 +52,10 @@
     "uaa-jwt-signing-key": "jfgjertjertjw",
     "uaa-jwt-verification-key": "hsthseheth",
     "uaa-ldap-user-password": "hserthesrhserh",
-    "uaa-saml-service-provider-key": "hrehwserhser"
+    "uaa-saml-service-provider-key": "hrehwserhser",
+    "allow-app-ssh-access": true,
+    "uaa-enable-selfservice-links": false,
+    "uaa-ldap-enabled": true
   },
   "warnings": null,
   "auth": null
