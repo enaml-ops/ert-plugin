@@ -73,7 +73,6 @@ func getPasswordObject() []byte {
 		"db-app_usage-password",
 		"db-notifications-password",
 		"diego-db-passphrase",
-		"uaa-ldap-user-password",
 		"admin-password",
 		"push-apps-manager-password",
 		"smoke-tests-password",
